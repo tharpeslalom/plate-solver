@@ -23,6 +23,35 @@ positive — the doc is accurate, not aspirational.
 
 ---
 
+## Resolution status (updated 2026-07-01)
+
+A Phase H hardening pass reviewed and closed the highest-severity findings. Status as of
+2026-07-01 (HEAD `e48b5c8`, branch `improvements`):
+
+| ID | Status | Resolved by |
+|---|---|---|
+| **C1** | ✅ RESOLVED | `1a75576` — lazy `Combinations4` iterator replaces the eager ~618 MiB `Vec<[usize;4]>`. |
+| **C2** | ✅ RESOLVED | `7cfa34a` — `DetectParams` threaded through `solve_from_image`; client sigma/binning/normalize_rows/detect_hot_pixels honored. |
+| **C3** | ✅ RESOLVED | `06a09fb` — `star_table()` runtime `align_offset(4)` check returning `Result` (the `debug_assert!`-guarded `unsafe` is gone). |
+| **C4** | ✅ RESOLVED | `635bc98` — `u32::try_from` + `checked_mul` + zero/oversized bounds at all three gRPC handlers; `SolveFromCentroids` now validates dimensions. |
+| **C5** | ✅ RESOLVED | `24e1190` — `peak_coord_1d` denom-guard + clamp; `get_stars_from_image` and `key_hashes`/`largest_edge` accessors return `Result`. |
+| **C6** | ✅ RESOLVED | `dfb4d08` — `grpc-timeout` header parsed → `cancel_flag`; rayon feature flag added (default off, off on mobile). |
+| **C7** | ⏳ OPEN | Phase H10 (optional) — duplicated loader/mmap section parser + lookup routine. |
+| **C8** | 🛑 BLOCKED | Phase H9 — `ps-dbgen` count parity needs Hipparcos/Tycho catalogs not in-repo. |
+| **C9** | ⏳ OPEN | Phase H10 (optional) — `hash_insert` `unwrap`/`panic` → `Result`. |
+| **C10** | ⏳ OPEN | Phase H10 (optional) — dead `gate.rs` branch, 16-arg `apply_legacy_fallbacks`. |
+
+Workspace after the pass: `cargo build/test --workspace` green, `cargo build --workspace --release`
+clean, rayon flag compiles on and off (**200 pass / 0 fail / 1 ignored**, up from 182). Two small
+residuals noted during review but not tracked as C-finding follow-ups: (a) the H6 deadline timer
+task is `tokio::spawn`'d without an `AbortHandle`, so a long-deadline request leaks a sleeping
+task until the deadline elapses; (b) `solve_from_image` still `.expect("valid binning")` (safe —
+binning is validated upstream in the gRPC layer — but a panic path C5 did not fully reach). Neither
+affects runtime correctness. The findings below are the original 2026-06-29 audit text, preserved
+as-is; see the table above for current status.
+
+---
+
 ## Top concerns (most severe first)
 
 ### C1. ~648 MB transient allocation in the solver hot loop — mobile blocker

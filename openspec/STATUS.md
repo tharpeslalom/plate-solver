@@ -19,11 +19,16 @@ implemented crates is in [`../CODEBASE-REVIEW.md`](../CODEBASE-REVIEW.md).
 ## Current state (post-implementation)
 
 The implementation milestone landed feat-01 through feat-06: six crates (`ps-core`, `ps-detect`,
-`ps-db`, `ps-dbgen`, `ps-solve`, `ps-grpc`), **182 tests pass / 0 fail / 1 ignored**, with the
-numerical-parity gates held (sv6 RA/Dec within 10 arcsec, 19/19 matched catalog IDs, cedar-detect
-interop). Each completed change's `tasks.md` was checked off and the change archived with
-`openspec archive`, moving its `spec.md` into `openspec/specs/<capability>/spec.md` and the change
-folder into `openspec/changes/archive/<date>-<change>/`.
+`ps-db`, `ps-dbgen`, `ps-solve`, `ps-grpc`), with the numerical-parity gates held (sv6 RA/Dec
+within 10 arcsec, 19/19 matched catalog IDs, cedar-detect interop). Each completed change's
+`tasks.md` was checked off and the change archived with `openspec archive`, moving its `spec.md`
+into `openspec/specs/<capability>/spec.md` and the change folder into
+`openspec/changes/archive/<date>-<change>/`. The post-implementation hardening phase (Phase H)
+then resolved the `CODEBASE-REVIEW.md` C1–C6 findings + the feat-06 4.2 gRPC-Web gap (commits
+`1a75576`…`e48b5c8`, 2026-06-30); the workspace now runs **200 tests pass / 0 fail / 1 ignored**
+(release build clean, rayon flag compiles on and off). C7/C9/C10 (optional cleanup) and
+feat-02 7.2 remain open; feat-04 5.3 / C8 is BLOCKED on missing HIP/Tycho catalogs — see
+Carried-forward gaps below.
 
 **feat-07 (mobile-runtime)** is genuinely not implemented (deferred — no Xcode/Android NDK in CI)
 and remains an active change with 0/12 tasks.
@@ -50,32 +55,33 @@ Build order: `math-core` → `star-detection` → `pattern-database` → `databa
 
 ## Carried-forward gaps (incomplete tasks in archived changes)
 
-Three tasks were left unchecked because the work is genuinely incomplete or deferred. They
-survive in the archived `tasks.md` as known gaps; resolving them is the work that closes each
-capability fully.
+Three tasks were left unchecked at archive time. Phase H (hardening) was opened to close them
+plus the `CODEBASE-REVIEW.md` C1–C10 findings. **As of 2026-07-01 the status is:**
 
-- **feat-02 / star-detection — 7.2 `summarize_region_of_interest`**: the auto-exposure/focus
-  helper was not ported from cedar-detect (it exists only in `reference-solutions/`). Non-core;
-  intentionally skipped.
-- **feat-04 / database-generation — 5.3 pattern-count parity vs `default_database.npz`**:
-  DEFERRED — the Hipparcos/Tycho source catalogs are not in-repo, so `ps-dbgen` has never been
-  checked to reproduce the reference pattern count (1,010,981). Structural validity and
-  determinism are tested; count parity is logged via `eprintln!` in `ps-dbgen/tests/e2e.rs` for
-  post-catalog-download verification. See [`IMPLEMENTATION-STATUS.md`](./IMPLEMENTATION-STATUS.md).
-- **feat-06 / grpc-service — 4.2 gRPC-Web over HTTP/1**: TCP serving with a configurable address
-  is done (`ps-grpc/src/main.rs`), and `accept_http1(true)` is set, but the `tonic-web` layer is
-  not wired (`tonic-web` is a workspace dep but not a `ps-grpc` dependency; no `GrpcWebLayer` is
-  added). gRPC-Web transcoding is therefore not actually active. Untested.
+- **feat-06 / grpc-service — 4.2 gRPC-Web over HTTP/1** — ✅ **RESOLVED (H7 / `e48b5c8`).**
+  `tonic-web` is now a `ps-grpc` dependency and `GrpcWebLayer::new()` is wired in `main.rs`
+  alongside `accept_http1(true)`; a gRPC-Web-over-HTTP/1 interop test passes. This carried-forward
+  gap is closed.
+- **feat-02 / star-detection — 7.2 `summarize_region_of_interest`** — ⏳ **OPEN (Phase H8).** The
+  auto-exposure/focus helper was not ported from cedar-detect (it exists only in
+  `reference-solutions/`). Non-core, intentionally skipped at implementation; no blocker, just not
+  yet started.
+- **feat-04 / database-generation — 5.3 pattern-count parity vs `default_database.npz`** — 🛑
+  **BLOCKED (Phase H9).** The Hipparcos/Tycho source catalogs are not in-repo, so `ps-dbgen` has
+  never been verified to reproduce the reference pattern count (1,010,981). The shipped
+  `default_database.npz` is the Python-built artifact and loads/works; only the offline
+  *regeneration-from-catalogs* path is unverified. Standing gate (green): structural validity +
+  byte-identical determinism + round-trip through `ps-db`. To unblock: user downloads
+  `hip_main.dat`/`tyc2.dat` to a known path. See [`IMPLEMENTATION-STATUS.md`](./IMPLEMENTATION-STATUS.md).
 
 These are separate from the code-quality/robustness findings in
-[`../CODEBASE-REVIEW.md`](../CODEBASE-REVIEW.md) (C1–C10), which are defects in *implemented* code
-against these specs' own acceptance scenarios — most notably C1 (~618 MiB eager-combinations
-allocation in the solver, a mobile blocker; fix plan saved at
-`../notes/C1-lazy-combinations-fix.md`), C2 (`solve_from_image` hardcodes detection params and
-ignores the request's), and C3 (`debug_assert!`-guarded `unsafe` slice in `ps-db` mmap = potential
-UB in release). "Implemented and passing parity" does not yet mean "meets every spec scenario" —
-the parity gates hold, but the mobile-readiness and boundary-robustness scenarios do not all hold
-until those are resolved or explicitly waived.
+[`../CODEBASE-REVIEW.md`](../CODEBASE-REVIEW.md) (C1–C10), defects in *implemented* code against
+these specs' own acceptance scenarios. **As of 2026-07-01, C1–C6 are RESOLVED** (commits
+`1a75576` C1 lazy combinations, `7cfa34a` C2 client detect params, `24e1190` C5 panics→Result,
+`06a09fb` C3 mmap alignment, `635bc98` C4 width/height casts, `dfb4d08` C6 RPC deadline + rayon
+flag); **C7, C9, C10 remain OPEN** (optional Phase H10 cleanup tail); **C8 is the same BLOCK as
+feat-04 5.3 above** (Phase H9). The mobile-readiness and boundary-robustness scenarios that C1–C6
+targeted now hold; those that C7–C10 target remain.
 
 ## Definition of done (documentation milestone, met 2026-06-09)
 
@@ -114,10 +120,13 @@ above → [`../CODEBASE-REVIEW.md`](../CODEBASE-REVIEW.md) for the defect list.
 
 ## Next steps
 
-1. Resolve the three carried-forward gaps above (port `summarize_region_of_interest`; stand up a
-   `ps-dbgen` count-parity check once HIP/TYC catalogs are available; wire the `tonic-web` layer
-   and add a gRPC-Web interop test).
-2. Address the `CODEBASE-REVIEW.md` C1–C10 findings in severity order (C1 fix plan already saved
-   at `notes/C1-lazy-combinations-fix.md`).
-3. Implement feat-07 (mobile runtime) when iOS/Android tooling is available, then archive it the
+1. ~~Resolve the three carried-forward gaps above~~ — feat-06 4.2 (gRPC-Web) **done**; feat-02 7.2
+   (ROI helper) and feat-04 5.3 (count parity, BLOCKED on missing HIP/Tycho catalogs) remain.
+2. ~~Address the `CODEBASE-REVIEW.md` C1–C10 findings in severity order~~ — **C1–C6 done**
+   (commits `1a75576`…`dfb4d08`); C7/C9/C10 (optional cleanup tail, Phase H10) remain; C8 is the
+   feat-04 5.3 block above.
+3. Optional Phase H10 cleanup: dedup the `ps-db` loader/mmap readers (C7), convert `ps-dbgen`
+   `hash_insert` `unwrap`/`panic` to `Result` (C9), remove the dead `gate.rs` branch and replace the
+   16-arg `apply_legacy_fallbacks` with a config struct (C10).
+4. Implement feat-07 (mobile runtime) when iOS/Android tooling is available, then archive it the
    same way.

@@ -7,14 +7,20 @@ All six features are complete and passing parity tests.
 
 | Feature | Crate(s) | Status | Tests |
 |---------|----------|--------|-------|
-| feat-01 Foundation Math Core | `ps-core` | COMPLETE | 37 parity (celestial, angle, projection, distortion, attitude, pattern, FOV, false-alarm, residuals) |
-| feat-02 Star Detection | `ps-detect` | COMPLETE | 63 (56 unit + 7 integration incl. end-to-end ±0.1 px centroid parity) |
-| feat-03 Pattern Database | `ps-db` | COMPLETE | 10 (3 unit + 7 integration incl. mmap_lookup_parity, nearby_stars_parity) |
-| feat-04 Database Generation | `ps-dbgen` | COMPLETE | 42 (19 unit + 23 integration incl. byte-identical determinism, e2e CLI build) |
-| feat-05 Plate Solver | `ps-solve` | COMPLETE | 17 (1 ignored) incl. sv6 RA/Dec within 10 arcsec, 19/19 matched catalog IDs |
-| feat-06 gRPC Service | `ps-grpc` | COMPLETE | 9 incl. solve_from_image MATCH_FOUND on reference JPEG, cedar-detect interop |
+| feat-01 Foundation Math Core | `ps-core` | COMPLETE | 41 (37 parity: celestial, angle, projection, distortion, attitude, pattern, FOV, false-alarm, residuals) |
+| feat-02 Star Detection | `ps-detect` | COMPLETE | 69 (incl. end-to-end ±0.1 px centroid parity; +6 Phase H3 error/no-panic tests) |
+| feat-03 Pattern Database | `ps-db` | COMPLETE | 12 (incl. mmap_lookup_parity, nearby_stars_parity; +2 Phase H3/H4 mmap-Result/alignment tests) |
+| feat-04 Database Generation | `ps-dbgen` | COMPLETE | 42 (incl. byte-identical determinism, e2e CLI build) |
+| feat-05 Plate Solver | `ps-solve` | COMPLETE | 18 (1 ignored) incl. sv6 RA/Dec within 10 arcsec, 19/19 matched catalog IDs (+1 Phase H2 detect-params test) |
+| feat-06 gRPC Service | `ps-grpc` | COMPLETE | 16 incl. solve_from_image MATCH_FOUND on reference JPEG, cedar-detect interop (+7 Phase H5/H6/H7: width/height validation, RPC-deadline cancel, gRPC-Web) |
 
-**Total: 182 tests pass, 1 ignored (sv6_diagnostic_solve_sweep — sweep helper, not a gate).**
+**Total: 200 tests pass, 0 fail, 1 ignored (sv6_diagnostic_solve_sweep — sweep helper, not a gate).**
+
+> Test counts grew from the implementation milestone's 182 to 200 during the post-implementation
+> Phase H hardening pass (commits `1a75576`…`e48b5c8`, 2026-06-30), which resolved CODEBASE-REVIEW
+> C1–C6 and the feat-06 4.2 gRPC-Web gap. See [`STATUS.md`](./STATUS.md) "Carried-forward gaps" for
+> the open (H8) and blocked (H9) items. Per-crate counts above are measured by `cargo test -p
+> <crate>`; the workspace total is the authoritative `cargo test --workspace` figure.
 
 ## Parity Outcomes
 
@@ -86,10 +92,13 @@ Verified against cedar-detect reference (Rust binary) on `cedar-detect/test_data
 | ps-dbgen count parity vs `default_database.npz` | Hipparcos/Tycho catalogs not in-repo | `ps-dbgen/tests/e2e.rs` eprintln |
 | feat-07 mobile runtime | Out of scope for this grind (no Xcode/Android NDK in CI) | plan.md |
 
-## Clippy Warnings (24, no errors)
+## Clippy Warnings (no errors)
 
-`cargo clippy --workspace` produces 24 style warnings and 0 errors. These are logged here
-rather than fixed to avoid scope creep on non-blocking style items:
+`cargo clippy --workspace` produces 0 errors. Warning count is ~32 as of the Phase H pass (was
+24 at the implementation milestone; the rise is mostly new toolchain lints — `manual_is_multiple_of`,
+redundant-closure — plus the still-open C10 `if`-with-identical-blocks in `gate.rs`). These are
+non-blocking style items; the optional Phase H10 cleanup targets the C10 subset (dead `gate.rs`
+branch, 16-arg `apply_legacy_fallbacks`). The categories:
 
 - `needless_range_loop` — indexed loops in hash table and match routines (ps-db, ps-solve)
 - `type_complexity` — complex return type in ps-grpc service (acceptable for gRPC generated types)
