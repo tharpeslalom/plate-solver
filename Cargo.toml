@@ -6,6 +6,7 @@ exclude = ["tools/parity/_capture_binning"]
 [workspace.dependencies]
 # Math
 nalgebra = "0.32"
+rayon = "1.10"
 
 # KD-tree
 kiddo = "5.0"
