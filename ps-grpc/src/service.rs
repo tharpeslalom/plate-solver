@@ -12,7 +12,7 @@ use ps_db::Database;
 use ps_detect::noise::estimate_noise_from_image;
 use ps_detect::{get_stars_from_image, GrayImage};
 use ps_solve::{
-    solve_from_centroids as ps_solve_centroids, solve_from_image as ps_solve_image,
+    solve_from_centroids as ps_solve_centroids, solve_from_image as ps_solve_image, DetectParams,
     SolveParams as PsSolveParams, SolveStatus as PsSolveStatus,
 };
 use std::fs::File;
@@ -334,7 +334,28 @@ impl PlateSolver for PlateSolverService {
 
         // Call ps_solve::solve_from_image directly.
         // t_extract_ms = 0.0 since solve_from_image handles extraction internally.
-        let sol = ps_solve_image(&self.db, &image, &solve_params);
+        let raw_sigma = extract_req.sigma;
+        let sigma = if raw_sigma > 0.0 { raw_sigma } else { 4.0 };
+        let effective_binning: u32 = if let Some(b) = extract_req.binning {
+            match b {
+                2 | 4 => b as u32,
+                _ => {
+                    return Err(Status::invalid_argument(format!(
+                        "binning must be 2 or 4, got {}",
+                        b
+                    )));
+                }
+            }
+        } else {
+            1u32
+        };
+        let detect = DetectParams {
+            sigma,
+            binning: effective_binning,
+            normalize_rows: extract_req.normalize_rows,
+            detect_hot_pixels: extract_req.detect_hot_pixels,
+        };
+        let sol = ps_solve_image(&self.db, &image, &solve_params, &detect);
 
         let solution_proto = map_solution(&sol, return_matches, 0.0);
 
