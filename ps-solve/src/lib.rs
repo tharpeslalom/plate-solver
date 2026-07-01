@@ -578,19 +578,51 @@ pub fn cluster_bust_centroids(centroids: &[[f64; 2]], separation_pixels: f64) ->
     kept
 }
 
-/// Generate all 4-element combinations of indices [0..n) in lexicographic order.
-fn combinations_4(n: usize) -> Vec<[usize; 4]> {
-    let mut result = Vec::new();
-    for a in 0..n {
-        for b in (a + 1)..n {
-            for c in (b + 1)..n {
-                for d in (c + 1)..n {
-                    result.push([a, b, c, d]);
-                }
-            }
-        }
+/// Lazily yields all 4-element combinations of `[0, n)` in lexicographic order.
+///
+/// Replaces an eager `Vec<[usize; 4]>` that allocated `C(n,4) · 32 bytes` up front
+/// (≈618 MiB at `n = 150`, the bundled DB's `verification_stars_per_fov`). Yields
+/// the identical sequence to the old `combinations_4`, so timeout/cancel checks in
+/// the solve loop fire at the same cadence with no allocation.
+struct Combinations4 {
+    n: usize,
+    cur: [usize; 4],
+    done: bool,
+}
+
+impl Combinations4 {
+    fn new(n: usize) -> Self {
+        Self { n, cur: [0, 1, 2, 3], done: n < 4 }
     }
-    result
+}
+
+impl Iterator for Combinations4 {
+    type Item = [usize; 4];
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.done {
+            return None;
+        }
+        let out = self.cur;
+        let mut k: i32 = 3;
+        while k >= 0 {
+            let kk = k as usize;
+            if self.cur[kk] < self.n - 4 + kk {
+                self.cur[kk] += 1;
+                for j in (kk + 1)..4 {
+                    self.cur[j] = self.cur[kk] + (j - kk);
+                }
+                return Some(out);
+            }
+            k -= 1;
+        }
+        self.done = true;
+        Some(out)
+    }
+}
+
+fn combinations_4(n: usize) -> Combinations4 {
+    Combinations4::new(n)
 }
 
 /// Solve from a raw grayscale image (detects stars then solves).
@@ -834,9 +866,9 @@ mod tests {
 
     #[test]
     fn combinations_4_basic() {
-        assert_eq!(combinations_4(0), Vec::<[usize; 4]>::new());
-        assert_eq!(combinations_4(3), Vec::<[usize; 4]>::new());
-        let combos = combinations_4(4);
+        assert_eq!(combinations_4(0).collect::<Vec<_>>(), Vec::<[usize; 4]>::new());
+        assert_eq!(combinations_4(3).collect::<Vec<_>>(), Vec::<[usize; 4]>::new());
+        let combos: Vec<[usize; 4]> = combinations_4(4).collect();
         assert_eq!(combos.len(), 1);
         assert_eq!(combos[0], [0, 1, 2, 3]);
     }
@@ -844,7 +876,7 @@ mod tests {
     #[test]
     fn combinations_4_five_elements() {
         // C(5,4) = 5 combinations
-        let combos = combinations_4(5);
+        let combos: Vec<[usize; 4]> = combinations_4(5).collect();
         assert_eq!(combos.len(), 5);
         assert_eq!(combos[0], [0, 1, 2, 3]);
         assert_eq!(combos[1], [0, 1, 2, 4]);
