@@ -16,21 +16,27 @@ rebuild appears anywhere in this talk.
 
 | # | Slide | Mark | Budget |
 |---|---|---|---|
-| 1 | We built it for $61 | 0:00 | 0:30 |
-| 2 | What it does | 0:30 | 1:00 |
-| 3 | **The build loop** | 1:30 | **2:00** |
-| 4 | What that did to the bill | 3:30 | 1:30 |
-| 5 | Route by size | 5:00 | 1:30 |
-| 6 | Stop buying the same context twice | 6:30 | 1:00 |
-| 7 | Measure it (Grafana) | 7:30 | 1:00 |
-| 8 | Three moves | 8:30 | 1:00 |
-| 9 | Discussion | 9:30 | 0:30 |
+| 1 | We built it for $61 | 0:00 | 0:25 |
+| 2 | **Two levers** | 0:25 | **1:10** |
+| 3 | What it does | 1:35 | 0:55 |
+| 4 | The rig | 2:30 | 1:05 |
+| 5 | **The build loop** | 3:35 | **1:15** |
+| 6 | What that did to the bill | 4:50 | 1:10 |
+| 7 | Route by size | 6:00 | 0:55 |
+| 8 | Stop buying the same context twice | 6:55 | 0:55 |
+| 9 | Measure it (Grafana) | 7:50 | 0:50 |
+| 10 | Three moves | 8:40 | 0:50 |
+| 11 | Discussion | 9:30 | 0:30 |
 | — | Appendix A · what the first days cost | backup | — |
 | — | Appendix B · sources | backup | — |
 
-The clock warns at 8:30. **If you are behind at slide 5, cut slide 6 to one sentence**
-("caching was worth eleven hundred dollars, ask me after") and go straight to Grafana.
-Slide 3 is the one slide you must not rush.
+**Shape of the talk:** slide 2 states both levers up front; slides 5–8 are the evidence.
+If the room only hears one slide, it should be slide 2.
+
+The clock warns at 8:30. **Cut rule, in order:** if you are behind at slide 6, drop
+slide 7 to one line ("eighty-five percent local, and the judge alone would have been a
+hundred and sixty dollars") and go to caching. Behind at slide 8, skip Grafana and
+promise it after. Slides 2 and 5 are the two you must not rush.
 
 ---
 
@@ -40,17 +46,41 @@ Slide 3 is the one slide you must not rush.
 > price-per-million table, and it is the least interesting number in this conversation.
 >
 > Here is the number that is interesting. One week of building a real piece of software.
-> Three hundred and twenty million tokens of AI work. We paid **sixty-one dollars**. The
-> same work run the obvious way was five hundred and seventy-four.
+> Run the obvious way, it was five hundred and seventy-four dollars. We paid **sixty-one**.
 >
 > Nobody gave us a discount. We changed the architecture. Ten minutes, then let's argue
 > about it.
 
-*Don't explain the levers yet. Let the number sit.*
+*Three cells, left to right: what it should have cost, what we paid, the difference. Let
+the middle one sit before you move.*
 
 ---
 
-## 2 · What it does — *0:30*
+## 2 · Two levers — *0:25* · **the whole talk, up front**
+
+*This is the slide the room should leave with. Everything after it is evidence.*
+
+> Before the story, the two ideas.
+>
+> **One: the right model for the job.** Writing a function against a written spec is not
+> the same task as deciding whether that function is correct. We price them the same
+> anyway — everything goes to the best model we have, out of habit, not analysis. Sort the
+> work first. Judgment to the frontier model, volume to a small model on hardware you
+> already own. *(point)* Eighty-five percent of the calls in this build never left the
+> laptop.
+>
+> **Two: pay once for the same context.** An agent re-reads its entire world on every
+> single turn — the spec, the code, the conversation so far. Priced fresh each time, that
+> repetition *is* your invoice. Cached, the identical tokens cost a tenth. *(point)*
+> Eleven hundred and twenty-two dollars, one week.
+>
+> Neither of those is a discount, a vendor call, or a negotiation.
+
+*If the clock is already tight, this is still the slide you protect. Cut later, not here.*
+
+---
+
+## 3 · What it does — *1:35*
 
 **`[LIVE?]`** If the app is up: drop the image in, FOV 11, hit Solve. Otherwise the
 screenshot is real output and nobody will know.
@@ -68,7 +98,29 @@ screenshot is real output and nobody will know.
 
 ---
 
-## 3 · The build loop — *1:30* · **the slide that explains the number**
+## 4 · The rig — *2:30*
+
+*People assume there is a cluster behind this. Thirty seconds to kill that assumption.*
+
+> Worth a moment on what this actually ran on.
+>
+> *(walk the left column)* A MacBook Pro I already owned. A quantised open-weights model
+> on the GPU. LiteLLM — open source — as the switchboard. Claude Code doing the work. And
+> a **forty-line bash loop** keeping it going in a tmux session while I made dinner.
+>
+> *(right side — this is the trick)* Claude Code asks for a model **by name**. The
+> switchboard decides what actually answers, and the tool never finds out. Ask for
+> "sonnet", get the local model. Ask for "haiku", get the local model. The one model I
+> chose to keep on the meter is the only thing that bills.
+>
+> That is a **config file**, not a rewrite. Same commands, same tool, same repo. Mid-run I
+> moved the orchestrator itself onto the local model and the loop did not notice.
+
+**`[IF ASKED]`** Capital cost: zero. That is the point — there was nothing to procure.
+
+---
+
+## 5 · The build loop — *3:35* · **the slide that explains the number**
 
 *Slow down here. Everything else is a consequence of this diagram.*
 
@@ -105,7 +157,7 @@ Two design notes worth saying out loud:
 
 ---
 
-## 4 · What that did to the bill — *3:30*
+## 6 · What that did to the bill — *4:50*
 
 > Same project. Same specs. Same models available to me.
 >
@@ -128,46 +180,50 @@ Two design notes worth saying out loud:
 
 ---
 
-## 5 · Route by size — *5:00*
+## 7 · Route by size — *6:00*
 
-> Two levers got us there. Here is the first, and it is the one people find surprising.
+> Lever one, with the receipts. You have already seen the switchboard — this is where
+> every call in that week actually went.
+
+*Walk the three rows.*
+
+> Five thousand eight hundred and eighty calls served locally — that is electricity. Six
+> hundred and fifty-four to the judge, on a flat-fee subscription I had already paid for.
+> And three hundred and eighty-one frontier calls: sixty dollars and eighty cents.
 >
-> There is a **switchboard** between the coding tool and the models. The tool asks for a
-> model by name. The switchboard decides what actually answers.
+> *(point at the two right-hand columns)* **Volume and spend point in opposite
+> directions.** The tier doing nearly all the work bills nothing. The tier doing five and
+> a half percent of the calls is basically the whole invoice.
 >
-> The coding tool believes it is calling a commercial cloud model. **Most of those calls
-> are being served by a model running on the laptop in front of you**, and it has no idea.
-> That is a config file. Nothing upstream changed.
+> So the interesting question is never "which model is best." It is **which of these three
+> rows does this particular task belong in** — and you can usually answer that before you
+> dispatch it.
 
-*Walk the three lanes.*
-
-> Five thousand eight hundred calls local — that is electricity. Six hundred and fifty-four
-> to the judge on a flat-fee subscription, already paid for; at frontier rates that review
-> alone would have been a hundred and sixty dollars, more than doubling the build. And
-> three hundred and eighty-one frontier calls, sixty dollars — which was me watching.
+**`[IF PRESSED]`** At frontier rates the judge alone would have been a hundred and sixty
+dollars — taking the build from sixty-one to two hundred and twenty-one.
 
 ---
 
-## 6 · Stop buying the same context twice — *6:30*
+## 8 · Stop buying the same context twice — *6:55*
 
-> Second lever, and it is the biggest number in the deck. It is also the most boring, which
-> is why almost nobody does it.
+> Lever two, and the largest number in this deck — larger than every routing decision
+> combined.
+
+*Read the three cells top to bottom as one sentence.*
+
+> Run the obvious way, this build was **sixteen hundred and ninety-six dollars**. Turning
+> on caching alone took **eleven hundred and twenty-two** off it. Routing then took most
+> of the rest, down to sixty-one.
 >
-> An agent re-reads the same background on *every single turn* — the spec, the code, the
-> conversation so far. If you are charged fresh for that every time, it is most of your
-> bill. Cached, the identical tokens cost **a tenth**.
->
-> On this one week, caching was worth **eleven hundred and twenty-two dollars**. Without
-> it, this build would have been sixteen hundred and ninety-six dollars before any routing
-> at all.
->
-> No vendor call. No model change. No negotiation. Pure engineering.
+> Which is the uncomfortable part: **the biggest lever required no model change at all.**
+> It is a header, a stable prompt prefix, and someone bothering to check the hit rate.
+> Pure engineering — and nobody gets promoted for it.
 
 *This is the slide to compress if you are behind.*
 
 ---
 
-## 7 · Measure it — *7:30*
+## 9 · Measure it — *7:50*
 
 **`[LIVE]`** Alt-tab to Grafana. **Open the pre-filtered board, not the default one:**
 
@@ -192,7 +248,7 @@ will contradict you.
 
 ---
 
-## 8 · Three moves — *8:30*
+## 10 · Three moves — *8:40*
 
 > **Route by size, not by habit.** Most tasks don't need the frontier model, and the ones
 > that do are identifiable before you dispatch them. A router is cheaper than a better
@@ -209,7 +265,7 @@ will contradict you.
 
 ---
 
-## 9 · Discussion — *9:30*
+## 11 · Discussion — *9:30*
 
 *Read the three questions. Then stop talking. Let the room fill the silence.*
 
@@ -279,11 +335,12 @@ don't know their own number, and that reliably starts the conversation.
 
 ## Rehearsal checklist
 
-- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slide 3 must land**.
+- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slides 2 and 5 must land**.
 - [ ] Grafana up, with the **`plate-solver-v1`** board open in a tab (not the default
       board). Confirm it reads **$61.13**.
-- [ ] `ps-web` running for the slide-2 live solve, or accept the screenshot.
-- [ ] Know these six cold: **$61 · $574 · 320M · 85% · 5.5% of calls / 99.5% of bill · 11×**.
-- [ ] Practise saying the slide-4 caveat *before* anyone asks for it.
+- [ ] `ps-web` running for the slide-3 live solve, or accept the screenshot.
+- [ ] Know these seven cold: **$61 · $574 · $1,122 · 320M · 85% · 5.5% of calls / 99.5% of
+      bill · 11×**.
+- [ ] Practise saying the slide-6 caveat *before* anyone asks for it.
 - [ ] Print to PDF as the projector-failure backup.
 - [ ] Fix the brand palette token block if the real Slalom values are available.

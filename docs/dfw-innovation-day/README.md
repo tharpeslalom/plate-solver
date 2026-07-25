@@ -19,7 +19,7 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 | `S` | Speaker notes (per slide) |
 | `T` / `R` | Start-pause / reset the 10-minute talk clock |
 | `G` | Overview grid |
-| `1`–`9` | Jump to slide |
+| `1`–`13` | Jump to slide (type both digits) |
 | `?` | All shortcuts |
 
 Print to PDF for a backup copy — each slide breaks onto its own page.
@@ -56,7 +56,7 @@ functional-complete. Nothing from the v2 spec-only rebuild appears in the deck.
 
 Every figure is live from the Postgres usage store behind the Grafana dashboard in
 `~/mac-llm-env` (`usage_events` × `model_prices`), scoped to the `plate-solver` folders.
-Slide 11 maps each claim to its query or commit. There are **no placeholder figures** in
+Appendix B (slide 13) maps each claim to its query or commit. There are **no placeholder figures** in
 this version.
 
 To re-run the headline numbers:

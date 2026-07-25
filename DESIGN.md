@@ -1,9 +1,8 @@
 ---
 name: Presentation Surfaces
-description: A rail-concourse departure board that reports what the build cost.
+description: A matte arrivals board that reports what the build cost. Still — nothing animates.
 colors:
   flap-black: "#0D0D0F"
-  flap-shadow: "#1B1B1E"
   flap-face: "#141417"
   flap-white: "#F2F2F2"
   flap-dim: "#9A9CA1"
@@ -12,7 +11,6 @@ colors:
   amber-dim: "#8A6410"
   cancelled-red: "#D32F2F"
   ontime-green: "#4CAF6D"
-  steel-frame: "#B6BBC2"
   steel-dark: "#7D838C"
   steel-deep: "#3A3D42"
   signal-blue: "#2E8BFF"
@@ -20,13 +18,13 @@ colors:
 typography:
   display:
     fontFamily: "Arial Narrow, Helvetica Neue Condensed, Roboto Condensed, sans-serif"
-    fontSize: "clamp(30px, 4.6cqw, 74px)"
+    fontSize: "clamp(30px, 4.8cqw, 78px)"
     fontWeight: 700
     lineHeight: 1.06
     letterSpacing: "0.06em"
   headline:
     fontFamily: "Arial Narrow, Helvetica Neue Condensed, Roboto Condensed, sans-serif"
-    fontSize: "clamp(22px, 2.9cqw, 46px)"
+    fontSize: "clamp(22px, 3cqw, 48px)"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "0.05em"
@@ -65,13 +63,13 @@ spacing:
   cell-gap: "2px"
   row-pad: "clamp(8px, 0.9cqw, 15px) clamp(10px, 1.1cqw, 18px)"
   board-inset: "clamp(16px, 2.2cqw, 38px)"
-  frame: "clamp(10px, 1.1vw, 18px)"
+  frame: "1px"
 components:
-  flap-cell:
-    backgroundColor: "{colors.flap-face}"
+  headline:
+    backgroundColor: "transparent"
     textColor: "{colors.flap-white}"
     typography: "{typography.display}"
-    rounded: "{rounded.cell}"
+    rounded: "{rounded.none}"
   board-row:
     backgroundColor: "{colors.flap-black}"
     textColor: "{colors.flap-white}"
@@ -111,10 +109,15 @@ components:
 
 **Creative North Star: "The Departure Board"**
 
-The deck is a rail-concourse split-flap board mounted in a brushed steel housing. Not a
-slide that resembles one — the actual object, with flap cells that carry a split line
-through every character, a steel frame with visible bolts, and rows that report status in
-the board's own language.
+The deck is an arrivals board: matte black, edge to edge, behind a hairline steel rule.
+Not a slide that resembles one — the actual object, with rows that report status in the
+board's own language and figures set in fixed columns that compare cleanly down a page.
+
+An earlier revision built the fiction out literally — split-flap cells with hinge lines,
+a brushed steel housing, visible bolt heads, and a flip cascade on every slide change.
+That was too much theatre for a ten-minute cost talk: the mechanism started reading as
+the subject. It was cut. What survives is the part that was doing the work — the matte
+ground, the status palette, the row grammar, and the discipline of fixed columns.
 
 The fiction was chosen because its native context *is* the room the deck is shown in: a
 departure board is the one object designed to be read simultaneously by a hall full of
@@ -124,31 +127,29 @@ a column — is a constraint the board solved decades ago in hardware.
 
 It also settles the status palette without argument. Amber means attention, red means
 this one costs you, white means nominal. The deck's spend figures are already that
-vocabulary; the board just makes it literal. And because a split-flap board is **matte,
-painted, mechanical**, the surface cannot drift into the glowing dark-keynote look that
-every AI-generated "dark deck" lands on. There is no glow in this world.
+vocabulary; the board just makes it literal. And because the board is **matte, painted,
+mechanical**, the surface cannot drift into the glowing dark-keynote look that every
+AI-generated "dark deck" lands on. There is no glow in this world.
 
 **Key Characteristics:**
-- Every slide is a board in a steel frame; the frame is structure, not decoration
-- Display type is condensed grotesk caps in flap cells, each split by a hinge line
+- Every slide is a board behind a hairline steel edge; the edge is structure, not decoration
+- Display type is condensed grotesk caps, tracked wide, set plainly on the ground
 - Comparisons are rows with fixed columns and a status chip, never cards
 - Amber / red / white is a status language, never a decorative palette
-- One orchestrated flip cascade per slide; silence in between
+- **Nothing animates.** Slides change; their contents do not move
 - Matte throughout — no glow, no gradient text, no glass
 
 ## Colors
 
 Drenched. The surface **is** flap black; light exists only as painted type, amber lamps,
-and the steel of the housing.
+and the hairline steel edge.
 
 ### Primary
 - **Flap Black** (`#0D0D0F`): The board ground. Owns the whole surface.
-- **Flap Face** (`#141417`): Individual flap cells, one step above the ground so the cell
-  grid is visible without a border.
-- **Flap Shadow** (`#1B1B1E`): The hinge line and cell gaps; reads as the gap between
-  two physical flaps.
-- **Flap White** (`#F2F2F2`): Painted character faces. Slightly off-white — paint on
-  plastic, never pure #FFF.
+- **Flap Face** (`#141417`): The unlit cell in a bar meter — one step above the ground so
+  the segment grid is visible without a border.
+- **Flap White** (`#F2F2F2`): Painted type. Slightly off-white — paint on plastic, never
+  pure #FFF.
 
 ### Status
 The board's native vocabulary. These are the only saturated colors, and they always mean
@@ -159,10 +160,11 @@ state.
 - **On-Time Green** (`#4CAF6D`): Nominal, zero-cost, passing. 7.4:1.
 
 ### Steel
-The housing, never the content.
-- **Steel Frame** (`#B6BBC2`) / **Steel Dark** (`#7D838C`) / **Steel Deep** (`#3A3D42`):
-  A three-stop brushed gradient. Bolt heads are radial gradients between the light and
-  dark stops.
+The edge, never the content.
+- **Steel Deep** (`#3A3D42`): The 1px frame around every board, as a vertical three-stop
+  gradient against `#23262A` so the edge catches light without becoming a bezel.
+- **Steel Dark** (`#7D838C`): Presenter-chrome hover borders only. The brushed housing
+  and bolt heads the lighter steels were mixed for are gone, and so are those tokens.
 
 ### Neutral
 - **Flap Dim** (`#9A9CA1`): Secondary row text and column headers. 7.0:1.
@@ -180,8 +182,8 @@ The housing, never the content.
 room should look at it, never because amber looks good.
 
 **The No-Glow Rule.** No `box-shadow` spread as light, no neon, no `filter: blur` halo, no
-gradient text. The board is painted plastic and brushed steel under hall lighting. Depth
-comes from the flap grid, the hinge line, and the steel frame.
+gradient text. The board is painted plastic under hall lighting. Depth comes from the
+hairline rules and one-step surface changes, nothing else.
 
 **The One Blue Rule.** Signal Blue appears on the brandmark, the live rail segment, and
 focus rings. Three places. It is the client's thread through the object, not a fourth
@@ -213,9 +215,9 @@ figures lines up. No third family, no italic, no lowercase in display.
 
 ### Named Rules
 
-**The Caps-In-Cells Rule.** Display and headline type is uppercase and lives in flap
-cells. A flap can only show one character; lowercase descenders would break the illusion
-and the cell grid.
+**The Caps Rule.** Display and headline type is uppercase, tracked wide, set plainly on
+the board ground. It was formerly set in per-character flap cells; the cells were cut with
+the animation, the caps stayed. They are what makes a headline legible from the back.
 
 **The Container-Query Rule.** Carried over and still binding: type scales in `cqw` against
 the board's own inline size, never `vw`. The projector's aspect ratio is unknown.
@@ -225,9 +227,10 @@ board, a column that does not line up is a broken board.
 
 ## Layout
 
-Every slide is a **board inside a steel frame**. The frame is a real border of
-`clamp(10px, 1.1vw, 18px)` carrying a three-stop brushed gradient and four bolt heads at
-the corners. Inside it, the board ground is inset by `clamp(16px, 2.2cqw, 38px)`.
+Every slide is a **board behind a hairline steel edge**. The frame is a 1px border
+carrying a three-stop vertical gradient — enough to separate the board from the page,
+not enough to read as a housing. Inside it, the board ground is inset by
+`clamp(16px, 2.2cqw, 38px)`.
 
 The internal grammar is **rows before columns**. Any comparison of two or more things is a
 row set with shared columns and a right-aligned status column — the departure-table form —
@@ -274,11 +277,11 @@ the system's recurring mark.
 Character: **mechanical and reportorial.** Every element is something the physical object
 would actually have. Nothing is invented to hold content.
 
-### Flap Cell
-- Each display/headline character sits in its own cell: Flap Face ground, `2px` radius,
-  a `1px` Flap Shadow hinge across the vertical midpoint, `2px` gaps
-- Spaces render as an empty cell, preserving the grid
-- Cells are generated at runtime from text content, so copy stays editable and selectable
+### Headline
+- Condensed grotesk caps, weight 700, `0.05em` tracking, `1.06` line height, on the board
+  ground with no container
+- `h1` `clamp(30px, 4.8cqw, 78px)` · `h2` `clamp(22px, 3cqw, 48px)`, capped at `26ch`
+- Plain text in the DOM: selectable, searchable, printable, and not built by script
 
 ### Board Row
 - Grid with fixed columns; `1px` Rule separator; `clamp(8px,0.9cqw,15px)` block padding
@@ -296,28 +299,32 @@ would actually have. Nothing is invented to hold content.
 - **Active** (`aria-pressed="true"`): border and text to Delay Amber, ground unchanged
 - Focus-visible: `2px` Signal Blue outline, `2px` offset
 
-### Bar Row
+### Bar Row (signature)
 - The comparison chart, restated as board rows: label column, then a bar drawn as a run of
-  flap cells rather than a solid fill, then the value in Data type
+  18 discrete cells rather than a solid fill, then the value in Data type
 - The "before" series is Flap Dim cells; the "after" series is Delay Amber cells
-- Cell-count encoding is the point — a bar you can *count* beats a bar you must measure
+- Cell-count encoding is the point — a bar you can *count* beats a bar you must measure.
+  This is the signature element now that the cascade is gone
 
-### Split-Flap Headline (signature)
-The one authored motion in the system. On slide entry, each cell cycles glyphs and settles
-left-to-right with a per-cell stagger, the way a real board updates. Runs **once** per
-slide, ~40ms per cell, capped at ~700ms total. Under
-`prefers-reduced-motion: reduce` the text is simply present, no cycling.
+### Named Rules
+
+**The Still Board Rule.** Nothing on a slide animates. Slides replace each other; their
+contents are simply there. An earlier build had a split-flap cascade — each character
+cycling glyphs and settling with a per-cell stagger on slide entry. It was well-built,
+reduced-motion-safe, and wrong: in a ten-minute talk about cost, a mechanism that redraws
+the headline every time the presenter advances competes with the presenter. It was cut
+deliberately, not lost. **Do not reintroduce it**, and do not add a replacement — no
+fades, no counters ticking up, no reveals. The only motion in this deck is the person
+talking.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** render display and headline copy in flap cells, uppercase.
+- **Do** render display and headline copy in condensed caps, plainly on the ground.
 - **Do** express any comparison as rows with shared columns and a status chip.
-- **Do** keep the steel frame on every slide; it is what makes the surface an object.
+- **Do** keep the hairline steel edge on every slide; it is what frames the surface.
 - **Do** use amber to point the room at the figure that matters, once per slide.
 - **Do** scale type in `cqw` against the board, and set every figure in tabular mono.
-- **Do** keep the cascade to one orchestrated run per slide, with a reduced-motion path
-  that shows the text immediately.
 - **Do** keep the print stylesheet working: the board prints as flat black-on-white with
   the frame suppressed, one slide per page. `#FFF`, `#000`, and `#333` appear **only**
   inside the `@media print` block; the palette above governs screen and is never mixed
@@ -325,10 +332,10 @@ slide, ~40ms per cell, capped at ~700ms total. Under
 
 ### Don't:
 - **Don't** add glow, neon, gradient text, or blur. The object is matte.
-- **Don't** add a `box-shadow`. The frame and the flap grid are the only depth.
+- **Don't** add a `box-shadow`. Hairline rules are the only depth.
 - **Don't** put body text in a bordered box. This world has rows, not cards.
 - **Don't** use a status color decoratively, or introduce a fourth.
-- **Don't** set display type in lowercase or outside flap cells.
-- **Don't** animate more than the one cascade per slide; ambient clatter destroys it.
+- **Don't** set display type in lowercase.
+- **Don't** animate anything. See The Still Board Rule — the cascade was cut on purpose.
 - **Don't** reintroduce the −11° skew; it belongs to the retired world.
 - **Don't** use Signal Blue for anything but the brandmark, live rail, and focus ring.
