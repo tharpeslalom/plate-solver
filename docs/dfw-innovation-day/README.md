@@ -19,13 +19,13 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 | `S` | Speaker notes (per slide) |
 | `T` / `R` | Start-pause / reset the 10-minute talk clock |
 | `G` | Overview grid |
-| `1`–`14` | Jump to slide (type both digits) |
+| `1`–`15` | Jump to slide (type both digits) |
 | `?` | All shortcuts |
 
 ## Printing
 
 ```bash
-./print.sh            # → tokenomics-deck.pdf, 14 pages, one slide per page
+./print.sh            # → tokenomics-deck.pdf, 15 pages, one slide per page
 ```
 
 `tokenomics-deck.pdf` is committed, so you only need this after editing the deck.
@@ -33,7 +33,7 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 **Printing it on paper.** The pages are 1600×900 px (16:9), so in the print dialog pick
 **landscape**, scale **Fit to page**, and turn **background graphics ON** — without it you
 lose the red/green, and in this deck those are accounting terms, not decoration. The stock
-prints white; only the ink is coloured, so it is not toner-hungry apart from the slide-4
+prints white; only the ink is coloured, so it is not toner-hungry apart from the slide-5
 screenshot of the dark app UI.
 
 **Don't use Cmd-P on the HTML directly** unless you have to. Chrome resolves print media
@@ -56,10 +56,23 @@ and *how often the same context was paid for*.
 | Ran on a local model | 19% of calls | **85% of calls** |
 | Paid | **$405** | **$61** |
 | Unit cost | $2.09 / MTok | **$0.19 / MTok** |
+| Cost per commit | $16.88 | **$1.18** |
+
+Cost per commit is the row to lead with for an executive audience: tokens are an input
+metric and nobody sets a budget in them. Commits are not a uniform unit of work, but both
+columns are counted the same way and every commit in the loop week passed an independent
+judge and the full gate suite.
 
 The frontier model was **5.5% of the calls and 99.5% of the bill** — and those calls were
 human monitoring, not the loop doing its work. Every stage of the build itself (write,
 review, gate, commit) had zero marginal cost.
+
+## Framing
+
+Slides 3, 4 and 11 borrow their frame from the **Slalom FinOps for AI · Tokenomics POV**
+(Jason Prell): the four faces of a token, the cost-driver chain, and cost per successful
+outcome. The source `.pptx` is marked DRAFT / INTERNAL ONLY and is **gitignored** — it is
+not in this repo. The deck credits the POV on slides 3 and 4.
 
 ## Scope
 
@@ -76,7 +89,7 @@ functional-complete. Nothing from the v2 spec-only rebuild appears in the deck.
 
 Every figure is live from the Postgres usage store behind the Grafana dashboard in
 `~/mac-llm-env` (`usage_events` × `model_prices`), scoped to the `plate-solver` folders.
-Appendix B (slide 14) maps each claim to its query or commit. There are **no placeholder figures** in
+Appendix B (slide 15) maps each claim to its query or commit. There are **no placeholder figures** in
 this version.
 
 To re-run the headline numbers:

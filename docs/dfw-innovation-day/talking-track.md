@@ -18,27 +18,30 @@ rebuild appears anywhere in this talk.
 |---|---|---|---|
 | 1 | We built it for $61 | 0:00 | 0:25 |
 | 2 | **Two levers** | 0:25 | **1:10** |
-| 3 | **What the bill is made of** | 1:35 | 0:45 |
-| 4 | What it does | 2:20 | 0:45 |
-| 5 | The rig | 3:05 | 0:45 |
-| 6 | **The build loop** | 3:50 | **1:10** |
-| 7 | What that did to the bill | 5:00 | 1:00 |
-| 8 | Route by size | 6:00 | 0:55 |
-| 9 | Stop buying the same context twice | 6:55 | 0:55 |
-| 10 | Measure it (Grafana) | 7:50 | 0:50 |
-| 11 | Three moves | 8:40 | 0:50 |
-| 12 | Discussion | 9:30 | 0:30 |
+| 3 | What a token is | 1:35 | 0:35 |
+| 4 | **What drives the bill** | 2:10 | 0:45 |
+| 5 | What it does | 2:55 | 0:35 |
+| 6 | **The build loop** | 3:30 | **1:10** |
+| 7 | What that did to the bill | 4:40 | 0:50 |
+| 8 | Route by size | 5:30 | 1:05 |
+| 9 | Stop buying the same context twice | 6:35 | 0:55 |
+| 10 | Measure it (Grafana) | 7:30 | 0:40 |
+| 11 | **Cost per outcome** | 8:10 | 0:40 |
+| 12 | Three moves | 8:50 | 0:40 |
+| 13 | Discussion | 9:30 | 0:30 |
 | — | Appendix A · what the first days cost | backup | — |
 | — | Appendix B · sources | backup | — |
 
-**Shape of the talk:** slide 2 states both levers up front, slide 3 gives the frame the
-levers hang on, and slides 6–9 are the evidence. If the room only hears two slides, they
-are 2 and 3.
+**Shape of the talk:** slides 2–4 are the frame — the two levers, what a token actually is,
+and the four decisions that drive the bill. Slides 6–9 are the evidence for that frame, and
+slide 11 converts it into the metric an executive can govern against. If the room only hears
+three slides, they are **2, 4 and 11**.
 
-The clock warns at 8:30. **Cut rule, in order:** if you are behind at slide 7, drop
-slide 8 to one line ("eighty-five percent local, and the judge alone would have been a
-hundred and sixty dollars") and go to caching. Behind at slide 9, skip Grafana and
-promise it after. Slides 2, 3 and 6 are the ones you must not rush.
+The clock warns at 8:30. **Cut rule, in order:** if you are behind at slide 7, drop slide 8
+to one line ("eighty-five percent local, and the judge alone would have been a hundred and
+sixty dollars") and go to caching. Behind at slide 9, skip Grafana and promise it after —
+but **do not skip slide 11**; it is the one the CFO in the room came for. Slides 2, 4, 6
+and 11 are the ones you must not rush.
 
 ---
 
@@ -82,35 +85,56 @@ the middle one sit before you move.*
 
 ---
 
-## 3 · What the bill is made of — *1:35* · **the frame**
+## 3 · What a token is — *1:35* · **the frame, part one**
 
-*One slide of vocabulary. Do not skip it — it is what stops someone leaving saying "that
-wasn't tokenomics, that was a homelab story."*
+*Two slides of vocabulary. Do not skip them — they are what stops someone leaving saying
+"that wasn't tokenomics, that was a homelab story." This frame is straight out of the
+Slalom FinOps for AI POV; say so, it buys you credibility and costs you nothing.*
 
-> One slide of vocabulary, because the word gets used loosely and I want us arguing about
+> Two slides of vocabulary, because the word gets used loosely and I want us arguing about
 > the same thing.
 >
-> You never buy tokens. You buy **the same context, re-read** — once per turn, once per
-> retry, at whatever tier happened to answer. Four numbers, multiplied.
+> A token has four faces, depending on who is looking at it. *(walk the quadrants)*
+> **Cognition** — what the model produces; one unit of thinking. **Compute** — what the
+> data center serves; silicon and power somebody had to build. **Price** — what the lab
+> charges you. And **value** — what your business actually extracts.
 >
-> *(walk the four)* **Context** — everything the agent re-reads to take one step. Cache it
-> and those identical tokens cost a tenth. **Turns** — round trips to finish one task; a
-> written plan beats a conversation, and a fresh agent per task means context never
-> compounds. That last one is the answer to the question half this room is about to ask:
-> *does this get more expensive as the project gets bigger?* No. It stays flat.
-> **Retries** — work that comes back wrong and gets paid for twice. This is the one people
-> skip. **Routing without a verifier is just hoping.** A cheap independent judge is what
-> makes the cheap tier safe. **Tier** — what the model that actually answered charges.
-> That is routing.
->
-> *(land it)* Only the last one has a price list. A discount scales one of four numbers.
-> Architecture sets all four.
+> *(land it)* The lab bills you on the third one. You are paid on the fourth. **Tokenomics
+> is the distance between them** — and nearly all of that distance is architecture, not
+> procurement.
 
-*Forty-five seconds, and it is all talking — the slide is a reference, not a reveal.*
+*Thirty-five seconds. Do not linger on cognition and compute; they are there so that price
+and value have something to be contrasted against.*
 
 ---
 
-## 4 · What it does — *2:20*
+## 4 · What drives the bill — *2:10* · **the frame, part two, and the spine of the talk**
+
+*This slide is the table of contents. Every row's right-hand column is a later slide — say
+so, and the rest of the deck stops feeling like a tour of your laptop.*
+
+> So what actually moves the bill? Four decisions — and notice that none of them is a
+> price. Every one is something a person decided in a design review.
+>
+> *(walk the rows)* **One, frontier by default** — everything goes to the best model on
+> hand, because nobody ever defined what good enough looks like. **Two, growing context** —
+> prompts, history, retrieval, tools, all re-read on every single turn. **Three, loops and
+> retries** — one request becomes a hundred calls, and the failures bill exactly like the
+> successes. **Four, no named owner** — finance sees the bill after the architecture is
+> already set in concrete.
+>
+> *(land it)* Three of those are architecture. The fourth is **why the other three never
+> get fixed.**
+>
+> The right-hand column is the rest of this talk. Routing, caching, a judge with a retry
+> cap, and one board somebody actually reads. One week, all four.
+
+**`[IF ASKED]`** Yes, this maps to the FinOps for AI cost-driver chain. I did not invent
+it — I ran a week of work against it.
+
+---
+
+## 5 · What it does — *2:55*
 
 **`[LIVE?]`** If the app is up: drop the image in, FOV 11, hit Solve. Otherwise the
 screenshot is real output and nobody will know.
@@ -124,40 +148,12 @@ screenshot is real output and nobody will know.
 > The only reason this slide exists: the bill I am about to show you bought **working,
 > benchmarked software** — not a demo. The product is the receipt, not the subject.
 
-*Forty-five seconds. If you are still on this slide at 3:05, move. Drop the RMSE and P90
+*Forty-five seconds. If you are still on this slide at 3:30, move. Drop the RMSE and P90
 detail unless someone asks — it is the detail that makes this sound like a science talk.*
 
 ---
 
-## 5 · The rig — *3:05*
-
-*People assume there is a cluster behind this. Kill that assumption and get out — the only
-transferable idea on this slide is the alias remap. Forty-five seconds, and do not
-inventory the hardware: a room that hears "M5 with 48 GB" stops listening.*
-
-> Worth a moment on what this actually ran on.
->
-> *(walk the left column)* A MacBook Pro I already owned. A quantised open-weights model
-> on the GPU. LiteLLM — open source — as the switchboard. Claude Code doing the work. And
-> a **forty-line bash loop** keeping it going in a tmux session while I made dinner.
->
-> *(right side — this is the trick)* Claude Code asks for a model **by name**. The
-> switchboard decides what actually answers, and the tool never finds out. Ask for
-> "sonnet", get the local model. Ask for "haiku", get the local model. The one model I
-> chose to keep on the meter is the only thing that bills.
->
-> That is a **config file**, not a rewrite. Same commands, same tool, same repo.
->
-> *(point at the red row)* Which means the build itself was **free**. Claude Code was fired
-> on the sonnet alias, so it resolved to the local model — every row above the red one cost
-> nothing to run. The meter only ever ran when **I** opened a session to check on it. Sixty
-> dollars and eighty cents of me looking over its shoulder.
-
-**`[IF ASKED]`** Capital cost: zero. That is the point — there was nothing to procure.
-
----
-
-## 6 · The build loop — *3:50* · **the slide that explains the number**
+## 6 · The build loop — *3:30* · **the slide that explains the number**
 
 *Slow down here. Everything else is a consequence of this diagram.*
 
@@ -194,7 +190,7 @@ Two design notes worth saying out loud:
 
 ---
 
-## 7 · What that did to the bill — *5:00*
+## 7 · What that did to the bill — *4:40*
 
 > Same project. Same specs. Same models available to me.
 >
@@ -217,10 +213,9 @@ Two design notes worth saying out loud:
 
 ---
 
-## 8 · Route by size — *6:00*
+## 8 · Route by size — *5:30*
 
-> Lever one, with the receipts. You have already seen the switchboard — this is where
-> every call in that week actually went.
+> Lever one, with the receipts. This is where every call in that week actually went.
 
 *Walk the three rows.*
 
@@ -236,12 +231,22 @@ Two design notes worth saying out loud:
 > rows does this particular task belong in** — and you can usually answer that before you
 > dispatch it.
 
+> *(and this is the part that travels)* It was a **config file**, not a rewrite. Claude
+> Code asks for a model **by name**; the switchboard — LiteLLM, open source — decides what
+> actually answers, and the tool never finds out. Ask for "sonnet", get the local model.
+> Same commands, same repo. The local tier here was a laptop already sitting on the desk.
+> **There was nothing to procure.**
+
 **`[IF PRESSED]`** At frontier rates the judge alone would have been a hundred and sixty
 dollars — taking the build from sixty-one to two hundred and twenty-one.
 
+**`[IF ASKED ABOUT THE HARDWARE]`** A MacBook Pro I already owned, a quantised open-weights
+model on the GPU, and a forty-line bash loop in a tmux session. Capital cost: zero. Do not
+volunteer the spec sheet — a room that hears "48 GB unified memory" stops listening.
+
 ---
 
-## 9 · Stop buying the same context twice — *6:55*
+## 9 · Stop buying the same context twice — *6:35*
 
 > Lever two, and the largest number in this deck — larger than every routing decision
 > combined.
@@ -260,7 +265,7 @@ dollars — taking the build from sixty-one to two hundred and twenty-one.
 
 ---
 
-## 10 · Measure it — *7:50*
+## 10 · Measure it — *7:30*
 
 **`[LIVE]`** Alt-tab to Grafana. **Open the pre-filtered board, not the default one:**
 
@@ -285,7 +290,32 @@ will contradict you.
 
 ---
 
-## 11 · Three moves — *8:40*
+## 11 · Cost per outcome — *8:10* · **the slide the CFO came for**
+
+*The one number in this deck an executive can put in a plan. Slow down for it.*
+
+> Last frame, and it is the one to take to a CFO.
+>
+> Tokens are an **input** metric. Nobody sets a budget in tokens; no executive can govern
+> against one. And **a cheaper model is not economical if it needs longer prompts, more
+> retries, or worse answers.**
+>
+> Three questions instead. Did the task actually finish, to a standard you would accept?
+> What did the whole interaction cost, retries included? And what accuracy, latency and
+> risk are you willing to trade for it?
+>
+> *(point at the table)* Same project, counted the same way. By hand: twenty-four commits,
+> four hundred and five dollars — **sixteen eighty-eight a commit**. On the loop: fifty-two
+> commits, sixty-one dollars — **a dollar eighteen**. Fourteen times better, on the metric
+> that is actually governable.
+
+**Say the caveat before anyone asks it.** A commit is not a uniform unit of work. But both
+columns are counted the same way, and every commit in the loop week passed an independent
+judge and the full gate suite before it landed.
+
+---
+
+## 12 · Three moves — *8:50*
 
 > **Route by size, not by habit.** Most tasks don't need the frontier model, and the ones
 > that do are identifiable before you dispatch them. A router is cheaper than a better
@@ -302,7 +332,7 @@ will contradict you.
 
 ---
 
-## 12 · Discussion — *9:30*
+## 13 · Discussion — *9:30*
 
 *Read the three questions. Then stop talking. Let the room fill the silence.*
 
@@ -312,6 +342,19 @@ don't know their own number, and that reliably starts the conversation.
 ---
 
 ## Q&A backup
+
+**"We already have dashboards — isn't that visibility?"**
+> A dashboard that shows spend by provider is an invoice with a chart on it. Visibility
+> means you can answer *which workflow, which model, which team, and was the answer any
+> good.* Mine is scoped per project, per model, per day, and I read it every morning — that
+> is the only reason slide 4's fourth row has an answer.
+
+**"Won't this get cheaper on its own? Prices keep falling."**
+> Per-token prices have largely flattened at the top tier, and tokenizers have gone the
+> other way — the same text can cost meaningfully more tokens on a newer model. And
+> historically, when the unit got cheaper, total spend went *up*, because cheap capacity
+> gets used. That is Jevons paradox, 1865, coal. You do not get to wait for this one.
+
 
 **"Isn't the local model just worse?"**
 > For most tasks, no — and that is the point of sizing the work before you dispatch it. But
@@ -372,12 +415,12 @@ don't know their own number, and that reliably starts the conversation.
 
 ## Rehearsal checklist
 
-- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slides 2, 3 and 6 must land**.
+- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slides 2, 4, 6 and 11 must land**.
 - [ ] Grafana up, with the **`plate-solver-v1`** board open in a tab (not the default
       board). Confirm it reads **$61.13**.
-- [ ] `ps-web` running for the slide-4 live solve, or accept the screenshot.
-- [ ] Know these seven cold: **$61 · $574 · $1,122 · 320M · 85% · 5.5% of calls / 99.5% of
-      bill · 11×**.
-- [ ] Practise saying the slide-7 caveat *before* anyone asks for it.
+- [ ] `ps-web` running for the slide-5 live solve, or accept the screenshot.
+- [ ] Know these cold: **$61 · $574 · $1,122 · 320M · 85% · 5.5% of calls / 99.5% of bill ·
+      11× per MTok · $1.18 a commit vs $16.88**.
+- [ ] Practise saying the slide-7 and slide-11 caveats *before* anyone asks for it.
 - [ ] Print to PDF as the projector-failure backup.
 - [ ] Fix the brand palette token block if the real Slalom values are available.

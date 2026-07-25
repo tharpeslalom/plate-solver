@@ -1,0 +1,4 @@
+# Slalom-internal source material. Do not commit — this repo has public remotes
+# and the POV deck is marked DRAFT / INTERNAL ONLY / DO NOT DISTRIBUTE.
+*.pptx
+~$*

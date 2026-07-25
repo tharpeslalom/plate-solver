@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# print.sh — render tokenomics-deck.html to a 14-page PDF, one slide per page.
+# print.sh — render tokenomics-deck.html to a 15-page PDF, one slide per page.
 #
 # WHY A SCRIPT AND NOT JUST Cmd-P:
 #   Two things have to be true or the output is silently wrong.
@@ -37,4 +37,4 @@ d=open('$OUT','rb').read()
 print(d.count(b'/Type /Page') - d.count(b'/Type /Pages'))")
 
 echo "✅ $OUT — $PAGES pages"
-[ "$PAGES" = "14" ] || echo "⚠️  expected 14 pages; check for a layout regression"
+[ "$PAGES" = "15" ] || echo "⚠️  expected 15 pages; check for a layout regression"

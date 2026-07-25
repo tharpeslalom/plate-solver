@@ -483,50 +483,82 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 3 -->
-<section class="slide" data-title="What the bill is made of" data-mark="1:35" data-budget="45">
-  <p class="kicker">The vocabulary &middot; before the receipts</p>
-  <h2 class="flap">The bill is a multiplication, not a price.</h2>
-  <p class="lede" style="margin-bottom:clamp(10px,1.3cqw,20px)">Nobody buys tokens. You buy the same context,
-    re-read once per turn, once per retry, at whatever tier happened to answer. <strong>Four numbers,
-    multiplied.</strong> Tokenomics is knowing which of them you are moving.</p>
-  <div style="display:flex; align-items:center; gap:clamp(6px,.9cqw,14px); flex-wrap:wrap;
-              margin:0 0 clamp(10px,1.4cqw,22px); font-family:var(--font-data); font-weight:700;
-              letter-spacing:.16em; font-size:clamp(9px,.8cqw,13px); color:var(--ink-3)">
-    <span class="chip ontime">Context</span><span>&times;</span>
-    <span class="chip ontime">Turns</span><span>&times;</span>
-    <span class="chip ontime">Retries</span><span>&times;</span>
-    <span class="chip ontime">Tier</span><span>=</span>
-    <span class="chip cancelled">The invoice</span>
-  </div>
-  <div class="rows">
-    <div class="colhead" style="grid-template-columns:1fr 1.15fr">
-      <span>Factor</span><span>What moves it</span>
+<section class="slide" data-title="What a token is" data-mark="1:35" data-budget="35">
+  <p class="kicker">The vocabulary &middot; what the word actually means</p>
+  <h2 class="flap">One token. Four ways to look at it.</h2>
+  <p class="lede" style="margin-bottom:clamp(8px,1cqw,16px)">The same atom, priced by four different
+    people. Which face you are looking at decides whether this is a procurement conversation or an
+    engineering one.</p>
+  <div class="cols cols-2" style="gap:clamp(10px,1.5cqw,26px) clamp(20px,3cqw,56px); align-content:center">
+    <div style="border-top:1px solid var(--rule); padding-top:clamp(7px,.9cqw,14px)">
+      <span style="font-family:var(--font-data);font-weight:700;color:var(--red);font-size:clamp(12px,1.2cqw,20px)">01</span>
+      <h3 style="margin:.25em 0 .35em">Cognition</h3>
+      <p style="margin:0">What the model produces. One unit of thinking &mdash; a word, a step, a decision.</p>
     </div>
-    <div class="row" style="grid-template-columns:1fr 1.15fr">
-      <span><span class="dest">Context</span><span class="sub">everything the agent re-reads to take one step &mdash; spec, code, the conversation so far</span></span>
-      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Cache it. The identical tokens then cost <strong>a tenth</strong>.</span><span class="chip free" style="margin-top:6px">Lever 02</span></span>
+    <div style="border-top:1px solid var(--rule); padding-top:clamp(7px,.9cqw,14px)">
+      <span style="font-family:var(--font-data);font-weight:700;color:var(--red);font-size:clamp(12px,1.2cqw,20px)">02</span>
+      <h3 style="margin:.25em 0 .35em">Compute</h3>
+      <p style="margin:0">What the data center serves. Silicon, power, and capacity someone had to build.</p>
     </div>
-    <div class="row" style="grid-template-columns:1fr 1.15fr">
-      <span><span class="dest">Turns</span><span class="sub">round trips before one task is finished</span></span>
-      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">A written plan, not a conversation. <strong>Fresh agent per task</strong>, so context never compounds &mdash; the bill stays flat as the project grows.</span></span>
+    <div style="border-top:1px solid var(--ink); padding-top:clamp(7px,.9cqw,14px)">
+      <span style="font-family:var(--font-data);font-weight:700;color:var(--red);font-size:clamp(12px,1.2cqw,20px)">03</span>
+      <h3 style="margin:.25em 0 .35em">Price</h3>
+      <p style="margin:0 0 6px">What the lab charges. The number on the rate card everyone quotes.</p>
+      <span class="chip cancelled">The only face with a price list</span>
     </div>
-    <div class="row" style="grid-template-columns:1fr 1.15fr">
-      <span><span class="dest">Retries</span><span class="sub">how often the work comes back wrong and is paid for twice</span></span>
-      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">A verifier cheaper than the rework. <strong>Without one, routing to a small model is just hoping.</strong></span></span>
-    </div>
-    <div class="row" style="grid-template-columns:1fr 1.15fr">
-      <span><span class="dest">Tier</span><span class="sub">what the model that actually answered charges</span></span>
-      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Routing. Judgment to the frontier, volume to a model on your own hardware.</span><span class="chip free" style="margin-top:6px">Lever 01</span></span>
+    <div style="border-top:1px solid var(--ink); padding-top:clamp(7px,.9cqw,14px)">
+      <span style="font-family:var(--font-data);font-weight:700;color:var(--red);font-size:clamp(12px,1.2cqw,20px)">04</span>
+      <h3 style="margin:.25em 0 .35em">Value</h3>
+      <p style="margin:0 0 6px">What your business extracts. Work finished, to an acceptable standard.</p>
+      <span class="chip free">The only face anyone is paid on</span>
     </div>
   </div>
   <div class="note" style="flex:none">
-    <p style="margin:0">Only the last factor has a price list &mdash; and a discount scales <em>one</em> of the four
-      numbers. Architecture sets all four. Same week of work: <strong>$1,696 or $61</strong>.</p>
+    <p style="margin:0">The lab bills you on <strong>price</strong>. You are paid on <strong>value</strong>.
+      Tokenomics is the practice of managing the distance between those two &mdash; and nearly all of that
+      distance is architecture.
+      <span class="faint" style="font-size:clamp(9px,.7cqw,12px)">&nbsp; Frame: Slalom FinOps for AI &middot; Tokenomics POV.</span></p>
   </div>
 </section>
 
 <!-- 4 -->
-<section class="slide" data-title="What it does" data-mark="2:20" data-budget="45">
+<section class="slide" data-title="What drives the bill" data-mark="2:10" data-budget="45">
+  <p class="kicker">What drives the bill</p>
+  <h2 class="flap">Four decisions, all made before finance sees anything.</h2>
+  <p class="lede" style="margin-bottom:clamp(8px,1cqw,16px)">None of these is a price. Every one of them
+    is a choice someone made in a design review, and every one of them compounds.</p>
+  <div class="rows">
+    <div class="colhead" style="grid-template-columns:auto 1fr 1fr"><span>&nbsp;</span><span>The decision</span><span>What this build did about it</span></div>
+    <div class="row" style="grid-template-columns:auto 1fr 1fr">
+      <span class="val dim" style="font-size:clamp(11px,1cqw,17px)">01</span>
+      <span><span class="dest">Frontier by default</span><span class="sub">the best model on hand, before anyone defined &ldquo;good enough&rdquo;</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Sorted the work first. Judgment out, volume in-house.</span><span class="chip free" style="margin-top:5px">Routing</span></span>
+    </div>
+    <div class="row" style="grid-template-columns:auto 1fr 1fr">
+      <span class="val dim" style="font-size:clamp(11px,1cqw,17px)">02</span>
+      <span><span class="dest">Growing context</span><span class="sub">prompts, history, retrieval and tools, re-read on every turn</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Paid once for it. Fresh agent per task, so it never compounds.</span><span class="chip free" style="margin-top:5px">Caching</span></span>
+    </div>
+    <div class="row" style="grid-template-columns:auto 1fr 1fr">
+      <span class="val dim" style="font-size:clamp(11px,1cqw,17px)">03</span>
+      <span><span class="dest">Loops and retries</span><span class="sub">one request becomes a hundred calls, and failures still bill</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">An independent judge, a hard retry cap, then it parks for a human.</span><span class="chip free" style="margin-top:5px">Verify &amp; cap</span></span>
+    </div>
+    <div class="row" style="grid-template-columns:auto 1fr 1fr">
+      <span class="val dim red" style="font-size:clamp(11px,1cqw,17px)">04</span>
+      <span><span class="dest red">No named owner</span><span class="sub">finance sees the bill after the architecture is already embedded</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">One board, per project, per model, read every morning.</span><span class="chip free" style="margin-top:5px">Attribution</span></span>
+    </div>
+  </div>
+  <div class="note" style="flex:none">
+    <p style="margin:0">Three of the four are architecture. <strong>The fourth is why the other three never
+      get fixed.</strong> The rest of this talk is one week of doing something about each of them.
+      <span class="faint" style="font-size:clamp(9px,.7cqw,12px)">&nbsp; Frame: Slalom FinOps for AI &middot; Tokenomics POV.</span></p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-title="What it does" data-mark="2:55" data-budget="35">
   <p class="kicker">The system · plate-solver</p>
   <h2 class="flap">A photo of the sky in.</h2>
   <div class="cols cols-2u top">
@@ -554,56 +586,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 5 -->
-<section class="slide" data-title="The rig" data-mark="3:05" data-budget="45">
-  <p class="kicker">The rig · no cluster, no procurement</p>
-  <h2 class="flap">All of it ran on this laptop.</h2>
-  <div class="cols cols-2">
-    <div class="rows" style="align-self:center">
-      <div class="colhead" style="grid-template-columns:1.35fr 1fr auto"><span>Component</span><span>What it is</span><span>Cost</span></div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">MacBook Pro</span><span class="sub">M5 Pro &middot; 48 GB unified</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Already owned</span><span class="chip free">Sunk</span>
-      </div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">llama.cpp</span><span class="sub">qwen3.6-27b, 4-bit, on Metal</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Writes the code</span><span class="chip free">Electricity</span>
-      </div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">LiteLLM</span><span class="sub">the switchboard, on :4000</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Routes every call</span><span class="chip free">Open source</span>
-      </div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">Claude Code</span><span class="sub">fired on the sonnet alias &rarr; local</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Does the work</span><span class="chip free">$0</span>
-      </div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">ralph-grind.sh</span><span class="sub">a bash loop in a tmux session</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Runs unattended</span><span class="chip free">40 lines</span>
-      </div>
-      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest red">Me, watching it</span><span class="sub">a frontier model, on the meter</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Supervises</span><span class="chip cancelled">$60.80</span>
-      </div>
-    </div>
-    <div style="align-self:center">
-      <p class="lede">The trick is the switchboard. <strong>Claude Code asks for a model by name and
-        never learns what answered.</strong></p>
-      <div class="loop" data-label="SCHEDULE B · WHAT ACTUALLY ANSWERS" style="margin-top:clamp(10px,1.2cqw,18px)">
-        <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;sonnet&rdquo;</b><span>the tool's default workhorse</span></span><span class="chip free">&rarr; local qwen</span></div>
-        <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;haiku&rdquo;</b><span>background and summarisation traffic</span></span><span class="chip free">&rarr; local qwen</span></div>
-        <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;opus&rdquo;</b><span>the one I chose to keep on the meter</span></span><span class="chip cancelled">&rarr; real, paid</span></div>
-      </div>
-      <p style="margin-top:clamp(10px,1.2cqw,18px)"><strong>That is a config file, not a rewrite.</strong>
-        Nothing upstream changed &mdash; the same commands, the same tool, the same repo.</p>
-      <p><strong>So the build itself was free.</strong> Every row above the red one cost nothing to
-        run. The meter only ever ran when <em>I</em> opened a session to check on it.</p>
-    </div>
-  </div>
-</section>
-
 <!-- 6 -->
-<section class="slide" data-title="The build loop" data-mark="3:50" data-budget="70">
+<section class="slide" data-title="The build loop" data-mark="3:30" data-budget="70">
   <p class="kicker">How the work got done</p>
   <h2 class="flap">Nothing in the loop costs money.</h2>
   <div class="cols cols-2u">
@@ -633,7 +617,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 7 -->
-<section class="slide" data-title="What it did to the bill" data-mark="5:00" data-budget="60">
+<section class="slide" data-title="What it did to the bill" data-mark="4:40" data-budget="50">
   <p class="kicker">Same project · same specs</p>
   <h2 class="flap">One week by hand. One week on the loop.</h2>
   <div class="bars" style="grid-template-columns:repeat(3,1fr); margin-block:auto" id="bars"></div>
@@ -648,7 +632,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 8 -->
-<section class="slide" data-title="Route by size" data-mark="6:00" data-budget="55">
+<section class="slide" data-title="Route by size" data-mark="5:30" data-budget="65">
   <p class="kicker">Lever one</p>
   <h2 class="flap">85% never left the building.</h2>
   <div class="cols cols-2u">
@@ -661,6 +645,10 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
       <p>That is what routing buys you, and it is why the interesting question is never
         <em>&ldquo;which model is best&rdquo;</em> &mdash; it is <strong>which of these rows does this particular
         task belong in</strong>.</p>
+      <p><strong>And it was a config file, not a rewrite.</strong> Claude Code asks for a model
+        <em>by name</em>; the switchboard decides what actually answers and the tool never finds out.
+        Ask for &ldquo;sonnet&rdquo;, get the local model. Same commands, same repo, nothing to
+        procure &mdash; the local tier is a laptop that was already on the desk.</p>
     </div>
     <div class="rows" style="align-self:center">
       <div class="colhead" style="grid-template-columns:1.5fr auto auto"><span>Where it ran</span><span>Calls</span><span>Cost</span></div>
@@ -683,7 +671,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 9 -->
-<section class="slide" data-title="Stop paying twice" data-mark="6:55" data-budget="55">
+<section class="slide" data-title="Stop paying twice" data-mark="6:35" data-budget="55">
   <p class="kicker">Lever two · the biggest number here</p>
   <h2 class="flap">Most of what you pay for is re-reading.</h2>
   <div class="cols cols-2u">
@@ -706,7 +694,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 10 -->
-<section class="slide" data-title="Measure it" data-mark="7:50" data-budget="50">
+<section class="slide" data-title="Measure it" data-mark="7:30" data-budget="40">
   <p class="kicker">Consumption visibility</p>
   <h2 class="flap">You can't manage what you can't see.</h2>
   <div class="cols cols-2u top">
@@ -729,7 +717,39 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 11 -->
-<section class="slide" data-title="Three moves" data-mark="8:40" data-budget="50">
+<section class="slide" data-title="Cost per outcome" data-mark="8:10" data-budget="40">
+  <p class="kicker">The unit that matters</p>
+  <h2 class="flap">Cost per outcome, not cost per token.</h2>
+  <div class="cols cols-2u">
+    <div style="align-self:center">
+      <p class="lede">A cheaper model is not economical if it needs longer prompts, more retries, or
+        worse answers.</p>
+      <p>Tokens are an <em>input</em> metric. Nobody sets a budget in tokens, and no executive can
+        govern against one. Three questions turn it into something they can:</p>
+      <p style="margin-bottom:.35em"><strong>Task success</strong> &mdash; did the work actually finish, to a standard you would accept?</p>
+      <p style="margin-bottom:.35em"><strong>Cost-to-serve</strong> &mdash; what did the <em>whole</em> interaction cost, retries included?</p>
+      <p><strong>Threshold</strong> &mdash; what accuracy, latency and risk are you willing to trade for it?</p>
+    </div>
+    <div class="rows" style="align-self:center">
+      <div class="colhead" style="grid-template-columns:1.3fr auto auto auto"><span>The same project</span><span>Commits</span><span>Paid</span><span>Each</span></div>
+      <div class="row" style="grid-template-columns:1.3fr auto auto auto">
+        <span><span class="dest">By hand</span><span class="sub">9&ndash;11 Jun</span></span>
+        <span class="val dim">24</span><span class="val dim">$405</span><span class="val red">$16.88</span>
+      </div>
+      <div class="row" style="grid-template-columns:1.3fr auto auto auto; border-bottom:3px double var(--ink)">
+        <span><span class="dest">On the loop</span><span class="sub">25 Jun &ndash; 1 Jul</span></span>
+        <span class="val dim">52</span><span class="val dim">$61.13</span><span class="val green">$1.18</span>
+      </div>
+      <p class="faint" style="margin-top:clamp(10px,1.2cqw,18px); font-size:clamp(9.5px,.76cqw,13px); line-height:1.6">A commit
+        is not a uniform unit of work &mdash; but both weeks are counted the same way, and every commit in the
+        loop week passed an independent judge and the full gate suite before it landed.
+        <strong class="green">14&times; on the metric an exec can actually govern against.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide" data-title="Three moves" data-mark="8:50" data-budget="40">
   <p class="kicker">Take this back to your team</p>
   <h2 class="flap">Three moves, none about pricing.</h2>
   <div class="moves">
@@ -751,7 +771,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 12 -->
+<!-- 13 -->
 <section class="slide" data-title="Discussion" data-mark="9:30" data-budget="30">
   <p class="kicker">Over to the room</p>
   <h2 class="flap">Three things to argue about.</h2>
@@ -881,25 +901,20 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 <p><b>Two: pay once for the same context.</b> An agent re-reads its entire world on every single turn &mdash; the spec, the code, the conversation so far. Priced fresh each time, that repetition <em>is</em> your invoice. Cached, the identical tokens cost a tenth. <em>Point.</em> Eleven hundred and twenty-two dollars, one week.</p>
 <p>Neither of those is a discount, a vendor call, or a negotiation. Everything after this slide is just evidence.</p>`,
 
-`<p>One slide of vocabulary, because "tokenomics" gets used loosely and I want us arguing about the same thing.</p>
-<p>You never buy tokens. You buy <b>the same context, re-read</b> &mdash; once per turn, once per retry, at whatever tier happened to answer. Four numbers, multiplied. <em>Walk the four.</em></p>
-<p><b>Context.</b> Everything the agent re-reads to take one step. Cache it and those identical tokens cost a tenth.</p>
-<p><b>Turns.</b> Round trips to finish one task. A written plan beats a conversation. And a fresh agent per task means context never compounds &mdash; which is the answer to the question every director in the room is about to ask: <em>does this get more expensive as the project gets bigger?</em> No. It stays flat.</p>
-<p><b>Retries.</b> Work that comes back wrong and gets paid for twice. This is the one people skip. <b>Routing without a verifier is just hoping.</b> A cheap independent judge is what makes the cheap tier safe.</p>
-<p><b>Tier.</b> What the model that actually answered charges. That is routing.</p>
-<p><em>Land it.</em> Only the last one has a price list. A discount scales one of four numbers. Architecture sets all four &mdash; and that is the difference between a seventeen-hundred-dollar week and a sixty-one-dollar one.</p>`,
+`<p>Two slides of vocabulary, because the word gets used loosely and I want us arguing about the same thing.</p>
+<p>A token has four faces, depending on who is looking at it. <b>Cognition</b> &mdash; what the model produces, one unit of thinking. <b>Compute</b> &mdash; what the data center serves; silicon and power somebody had to build. <b>Price</b> &mdash; what the lab charges you. And <b>value</b> &mdash; what your business actually extracts.</p>
+<p><em>Land it.</em> The lab bills you on the third one. You are paid on the fourth. <b>Tokenomics is the distance between them</b> &mdash; and nearly all of that distance is architecture, not procurement.</p>
+<p><em>If it helps the room:</em> this frame is straight out of the Slalom FinOps for AI point of view. I am giving you one week of evidence for it.</p>`,
+
+`<p>So what actually moves the bill? Four decisions &mdash; and notice that none of them is a price. Every one is something a person decided in a design review.</p>
+<p><em>Walk the rows.</em> <b>One, frontier by default</b> &mdash; everything goes to the best model on hand, because nobody defined what good enough looks like. <b>Two, growing context</b> &mdash; prompts, history, retrieval, tools, all re-read on every single turn. <b>Three, loops and retries</b> &mdash; one request becomes a hundred calls, and the failures bill exactly like the successes. <b>Four, no named owner</b> &mdash; finance sees the bill after the architecture is already set in concrete.</p>
+<p><em>Land it.</em> Three of those are architecture. The fourth is <b>why the other three never get fixed.</b></p>
+<p>Right-hand column is the rest of this talk. Routing, caching, a judge with a retry cap, and one board somebody actually reads. One week, all four.</p>`,
 
 `<p><span class="cue live">Switch to live?</span> If the app is up, drop the image in, FOV 11, hit Solve. Otherwise the screenshot is real output and nobody will know.</p>
 <p>Quickly, because this is not the subject. A plate solver. You hand it a photograph of the night sky &mdash; no GPS, no timestamp, nothing &mdash; and it tells you where the camera was pointed. It is how a satellite finds itself when it is lost in space.</p>
 <p><em>Point.</em> Forty-seven catalog stars matched, in <b>1.8 milliseconds</b>.</p>
 <p>The only reason this slide exists: the bill I am about to show you bought <b>working, benchmarked software</b>. The product is the receipt, not the subject. Moving on.</p>`,
-
-`<p>Worth thirty seconds on what this actually ran on, because people assume there is a cluster behind it. There isn't.</p>
-<p><em>Walk the left column.</em> A MacBook Pro I already owned. A quantised open-weights model on the GPU. LiteLLM &mdash; open source &mdash; as the switchboard. Claude Code doing the work. And a <b>forty-line bash loop</b> keeping it going in a tmux session while I made dinner.</p>
-<p><em>Right side, this is the trick.</em> Claude Code asks for a model <b>by name</b>. The switchboard decides what actually answers, and the tool never finds out. Ask for "sonnet", get the local model. Ask for "haiku", get the local model. The one model I chose to keep on the meter is the only thing that bills.</p>
-<p>That is a <b>config file</b>, not a rewrite. Same commands, same tool, same repo.</p>
-<p><em>Point at the red row.</em> Which means the build itself was <b>free</b>. Claude Code was fired on the sonnet alias, so it resolved to the local model &mdash; every row above the red one cost nothing to run. The meter only ever ran when <b>I</b> opened a session to check on it. Sixty dollars and eighty cents of me looking over its shoulder.</p>
-<p><em>If asked about capital cost:</em> zero. That is the point &mdash; there was nothing to procure.</p>`,
 
 `<p>This is the slide that explains the number. Take your time here.</p>
 <p>On the left: a <b>plan file</b>. A human wrote it once &mdash; the spec, the task list, what done means. It is the only thing that persists, which is why the whole thing survives a restart.</p>
@@ -914,11 +929,12 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 <p>The group I actually care about is the third. Cost per million tokens went from two dollars nine to nineteen cents. <b>Eleven times cheaper per unit of work.</b></p>
 <p><em>Volunteer the caveat.</em> The manual week included writing specs and architecture &mdash; genuinely different work, not just slower typing. Take the unit-cost trend as the claim, not a task-for-task comparison. The cleaner number is the counterfactual: the identical three hundred and twenty million tokens, all on the frontier model, was five hundred and seventy-four dollars.</p>`,
 
-`<p>Lever one, with the receipts. You have seen the switchboard &mdash; this is where every call actually went.</p>
+`<p>Lever one, with the receipts. This is where every call in that week actually went.</p>
 <p><em>Walk the three rows.</em> Five thousand eight hundred and eighty calls served locally &mdash; that is electricity. Six hundred and fifty-four to the judge, on a flat-fee subscription I had already paid for. And three hundred and eighty-one frontier calls: sixty dollars and eighty cents.</p>
 <p><em>Point at the two right-hand columns.</em> <b>Volume and spend point in opposite directions.</b> The tier doing nearly all the work bills nothing. The tier doing five and a half percent of the calls is basically the whole invoice.</p>
 <p>So the interesting question is never "which model is best." It is <b>which of these three rows does this particular task belong in</b> &mdash; and that is a question you can usually answer before you dispatch it.</p>
-<p><em>If pressed on the judge:</em> at frontier rates that reviewer alone would have been a hundred and sixty dollars &mdash; it would have taken the build from sixty-one dollars to two hundred and twenty-one.</p>`,
+<p><em>If pressed on the judge:</em> at frontier rates that reviewer alone would have been a hundred and sixty dollars &mdash; it would have taken the build from sixty-one dollars to two hundred and twenty-one.</p>
+<p><em>And this is the part that travels.</em> It was a <b>config file</b>, not a rewrite. Claude Code asks for a model by name; the switchboard decides what actually answers and the tool never finds out. Ask for "sonnet", get the local model. Same commands, same repo. The local tier here was a laptop already sitting on the desk &mdash; there was nothing to procure.</p>`,
 
 `<p>Second lever, the biggest number in the deck, and the most boring &mdash; which is why almost nobody does it.</p>
 <p>An agent re-reads the same background on <em>every single turn</em> &mdash; the spec, the code, the conversation so far. Charged fresh every time, that is most of your bill. Cached, the identical tokens cost <b>a tenth</b>.</p>
@@ -929,6 +945,12 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 <p>None of what I just told you was reconstructed for this talk. It is instrumented, and I can re-run every number in the room.</p>
 <p><em>Two panels only.</em> <b>The distribution</b> &mdash; volume sits on the cheap tier, spend concentrates in a handful of expensive calls. <b>Realized savings</b> &mdash; the counterfactual, tracked continuously.</p>
 <p>Tokens is an <b>input</b> metric. Cost per unit of delivered work is a <b>business</b> metric. Only one belongs on an executive's dashboard.</p>`,
+
+`<p>Last frame, and it is the one to take to a CFO.</p>
+<p>Tokens are an <b>input</b> metric. Nobody sets a budget in tokens; no exec can govern against one. <b>A cheaper model is not economical if it needs longer prompts, more retries, or worse answers.</b></p>
+<p>Three questions instead. Did the task actually finish to a standard you would accept? What did the whole interaction cost, retries included? And what accuracy, latency and risk are you willing to trade?</p>
+<p><em>Point at the table.</em> Same project, counted the same way. By hand: twenty-four commits, four hundred and five dollars &mdash; <b>sixteen eighty-eight a commit</b>. On the loop: fifty-two commits, sixty-one dollars &mdash; <b>a dollar eighteen</b>. Fourteen times better on the metric that is actually governable.</p>
+<p><em>Be honest, out loud:</em> a commit is not a uniform unit of work. But both columns are counted the same way, and every commit in the loop week passed an independent judge and the full gate suite before it landed.</p>`,
 
 `<p>Three things to take back.</p>
 <p><b>Route by size, not by habit.</b> Most tasks don't need the frontier model, and the ones that do are identifiable before you dispatch them. A router is cheaper than a better model.</p>
@@ -946,8 +968,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 
 `<p><b>Q&amp;A backup &mdash; "where did that number come from?"</b></p>
 <p>Every figure, with the query or commit it came from. All re-runnable live against the Postgres store behind the Grafana board.</p>
-<p>Two things to be straight about if pressed. The window is the v1 build through functional-complete &mdash; work after July 1 moved to a home DGX under a different orchestrator and is <b>not</b> in this data. And the judge's flat-fee subscription is zero <em>marginal</em> cost, the right basis for a routing decision but not for total cost of ownership.</p>`
-  ];
+<p>Two things to be straight about if pressed. The window is the v1 build through functional-complete &mdash; work after July 1 moved to a home DGX under a different orchestrator and is <b>not</b> in this data. And the judge's flat-fee subscription is zero <em>marginal</em> cost, the right basis for a routing decision but not for total cost of ownership.</p>`,
+];
 
   const $ = s => document.querySelector(s);
   const slides = [...document.querySelectorAll(".slide")];
