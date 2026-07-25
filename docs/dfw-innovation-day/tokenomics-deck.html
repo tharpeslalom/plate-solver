@@ -483,7 +483,50 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 </section>
 
 <!-- 3 -->
-<section class="slide" data-title="What it does" data-mark="1:35" data-budget="55">
+<section class="slide" data-title="What the bill is made of" data-mark="1:35" data-budget="45">
+  <p class="kicker">The vocabulary &middot; before the receipts</p>
+  <h2 class="flap">The bill is a multiplication, not a price.</h2>
+  <p class="lede" style="margin-bottom:clamp(10px,1.3cqw,20px)">Nobody buys tokens. You buy the same context,
+    re-read once per turn, once per retry, at whatever tier happened to answer. <strong>Four numbers,
+    multiplied.</strong> Tokenomics is knowing which of them you are moving.</p>
+  <div style="display:flex; align-items:center; gap:clamp(6px,.9cqw,14px); flex-wrap:wrap;
+              margin:0 0 clamp(10px,1.4cqw,22px); font-family:var(--font-data); font-weight:700;
+              letter-spacing:.16em; font-size:clamp(9px,.8cqw,13px); color:var(--ink-3)">
+    <span class="chip ontime">Context</span><span>&times;</span>
+    <span class="chip ontime">Turns</span><span>&times;</span>
+    <span class="chip ontime">Retries</span><span>&times;</span>
+    <span class="chip ontime">Tier</span><span>=</span>
+    <span class="chip cancelled">The invoice</span>
+  </div>
+  <div class="rows">
+    <div class="colhead" style="grid-template-columns:1fr 1.15fr">
+      <span>Factor</span><span>What moves it</span>
+    </div>
+    <div class="row" style="grid-template-columns:1fr 1.15fr">
+      <span><span class="dest">Context</span><span class="sub">everything the agent re-reads to take one step &mdash; spec, code, the conversation so far</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Cache it. The identical tokens then cost <strong>a tenth</strong>.</span><span class="chip free" style="margin-top:6px">Lever 02</span></span>
+    </div>
+    <div class="row" style="grid-template-columns:1fr 1.15fr">
+      <span><span class="dest">Turns</span><span class="sub">round trips before one task is finished</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">A written plan, not a conversation. <strong>Fresh agent per task</strong>, so context never compounds &mdash; the bill stays flat as the project grows.</span></span>
+    </div>
+    <div class="row" style="grid-template-columns:1fr 1.15fr">
+      <span><span class="dest">Retries</span><span class="sub">how often the work comes back wrong and is paid for twice</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">A verifier cheaper than the rework. <strong>Without one, routing to a small model is just hoping.</strong></span></span>
+    </div>
+    <div class="row" style="grid-template-columns:1fr 1.15fr">
+      <span><span class="dest">Tier</span><span class="sub">what the model that actually answered charges</span></span>
+      <span><span style="display:block;font-size:clamp(10.5px,.88cqw,15px);color:var(--ink-2);line-height:1.5">Routing. Judgment to the frontier, volume to a model on your own hardware.</span><span class="chip free" style="margin-top:6px">Lever 01</span></span>
+    </div>
+  </div>
+  <div class="note" style="flex:none">
+    <p style="margin:0">Only the last factor has a price list &mdash; and a discount scales <em>one</em> of the four
+      numbers. Architecture sets all four. Same week of work: <strong>$1,696 or $61</strong>.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-title="What it does" data-mark="2:20" data-budget="45">
   <p class="kicker">The system · plate-solver</p>
   <h2 class="flap">A photo of the sky in.</h2>
   <div class="cols cols-2u top">
@@ -511,8 +554,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 4 -->
-<section class="slide" data-title="The rig" data-mark="2:30" data-budget="65">
+<!-- 5 -->
+<section class="slide" data-title="The rig" data-mark="3:05" data-budget="45">
   <p class="kicker">The rig · no cluster, no procurement</p>
   <h2 class="flap">All of it ran on this laptop.</h2>
   <div class="cols cols-2">
@@ -559,8 +602,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 5 -->
-<section class="slide" data-title="The build loop" data-mark="3:35" data-budget="75">
+<!-- 6 -->
+<section class="slide" data-title="The build loop" data-mark="3:50" data-budget="70">
   <p class="kicker">How the work got done</p>
   <h2 class="flap">Nothing in the loop costs money.</h2>
   <div class="cols cols-2u">
@@ -589,8 +632,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 6 -->
-<section class="slide" data-title="What it did to the bill" data-mark="4:50" data-budget="70">
+<!-- 7 -->
+<section class="slide" data-title="What it did to the bill" data-mark="5:00" data-budget="60">
   <p class="kicker">Same project · same specs</p>
   <h2 class="flap">One week by hand. One week on the loop.</h2>
   <div class="bars" style="grid-template-columns:repeat(3,1fr); margin-block:auto" id="bars"></div>
@@ -604,7 +647,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 7 -->
+<!-- 8 -->
 <section class="slide" data-title="Route by size" data-mark="6:00" data-budget="55">
   <p class="kicker">Lever one</p>
   <h2 class="flap">85% never left the building.</h2>
@@ -639,7 +682,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 8 -->
+<!-- 9 -->
 <section class="slide" data-title="Stop paying twice" data-mark="6:55" data-budget="55">
   <p class="kicker">Lever two · the biggest number here</p>
   <h2 class="flap">Most of what you pay for is re-reading.</h2>
@@ -662,7 +705,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 9 -->
+<!-- 10 -->
 <section class="slide" data-title="Measure it" data-mark="7:50" data-budget="50">
   <p class="kicker">Consumption visibility</p>
   <h2 class="flap">You can't manage what you can't see.</h2>
@@ -685,7 +728,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 10 -->
+<!-- 11 -->
 <section class="slide" data-title="Three moves" data-mark="8:40" data-budget="50">
   <p class="kicker">Take this back to your team</p>
   <h2 class="flap">Three moves, none about pricing.</h2>
@@ -708,7 +751,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
   </div>
 </section>
 
-<!-- 11 -->
+<!-- 12 -->
 <section class="slide" data-title="Discussion" data-mark="9:30" data-budget="30">
   <p class="kicker">Over to the room</p>
   <h2 class="flap">Three things to argue about.</h2>
@@ -837,6 +880,14 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 <p><b>One: the right model for the job.</b> Writing a function against a written spec is not the same task as deciding whether that function is correct. We price them the same anyway, because everything goes to the best model we have &mdash; out of habit, not analysis. Sort the work first. Judgment to the frontier model, volume to a small model on hardware you already own. <em>Point.</em> Eighty-five percent of the calls in this build never left the laptop.</p>
 <p><b>Two: pay once for the same context.</b> An agent re-reads its entire world on every single turn &mdash; the spec, the code, the conversation so far. Priced fresh each time, that repetition <em>is</em> your invoice. Cached, the identical tokens cost a tenth. <em>Point.</em> Eleven hundred and twenty-two dollars, one week.</p>
 <p>Neither of those is a discount, a vendor call, or a negotiation. Everything after this slide is just evidence.</p>`,
+
+`<p>One slide of vocabulary, because "tokenomics" gets used loosely and I want us arguing about the same thing.</p>
+<p>You never buy tokens. You buy <b>the same context, re-read</b> &mdash; once per turn, once per retry, at whatever tier happened to answer. Four numbers, multiplied. <em>Walk the four.</em></p>
+<p><b>Context.</b> Everything the agent re-reads to take one step. Cache it and those identical tokens cost a tenth.</p>
+<p><b>Turns.</b> Round trips to finish one task. A written plan beats a conversation. And a fresh agent per task means context never compounds &mdash; which is the answer to the question every director in the room is about to ask: <em>does this get more expensive as the project gets bigger?</em> No. It stays flat.</p>
+<p><b>Retries.</b> Work that comes back wrong and gets paid for twice. This is the one people skip. <b>Routing without a verifier is just hoping.</b> A cheap independent judge is what makes the cheap tier safe.</p>
+<p><b>Tier.</b> What the model that actually answered charges. That is routing.</p>
+<p><em>Land it.</em> Only the last one has a price list. A discount scales one of four numbers. Architecture sets all four &mdash; and that is the difference between a seventeen-hundred-dollar week and a sixty-one-dollar one.</p>`,
 
 `<p><span class="cue live">Switch to live?</span> If the app is up, drop the image in, FOV 11, hit Solve. Otherwise the screenshot is real output and nobody will know.</p>
 <p>Quickly, because this is not the subject. A plate solver. You hand it a photograph of the night sky &mdash; no GPS, no timestamp, nothing &mdash; and it tells you where the camera was pointed. It is how a satellite finds itself when it is lost in space.</p>

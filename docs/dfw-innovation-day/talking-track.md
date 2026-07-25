@@ -18,25 +18,27 @@ rebuild appears anywhere in this talk.
 |---|---|---|---|
 | 1 | We built it for $61 | 0:00 | 0:25 |
 | 2 | **Two levers** | 0:25 | **1:10** |
-| 3 | What it does | 1:35 | 0:55 |
-| 4 | The rig | 2:30 | 1:05 |
-| 5 | **The build loop** | 3:35 | **1:15** |
-| 6 | What that did to the bill | 4:50 | 1:10 |
-| 7 | Route by size | 6:00 | 0:55 |
-| 8 | Stop buying the same context twice | 6:55 | 0:55 |
-| 9 | Measure it (Grafana) | 7:50 | 0:50 |
-| 10 | Three moves | 8:40 | 0:50 |
-| 11 | Discussion | 9:30 | 0:30 |
+| 3 | **What the bill is made of** | 1:35 | 0:45 |
+| 4 | What it does | 2:20 | 0:45 |
+| 5 | The rig | 3:05 | 0:45 |
+| 6 | **The build loop** | 3:50 | **1:10** |
+| 7 | What that did to the bill | 5:00 | 1:00 |
+| 8 | Route by size | 6:00 | 0:55 |
+| 9 | Stop buying the same context twice | 6:55 | 0:55 |
+| 10 | Measure it (Grafana) | 7:50 | 0:50 |
+| 11 | Three moves | 8:40 | 0:50 |
+| 12 | Discussion | 9:30 | 0:30 |
 | — | Appendix A · what the first days cost | backup | — |
 | — | Appendix B · sources | backup | — |
 
-**Shape of the talk:** slide 2 states both levers up front; slides 5–8 are the evidence.
-If the room only hears one slide, it should be slide 2.
+**Shape of the talk:** slide 2 states both levers up front, slide 3 gives the frame the
+levers hang on, and slides 6–9 are the evidence. If the room only hears two slides, they
+are 2 and 3.
 
-The clock warns at 8:30. **Cut rule, in order:** if you are behind at slide 6, drop
-slide 7 to one line ("eighty-five percent local, and the judge alone would have been a
-hundred and sixty dollars") and go to caching. Behind at slide 8, skip Grafana and
-promise it after. Slides 2 and 5 are the two you must not rush.
+The clock warns at 8:30. **Cut rule, in order:** if you are behind at slide 7, drop
+slide 8 to one line ("eighty-five percent local, and the judge alone would have been a
+hundred and sixty dollars") and go to caching. Behind at slide 9, skip Grafana and
+promise it after. Slides 2, 3 and 6 are the ones you must not rush.
 
 ---
 
@@ -80,7 +82,35 @@ the middle one sit before you move.*
 
 ---
 
-## 3 · What it does — *1:35*
+## 3 · What the bill is made of — *1:35* · **the frame**
+
+*One slide of vocabulary. Do not skip it — it is what stops someone leaving saying "that
+wasn't tokenomics, that was a homelab story."*
+
+> One slide of vocabulary, because the word gets used loosely and I want us arguing about
+> the same thing.
+>
+> You never buy tokens. You buy **the same context, re-read** — once per turn, once per
+> retry, at whatever tier happened to answer. Four numbers, multiplied.
+>
+> *(walk the four)* **Context** — everything the agent re-reads to take one step. Cache it
+> and those identical tokens cost a tenth. **Turns** — round trips to finish one task; a
+> written plan beats a conversation, and a fresh agent per task means context never
+> compounds. That last one is the answer to the question half this room is about to ask:
+> *does this get more expensive as the project gets bigger?* No. It stays flat.
+> **Retries** — work that comes back wrong and gets paid for twice. This is the one people
+> skip. **Routing without a verifier is just hoping.** A cheap independent judge is what
+> makes the cheap tier safe. **Tier** — what the model that actually answered charges.
+> That is routing.
+>
+> *(land it)* Only the last one has a price list. A discount scales one of four numbers.
+> Architecture sets all four.
+
+*Forty-five seconds, and it is all talking — the slide is a reference, not a reveal.*
+
+---
+
+## 4 · What it does — *2:20*
 
 **`[LIVE?]`** If the app is up: drop the image in, FOV 11, hit Solve. Otherwise the
 screenshot is real output and nobody will know.
@@ -94,13 +124,16 @@ screenshot is real output and nobody will know.
 > The only reason this slide exists: the bill I am about to show you bought **working,
 > benchmarked software** — not a demo. The product is the receipt, not the subject.
 
-*Sixty seconds. If you are still on this slide at 1:45, move.*
+*Forty-five seconds. If you are still on this slide at 3:05, move. Drop the RMSE and P90
+detail unless someone asks — it is the detail that makes this sound like a science talk.*
 
 ---
 
-## 4 · The rig — *2:30*
+## 5 · The rig — *3:05*
 
-*People assume there is a cluster behind this. Thirty seconds to kill that assumption.*
+*People assume there is a cluster behind this. Kill that assumption and get out — the only
+transferable idea on this slide is the alias remap. Forty-five seconds, and do not
+inventory the hardware: a room that hears "M5 with 48 GB" stops listening.*
 
 > Worth a moment on what this actually ran on.
 >
@@ -124,7 +157,7 @@ screenshot is real output and nobody will know.
 
 ---
 
-## 5 · The build loop — *3:35* · **the slide that explains the number**
+## 6 · The build loop — *3:50* · **the slide that explains the number**
 
 *Slow down here. Everything else is a consequence of this diagram.*
 
@@ -161,7 +194,7 @@ Two design notes worth saying out loud:
 
 ---
 
-## 6 · What that did to the bill — *4:50*
+## 7 · What that did to the bill — *5:00*
 
 > Same project. Same specs. Same models available to me.
 >
@@ -184,7 +217,7 @@ Two design notes worth saying out loud:
 
 ---
 
-## 7 · Route by size — *6:00*
+## 8 · Route by size — *6:00*
 
 > Lever one, with the receipts. You have already seen the switchboard — this is where
 > every call in that week actually went.
@@ -208,7 +241,7 @@ dollars — taking the build from sixty-one to two hundred and twenty-one.
 
 ---
 
-## 8 · Stop buying the same context twice — *6:55*
+## 9 · Stop buying the same context twice — *6:55*
 
 > Lever two, and the largest number in this deck — larger than every routing decision
 > combined.
@@ -227,7 +260,7 @@ dollars — taking the build from sixty-one to two hundred and twenty-one.
 
 ---
 
-## 9 · Measure it — *7:50*
+## 10 · Measure it — *7:50*
 
 **`[LIVE]`** Alt-tab to Grafana. **Open the pre-filtered board, not the default one:**
 
@@ -252,7 +285,7 @@ will contradict you.
 
 ---
 
-## 10 · Three moves — *8:40*
+## 11 · Three moves — *8:40*
 
 > **Route by size, not by habit.** Most tasks don't need the frontier model, and the ones
 > that do are identifiable before you dispatch them. A router is cheaper than a better
@@ -269,7 +302,7 @@ will contradict you.
 
 ---
 
-## 11 · Discussion — *9:30*
+## 12 · Discussion — *9:30*
 
 *Read the three questions. Then stop talking. Let the room fill the silence.*
 
@@ -339,12 +372,12 @@ don't know their own number, and that reliably starts the conversation.
 
 ## Rehearsal checklist
 
-- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slides 2 and 5 must land**.
+- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slides 2, 3 and 6 must land**.
 - [ ] Grafana up, with the **`plate-solver-v1`** board open in a tab (not the default
       board). Confirm it reads **$61.13**.
-- [ ] `ps-web` running for the slide-3 live solve, or accept the screenshot.
+- [ ] `ps-web` running for the slide-4 live solve, or accept the screenshot.
 - [ ] Know these seven cold: **$61 · $574 · $1,122 · 320M · 85% · 5.5% of calls / 99.5% of
       bill · 11×**.
-- [ ] Practise saying the slide-6 caveat *before* anyone asks for it.
+- [ ] Practise saying the slide-7 caveat *before* anyone asks for it.
 - [ ] Print to PDF as the projector-failure backup.
 - [ ] Fix the brand palette token block if the real Slalom values are available.

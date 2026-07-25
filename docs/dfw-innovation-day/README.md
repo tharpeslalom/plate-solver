@@ -19,13 +19,13 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 | `S` | Speaker notes (per slide) |
 | `T` / `R` | Start-pause / reset the 10-minute talk clock |
 | `G` | Overview grid |
-| `1`–`13` | Jump to slide (type both digits) |
+| `1`–`14` | Jump to slide (type both digits) |
 | `?` | All shortcuts |
 
 ## Printing
 
 ```bash
-./print.sh            # → tokenomics-deck.pdf, 13 pages, one slide per page
+./print.sh            # → tokenomics-deck.pdf, 14 pages, one slide per page
 ```
 
 `tokenomics-deck.pdf` is committed, so you only need this after editing the deck.
@@ -33,7 +33,7 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 **Printing it on paper.** The pages are 1600×900 px (16:9), so in the print dialog pick
 **landscape**, scale **Fit to page**, and turn **background graphics ON** — without it you
 lose the red/green, and in this deck those are accounting terms, not decoration. The stock
-prints white; only the ink is coloured, so it is not toner-hungry apart from the slide-3
+prints white; only the ink is coloured, so it is not toner-hungry apart from the slide-4
 screenshot of the dark app UI.
 
 **Don't use Cmd-P on the HTML directly** unless you have to. Chrome resolves print media
@@ -76,7 +76,7 @@ functional-complete. Nothing from the v2 spec-only rebuild appears in the deck.
 
 Every figure is live from the Postgres usage store behind the Grafana dashboard in
 `~/mac-llm-env` (`usage_events` × `model_prices`), scoped to the `plate-solver` folders.
-Appendix B (slide 13) maps each claim to its query or commit. There are **no placeholder figures** in
+Appendix B (slide 14) maps each claim to its query or commit. There are **no placeholder figures** in
 this version.
 
 To re-run the headline numbers:
