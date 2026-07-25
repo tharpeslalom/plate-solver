@@ -1,12 +1,13 @@
 # DFW Innovation Day — Tokenomics session
 
-A 10-minute, discussion-led session on AI cost optimization, anchored on this
-repository as the worked example.
+A 10-minute, discussion-led session on AI cost optimization, anchored on the **v1 build of
+this repository** as the worked example.
 
 | File | What it is |
 |------|------------|
 | [`tokenomics-deck.html`](./tokenomics-deck.html) | The deck. Single self-contained file — open it in any browser, no build, no network. |
-| [`talking-track.md`](./talking-track.md) | The 10-minute script, timing marks, Q&A backup, and the Monday rehearsal checklist. |
+| [`storyline.md`](./storyline.md) | The narrative outline, the numbers, and the honest caveats. Read this first. |
+| [`talking-track.md`](./talking-track.md) | The script, timing marks, Q&A backup, and rehearsal checklist. |
 
 ## Running the deck
 
@@ -15,7 +16,7 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 | Key | Action |
 |-----|--------|
 | `←` `→` `Space` | Navigate |
-| `S` | Speaker notes (the talking track, per slide) |
+| `S` | Speaker notes (per slide) |
 | `T` / `R` | Start-pause / reset the 10-minute talk clock |
 | `G` | Overview grid |
 | `1`–`9` | Jump to slide |
@@ -25,36 +26,61 @@ Print to PDF for a backup copy — each slide breaks onto its own page.
 
 ## The argument
 
-The session does **not** cover token pricing mechanics. It argues that AI
-economics are driven by architecture, using this repo as the evidence:
+AI cost is an architecture problem, not a procurement problem. Same project, same specs,
+same models available — the bill fell 11× per unit of work because of *where the work ran*
+and *how often the same context was paid for*.
 
-1. **The product is real** — a star-field plate solver that localizes a photograph
-   of the night sky in 1.8 ms, benchmarked against an independent Python reference.
-2. **No human wrote the implementation** — it was built by an agent fleet against
-   written specs, with humans in the loop at exactly four points.
-3. **It was built twice** — v1 (`v1-original`) and the spec-only rebuild (`main`),
-   which is a natural A/B on cost.
-4. **Three decisions moved the bill** — route work by size (small → local model,
-   large → cloud relay), keep the author and reviewer on different model lineages,
-   and treat the frontier tier as a budget rather than a default.
-5. **Twelve deterministic gates cost zero tokens** — and in an end-to-end audit of
-   one merged change, ten of the twelve turned out to be hygiene while three
-   carried the actual weight.
+| | Manual · Jun 9–11 | Ralph loop · Jun 25 – Jul 1 |
+|---|---|---|
+| Tokens delivered | 194 M | **320 M** |
+| Ran on a local model | 19% of calls | **85% of calls** |
+| Paid | **$405** | **$61** |
+| Unit cost | $2.09 / MTok | **$0.19 / MTok** |
 
-## Two things to finish before presenting
+The frontier model was **5.5% of the calls and 99.5% of the bill** — and those calls were
+human monitoring, not the loop doing its work. Every stage of the build itself (write,
+review, gate, commit) had zero marginal cost.
 
-**1 · Spend figures.** Every cost number is a marked placeholder — the Grafana LLM
-consumption data was not available when the deck was built. Search the HTML for
-`is-pending` to find them. They render with a visible `PENDING` chip and dashed
-borders specifically so an unfilled figure cannot be mistaken for a real one.
+## Scope
 
-**2 · Brand palette.** `slalom.com` was unreachable from the build environment
-(blocked by egress policy), so the colors are brand-adjacent rather than sampled.
-Every color in the deck derives from the token block at the top of the HTML —
-correcting the palette is a single-block edit.
+**v1 only**, per the brief: the first build, from the first ralph-loop task to
+functional-complete. Nothing from the v2 spec-only rebuild appears in the deck.
 
-## Provenance
+- **Window:** 2026-06-25 → 2026-07-01
+- **Lineage:** `bryantharpe/plate-solver`; tag `v1-original` = `185128e` (absent on
+  `tharpeslalom`, whose `main` is frozen at `104de07`, Jun 30 — the same boundary)
+- **Not counted:** work after Jul 1 moved to a home DGX under a different orchestrator and
+  is not in the usage database.
 
-Every non-placeholder figure in the deck is reproducible from this repository at
-the `v1-original` tag and `main`. Slide 12 lists each claim with the command or
-file it came from.
+## Data source
+
+Every figure is live from the Postgres usage store behind the Grafana dashboard in
+`~/mac-llm-env` (`usage_events` × `model_prices`), scoped to the `plate-solver` folders.
+Slide 11 maps each claim to its query or commit. There are **no placeholder figures** in
+this version.
+
+To re-run the headline numbers:
+
+```sh
+docker exec macllm-postgres psql -U macllm -d usage -c "
+  SELECT count(*), round(SUM(input_tokens+output_tokens+cache_creation_tokens+cache_read_tokens)/1e6,1) AS mtok
+  FROM usage_events
+  WHERE folder LIKE '/Users/bryant/code/plate-solver%'
+    AND ts::date BETWEEN '2026-06-25' AND '2026-07-01';"
+```
+
+Grafana, pre-filtered to this build: <http://localhost:3001/d/plate-solver-v1>
+(provisioned from `~/mac-llm-env/monitoring/grafana/dashboards/plate-solver-v1.json`;
+anonymous read-only viewing is on). The machine-wide board is at `/d/macllm-llm-cost`.
+
+## Before presenting
+
+1. **Brand palette.** `slalom.com` was unreachable from the build environment, so the
+   colors are brand-adjacent rather than sampled. Every color derives from the token block
+   at the top of the HTML — correcting it is a single-block edit.
+2. **Use the pre-filtered Grafana board** — <http://localhost:3001/d/plate-solver-v1>.
+   It opens scoped to `plate-solver`, windowed to Jun 25 – Jul 1 UTC, baseline Opus 4.8,
+   and reads **$61.13**. The default board is machine-wide and will contradict the deck.
+3. **Optional:** the usage database has no price row for `claude-opus-5`, so those calls
+   count as $0 elsewhere in the project. It does not affect any figure in this deck (no
+   Opus 5 in the v1 window), but the live board under-reports until it's added.

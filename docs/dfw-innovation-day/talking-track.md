@@ -1,298 +1,289 @@
-# Tokenomics — 10-minute talking track
+# Tokenomics — talking track
 
-**DFW Innovation Day · Bryan Tharpe & Kiran**
+**DFW Innovation Day · Bryan Tharpe & Kiran · 10 minutes · discussion-led**
 
-Deck: [`tokenomics-deck.html`](./tokenomics-deck.html) — open it in a browser.
-The same notes below are built into the deck: press **S** for the speaker-notes
-panel, **T** to start the talk clock.
+Deck: [`tokenomics-deck.html`](./tokenomics-deck.html) — press `S` for these notes per
+slide, `T` to start the talk clock.
 
-**Core message:** this is not about the price of tokens. It's about how
-architecture and model routing change AI economics.
+**Thesis in one line:** AI cost is an architecture problem, not a procurement problem.
 
----
-
-## Before you start
-
-| | |
-|---|---|
-| **Format** | Discussion-led. The deck is scaffolding, not the point. Slides 2 and 7 are demo moments. |
-| **Total** | 10:00, then open discussion |
-| **Clock** | Press `T` in the deck. It turns amber at 8:30 and red past 10:00. |
-| **Two live moments** | The plate-solver web UI (slide 2) and the Grafana board (slide 7). Both have screenshot fallbacks — if a build fails at 9am, nothing breaks. |
-| **Must fill in first** | The four spend tiles on slide 7. Search the HTML for `is-pending`. They are visibly marked PENDING so nothing fake can be shown as real. |
-
-**Timing marks** — glance at these, don't obsess:
-
-| At | Slide | Budget |
-|----|-------|--------|
-| 0:00 | 1 · Title | 30s |
-| 0:30 | 2 · What it does | 90s |
-| 2:00 | 3 · Nobody wrote it | 60s |
-| 3:00 | 4 · Built twice | 90s |
-| 4:30 | 5 · Route by size | 90s |
-| 6:00 | 6 · The cheapest reviewer | 60s |
-| 7:00 | 7 · What it cost | 90s |
-| 8:30 | 8 · Three moves | 60s |
-| 9:30 | 9 · Discussion | 30s |
-
-Slides 10–12 are Q&A backup and are not timed.
+**Scope:** the v1 plate-solver build only, 2026-06-25 → 2026-07-01. Nothing from the v2
+rebuild appears anywhere in this talk.
 
 ---
 
-## 1 · Title — 0:00 (30s)
+## Timing
 
-Kiran and I are **not** going to talk about the price of tokens. Everybody has
-seen the price-per-million table, and it is the least interesting number in this
-conversation.
+| # | Slide | Mark | Budget |
+|---|---|---|---|
+| 1 | We built it for $61 | 0:00 | 0:30 |
+| 2 | What it does | 0:30 | 1:00 |
+| 3 | **The build loop** | 1:30 | **2:00** |
+| 4 | What that did to the bill | 3:30 | 1:30 |
+| 5 | Route by size | 5:00 | 1:30 |
+| 6 | Stop buying the same context twice | 6:30 | 1:00 |
+| 7 | Measure it (Grafana) | 7:30 | 1:00 |
+| 8 | Three moves | 8:30 | 1:00 |
+| 9 | Discussion | 9:30 | 0:30 |
+| — | Appendix A · what the first days cost | backup | — |
+| — | Appendix B · sources | backup | — |
 
-What we want to show you is a system we built, what it cost to build, and the two
-or three **architectural** decisions that moved that cost by an order of magnitude.
-
-Ten minutes. Mostly demo. Then let's argue about it.
-
----
-
-## 2 · What it does — 0:30 (90s)
-
-> **SWITCH TO LIVE?** If the app is up, drive it live: drop the image in, set FOV
-> to `11`, hit Solve. Otherwise the screenshots are the real output and nobody
-> will know the difference.
-
-This is a plate solver. You hand it a photograph of the night sky — no GPS, no
-timestamp, no metadata, nothing — and it tells you exactly where the camera was
-pointed. It's how a telescope figures out where it is, and it's the same class of
-problem as "lost in space" navigation for a satellite.
-
-*[Point at the numbers.]* Right Ascension 230.67 degrees, Declination 11.04. It
-matched **47 catalog stars** against a database of a million patterns. It did that
-in **1.8 milliseconds**.
-
-*[Point at the overlay.]* Every green ring is a real star it identified by
-Hipparcos catalog ID.
-
-That's a real product — Rust, gRPC service, web UI, runs on a Raspberry Pi. It
-benchmarks about one and a half times faster than the Python reference it's cloned
-from, and six and a half times faster than the original.
-
-Hold that in your head, because here's the actual point.
+The clock warns at 8:30. **If you are behind at slide 5, cut slide 6 to one sentence**
+("caching was worth eleven hundred dollars, ask me after") and go straight to Grafana.
+Slide 3 is the one slide you must not rush.
 
 ---
 
-## 3 · Nobody wrote it — 2:00 (60s)
+## 1 · We built it for $61 — *0:00*
 
-I didn't write it. **Nobody** wrote it.
+> We are **not** going to talk about the price of tokens. Everyone has seen the
+> price-per-million table, and it is the least interesting number in this conversation.
+>
+> Here is the number that is interesting. One week of building a real piece of software.
+> Three hundred and twenty million tokens of AI work. We paid **sixty-one dollars**. The
+> same work run the obvious way was five hundred and seventy-four.
+>
+> Nobody gave us a discount. We changed the architecture. Ten minutes, then let's argue
+> about it.
 
-This was built by a fleet of AI agents running against written specifications.
-There's a dispatcher that sizes the work, ephemeral workers that each take one
-task, and an integration process that opens the pull requests.
-
-Humans touch it in exactly four places: approving what gets built, signing off on
-the highest-risk paths, handling escalations, and cutting releases.
-
-So the question stops being "can AI write code." You're looking at the code. It
-works, it's fast, and it passes parity against an independent reference
-implementation.
-
-The question becomes: **what did that cost, and what would make it cost less?**
+*Don't explain the levers yet. Let the number sit.*
 
 ---
 
-## 4 · Built twice — 3:00 (90s)
+## 2 · What it does — *0:30*
 
-Here's why I can answer that with something better than a vibe. We built this
-system **twice**.
+**`[LIVE?]`** If the app is up: drop the image in, FOV 11, hit Solve. Otherwise the
+screenshot is real output and nobody will know.
 
-Version one: about five weeks, 144 commits, seven crates, roughly fourteen
-thousand six hundred lines of Rust. Mixed — me, Claude, some agents. And **no
-CI**. The quality gate was me running `cargo test`.
+> Quickly, because this is not the subject. This is a plate solver. You hand it a
+> photograph of the night sky — no GPS, no timestamp, nothing — and it tells you where the
+> camera was pointed. It is how a satellite finds itself when it is lost in space.
+>
+> *(point)* Forty-seven catalog stars matched, in **1.8 milliseconds**.
+>
+> The only reason this slide exists: the bill I am about to show you bought **working,
+> benchmarked software** — not a demo. The product is the receipt, not the subject.
 
-Then we deleted the implementation. Kept the specs, kept the reference oracle,
-threw away all the code — and every artifact that described *how* version one had
-been built, including our own architecture notes and task breakdown. The rule was:
-the rebuild has to be derivable from the spec alone.
-
-Version two: **ten days**, 54 commits, six crates, under ten thousand lines.
-Roughly a third of the calendar time, two-thirds of the code, same capability,
-same parity tests.
-
-> **Be honest here — this lands better if you volunteer the caveat.**
-
-Some of that delta is "the second time you build anything is faster." That's real
-and I'm not going to pretend otherwise. But note the direction of the verification
-story: version one had *zero* CI. Version two **cannot merge** without ten
-required checks and an independent model review. Less time, less code, more proof.
+*Sixty seconds. If you are still on this slide at 1:45, move.*
 
 ---
 
-## 5 · Route by size — 4:30 (90s)
+## 3 · The build loop — *1:30* · **the slide that explains the number**
 
-**This is the slide that actually matters.** If they remember one, it's this one.
+*Slow down here. Everything else is a consequence of this diagram.*
 
-Nothing in the fleet asks "which model is best." It asks: **what is the cheapest
-thing that can do this job, and be caught if it's wrong?**
+> On the left: a **plan file**. A human wrote it once — the spec, the task list, what done
+> means. It is the only thing that persists, which is why the whole thing survives a
+> restart.
 
-**One — route by size.** The dispatcher sizes every unit of work before it assigns
-it. Small work goes to a local model on our own hardware — marginal token cost is
-zero, we're paying for electricity. Only large work goes out to a cloud relay. And
-most work is small.
+*Walk the four boxes.*
 
-**Two — the author never grades its own homework.** The code is written by Kimi
-models. The review is done by GLM, a completely different model lineage. That's a
-correctness decision first, but it has a cost consequence: a cheap independent
-reviewer catches things you'd otherwise pay a frontier model to catch.
+> Then the loop. Pick the next unblocked task. A **local model, running on this Mac**,
+> writes the code. A **judge — a different model family entirely** — reviews it. If it
+> fails, back to step two, up to three times, then it parks itself for a human rather than
+> burning tokens in a retry spiral. If it passes: gates run, and it commits.
 
-**Three — the expensive tier is a budget, not a default.** Opus gets spent where
-judgment genuinely decides the outcome: adversarial review and process audits.
-Deliberately, not by reflex.
+*Now point at the cost tags, one at a time.*
 
-That's the whole architecture. Route by size. Separate author from reviewer. Spend
-the expensive tier on purpose.
+> Zero. Zero. Zero. Zero. **Every stage of actually building the software had no marginal
+> cost.**
 
----
+*Point at the red box.*
 
-## 6 · The cheapest reviewer — 6:00 (60s)
+> And that is the entire bill. Sixty dollars and eighty cents — **me, on a frontier model,
+> watching it run.** Five and a half percent of the calls. Ninety-nine and a half percent
+> of the spend.
 
-There's a fourth thing, and it's free.
+Two design notes worth saying out loud:
 
-Before *any* model reviews anything, twelve mechanized gates run: formatting,
-linting with warnings as errors, tests with a coverage floor, docs, minimum Rust
-version, unused dependencies, semantic versioning, four license and vulnerability
-scans, secret scanning, and a parity test against the Python reference.
-
-Those cost **zero tokens. Forever.** Every defect a compiler catches is a defect
-you don't pay a model to find — and more importantly, one you don't pay a model to
-*argue with you about*.
-
-We audited one merged change end to end. Twelve green checkmarks. **Ten of them
-were hygiene.** Three carried the actual weight. And one of those three had to be
-run by hand.
-
-That's worth knowing. Green isn't proof — and knowing which gates are load-bearing
-tells you where model spend is buying you something real.
-
-The general principle: push verification as far down the cost curve as it will go.
-Deterministic before probabilistic. Cheap model before expensive model. Model
-before human.
+> **Fresh agent per task.** The agent exits when its task is done, so context never
+> compounds and cost stays flat as the project grows.
+>
+> **The author never grades its own homework.** That is a correctness decision first — but
+> a cheap independent reviewer also catches what you would otherwise pay frontier prices
+> to catch.
 
 ---
 
-## 7 · What it cost — 7:00 (90s)
+## 4 · What that did to the bill — *3:30*
 
-> **SWITCH TO GRAFANA.** This is the part to drive live if the board is up.
+> Same project. Same specs. Same models available to me.
+>
+> *(left bars, orange)* The first week I drove it myself. A hundred and ninety-four
+> million tokens, four hundred and five dollars.
+>
+> *(right bars, blue)* The week on the loop. Three hundred and twenty million tokens —
+> **sixty-five percent more work** — for **sixty-one dollars**.
+>
+> The pair I actually care about is the third one. Cost per million tokens went from two
+> dollars nine to nineteen cents. **Eleven times cheaper per unit of work.**
 
-You can't optimize what you can't see, so we instrumented it.
+**Volunteer the caveat — don't wait to be caught:**
 
-*[Walk the panels.]* Tokens by model. Spend by seat. Cost per merged change.
-
-Two things I'd point at.
-
-**First, the distribution.** Most of the *volume* is on the cheap tier — but the
-*spend* concentrates in a small number of expensive calls. Those are the ones
-worth scrutinising, and you cannot find them without this board.
-
-**Second, the trend.** Cost per merged change, over time. That is the number I
-actually manage.
-
-Not price per million tokens — **cost per unit of delivered work**. Those are very
-different metrics, and only one of them is a business metric.
-
----
-
-## 8 · Three moves — 8:30 (60s)
-
-If you take three things back to your team:
-
-**Route by size.** Not everything needs the frontier model, and most things don't.
-Classify the work before you dispatch it — a router is cheaper than a better model.
-
-**Verify deterministically first.** Every check a compiler, a linter, a schema or
-a test can perform is a check you never pay for again. Find your parity oracle:
-the external thing that proves the output is right without asking a model.
-
-**Instrument per unit of delivered work.** Cost per merged change, cost per
-resolved ticket, cost per document processed. If your dashboard shows tokens,
-you're measuring the input. Measure the output.
-
-None of this is about the price of tokens. All of it is about architecture.
+> Be straight about this: the manual week included writing specs and architecture.
+> Genuinely different work, not just slower typing. So take the unit-cost trend as the
+> claim, not a task-for-task comparison. The cleaner number is the counterfactual — the
+> identical three hundred and twenty million tokens, all on the frontier model, was five
+> hundred and seventy-four dollars.
 
 ---
 
-## 9 · Discussion — 9:30 (30s)
+## 5 · Route by size — *5:00*
 
-Three questions we'd genuinely like to argue about:
+> Two levers got us there. Here is the first, and it is the one people find surprising.
+>
+> There is a **switchboard** between the coding tool and the models. The tool asks for a
+> model by name. The switchboard decides what actually answers.
+>
+> The coding tool believes it is calling a commercial cloud model. **Most of those calls
+> are being served by a model running on the laptop in front of you**, and it has no idea.
+> That is a config file. Nothing upstream changed.
 
-1. Where are you paying frontier prices for work a small model could do?
-2. What's your parity test — the deterministic check that proves the output is
-   right without asking a model?
-3. Do you know your cost per unit of delivered work? Not your token bill.
+*Walk the three lanes.*
 
-> **Read them, then stop talking.** Let the room fill the silence. If nobody bites,
-> go to the middle one — the parity-test question is the one people have the
-> strongest opinions about.
+> Five thousand eight hundred calls local — that is electricity. Six hundred and fifty-four
+> to the judge on a flat-fee subscription, already paid for; at frontier rates that review
+> alone would have been a hundred and sixty dollars, more than doubling the build. And
+> three hundred and eighty-one frontier calls, sixty dollars — which was me watching.
+
+---
+
+## 6 · Stop buying the same context twice — *6:30*
+
+> Second lever, and it is the biggest number in the deck. It is also the most boring, which
+> is why almost nobody does it.
+>
+> An agent re-reads the same background on *every single turn* — the spec, the code, the
+> conversation so far. If you are charged fresh for that every time, it is most of your
+> bill. Cached, the identical tokens cost **a tenth**.
+>
+> On this one week, caching was worth **eleven hundred and twenty-two dollars**. Without
+> it, this build would have been sixteen hundred and ninety-six dollars before any routing
+> at all.
+>
+> No vendor call. No model change. No negotiation. Pure engineering.
+
+*This is the slide to compress if you are behind.*
+
+---
+
+## 7 · Measure it — *7:30*
+
+**`[LIVE]`** Alt-tab to Grafana. **Open the pre-filtered board, not the default one:**
+
+```
+http://localhost:3001/d/plate-solver-v1
+```
+
+It opens scoped to `plate-solver`, windowed to Jun 25 – Jul 1 UTC, baseline Opus 4.8 —
+frontier spend reads **$61.13**, matching the deck. The default board is machine-wide and
+will contradict you.
+
+> None of what I just told you was reconstructed for this talk. It is instrumented, and I
+> can re-run every number in the room.
+>
+> *(two panels only)* **The distribution** — volume sits on the cheap tier, but spend
+> concentrates in a handful of expensive calls. You cannot find those without this board.
+> **And realized savings** — the counterfactual, tracked continuously.
+>
+> The framing I would leave you with: tokens is an **input** metric. Cost per unit of
+> delivered work is a **business** metric. Only one of those belongs on an executive's
+> dashboard.
+
+---
+
+## 8 · Three moves — *8:30*
+
+> **Route by size, not by habit.** Most tasks don't need the frontier model, and the ones
+> that do are identifiable before you dispatch them. A router is cheaper than a better
+> model.
+>
+> **Cache aggressively.** Biggest lever, least glamorous. Go ask your team what their cache
+> hit rate is — most cannot answer, and that is the finding.
+>
+> **Bound the context.** Long-lived agents get expensive because context compounds. Ending
+> the process is a cost control.
+>
+> We did not get cheaper by finding cheaper tokens. We got cheaper by changing where the
+> work runs, and how often we pay for the same context.
+
+---
+
+## 9 · Discussion — *9:30*
+
+*Read the three questions. Then stop talking. Let the room fill the silence.*
+
+If nobody bites, go to the **cache** one — it is the question where people discover they
+don't know their own number, and that reliably starts the conversation.
 
 ---
 
 ## Q&A backup
 
-### "What goes wrong?" → slide 10
+**"Isn't the local model just worse?"**
+> For most tasks, no — and that is the point of sizing the work before you dispatch it. But
+> I would not have trusted it without the review architecture around it. The local model
+> writes; a different model family reviews; deterministic gates run before either of them
+> gets a vote. The routing decision and the verification decision are the same decision.
 
-- **Runaway context burn.** One worker ran 72 minutes and 1,410 commands, consumed
-  100% of its context window, and produced **zero lines of code**. Auto-compaction
-  wasn't firing on that seat, so an agent that started reading never stopped.
-  *Fix: an explicit context budget in every task brief. Cost control is a
-  prompt-level control, not just a routing one.*
-- **The answer key problem.** A worker restored an earlier implementation
-  byte-for-byte in 90 seconds — and **every gate approved it**. Cheap, fast, and
-  worthless as a measurement. *Fix: an anti-recovery clause in the brief, and the
-  reason we deleted our own architecture notes before the rebuild.*
+**"Your 'free' tiers aren't free."**
+> Correct, and I should be precise. The judge's subscription was already being paid for, so
+> I count it as zero *marginal* cost — the right basis for a routing decision and the wrong
+> basis for total cost of ownership. The local model is hardware and electricity. Add your
+> hardware amortisation if you want the fully-loaded number; the routing conclusion does
+> not change.
 
-Both clauses in every task brief today were bought with a failed run. Your first
-spend on an agent fleet is on learning which failure modes cost money.
+**"The counterfactual is doing a lot of work."**
+> It is, and it is directional. It assumes the same token volume would have run on the
+> frontier model. In practice a smaller model sometimes needs more turns, so the true
+> saving is somewhat lower. What is *not* estimated is the sixty-one dollars — that is
+> metered, and it is on the board behind me.
 
-### "How do you trust code no human wrote?" → slide 11
+**"How do you trust code no human wrote?"**
+> You don't trust the author. You make its output falsifiable by something it cannot
+> influence. Here that is a parity test against an independent Python reference the code
+> under test did not produce. Agreement with it is external validation, not
+> self-certification.
 
-You don't trust the author. You make the author's output falsifiable by something
-it cannot influence. The vendored Python reference was not produced by the code
-under test, so agreement with it is external validation, not self-certification:
-RA/Dec within a few arcseconds, centroids within ±0.1 px, identical catalog IDs,
-90% coverage floor on the numerical core.
+**"Did the loop actually catch anything?"**
+> Yes — appendix A. On June 28 the judge failed a task on step ordering and the loop opened
+> its own follow-up rather than merging it or stalling. That review cost nothing marginal.
+> Catching it at frontier prices would not have.
 
-### "Where did that number come from?" → slide 12
+**"What went wrong?"**
+> The first three days. Four hundred and five dollars, and June 10 alone was three hundred
+> and thirteen — one day, more than five times the entire loop week, with only nineteen
+> percent running locally. That day bought the architecture. All three fixes are in the v1
+> git history: move the judge off the frontier tier and trim the orchestrator's context;
+> add a deferred judge queue so review batches instead of blocking a paid seat; add a flag
+> to route review to a cheaper account entirely. Note the first cost fix was a *context*
+> fix.
 
-Every figure with the command or file it came from. All reproducible from this
-repo at `v1-original` and `main`. The one row marked PENDING is the Grafana spend
-data — the only number in the deck that isn't derivable from the repository.
+**"Does this scale past one developer?"**
+> The mechanism does — it is a router and a plan file, not a personality. What I cannot
+> claim from this data is team-scale behaviour: this is one person, one repo, one week. The
+> levers are general; my evidence is narrow.
 
-### Likely pushback, and honest answers
+**"Why not just use the cheap model for everything?"**
+> Because the expensive tier earns its place where judgment decides the outcome. The
+> discipline is treating it as a budget rather than a default. On this build that budget
+> went almost entirely to human oversight — which, in hindsight, is the line item I would
+> attack next.
 
-**"Isn't the second build always faster?"** — Yes, partly. Volunteer this before
-they raise it (it's in the slide-4 script). The defensible claim isn't "agents made
-it 3× faster"; it's that the *shape of the spend* changed and the verification got
-stronger at the same time.
-
-**"Cheap models write bad code."** — Sometimes. That's what the gate ladder and the
-independent reviewer are for. The bet isn't that the cheap model is as good; it's
-that cheap model + deterministic verification beats expensive model alone, per
-dollar.
-
-**"What about the local hardware cost?"** — Real, and it's capex against a variable
-bill. Worth saying plainly rather than claiming local is free.
-
-**"Does this work outside code?"** — The routing and verification pattern
-generalizes; the parity oracle is the hard part. Ask them what their oracle would
-be — that's the discussion.
+**"What would you do differently?"**
+> Cache from day one instead of day three, and get myself out of the monitoring loop
+> sooner. Ninety-nine and a half percent of the bill was a human watching a machine work.
+> That is the next thing to automate, not the code generation.
 
 ---
 
-## Rehearsal checklist — Monday morning
+## Rehearsal checklist
 
-- [ ] Fill the four spend tiles on slide 7 from Grafana (search `is-pending`)
-- [ ] Drop a Grafana panel screenshot into the slot on slide 7, or confirm the
-      live board loads
-- [ ] Decide live vs. screenshots for slide 2 and, if live, pre-warm the solver
-- [ ] Swap the brand tokens if the palette is off (top of the HTML, one block —
-      `slalom.com` was unreachable from the build environment, so the colors are
-      brand-adjacent, not sampled)
-- [ ] Run it once end-to-end with the clock (`T`) — the target is landing on slide
-      9 at 9:30
-- [ ] Agree who takes which slides, and who fields which pushback
+- [ ] `T` starts the clock. Practise once to the warn at 8:30 — **slide 3 must land**.
+- [ ] Grafana up, with the **`plate-solver-v1`** board open in a tab (not the default
+      board). Confirm it reads **$61.13**.
+- [ ] `ps-web` running for the slide-2 live solve, or accept the screenshot.
+- [ ] Know these six cold: **$61 · $574 · 320M · 85% · 5.5% of calls / 99.5% of bill · 11×**.
+- [ ] Practise saying the slide-4 caveat *before* anyone asks for it.
+- [ ] Print to PDF as the projector-failure backup.
+- [ ] Fix the brand palette token block if the real Slalom values are available.

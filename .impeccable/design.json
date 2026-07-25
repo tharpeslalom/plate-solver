@@ -1,0 +1,519 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-25T00:00:00Z",
+  "title": "Design System: Presentation Surfaces",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#0C62FB",
+        "tonalRamp": [
+          "#011C4B",
+          "#023185",
+          "#0346BE",
+          "#045CF7",
+          "#3A80FC",
+          "#73A5FD",
+          "#ADCAFE",
+          "#E6EFFF"
+        ]
+      },
+      "observatory-navy": {
+        "role": "primary",
+        "displayName": "Observatory Navy",
+        "canonical": "#06215C",
+        "tonalRamp": [
+          "#051A48",
+          "#082D7F",
+          "#0C41B5",
+          "#0F55EC",
+          "#437AF3",
+          "#7AA1F6",
+          "#B0C7FA",
+          "#E7EEFD"
+        ]
+      },
+      "signal-wash": {
+        "role": "primary",
+        "displayName": "Signal Wash",
+        "canonical": "#E8F0FE",
+        "tonalRamp": [
+          "#031D49",
+          "#063381",
+          "#0848B9",
+          "#0A5EF1",
+          "#3F82F7",
+          "#77A6F9",
+          "#AFCBFC",
+          "#E7EFFE"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0A1633",
+        "tonalRamp": [
+          "#0D1C40",
+          "#163171",
+          "#2046A1",
+          "#295BD2",
+          "#577FDE",
+          "#88A4E8",
+          "#B9C9F1",
+          "#EAEFFB"
+        ]
+      },
+      "ink-body": {
+        "role": "neutral",
+        "displayName": "Ink Body",
+        "canonical": "#253352",
+        "tonalRamp": [
+          "#182135",
+          "#2A3A5D",
+          "#3C5385",
+          "#4E6CAD",
+          "#758DC1",
+          "#9DAED3",
+          "#C5CFE5",
+          "#EDF0F7"
+        ]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Ink Dim",
+        "canonical": "#55637F",
+        "tonalRamp": [
+          "#1F242E",
+          "#363F51",
+          "#4D5A74",
+          "#657597",
+          "#8794AF",
+          "#AAB3C6",
+          "#CDD2DD",
+          "#F0F1F5"
+        ]
+      },
+      "ground-alt": {
+        "role": "neutral",
+        "displayName": "Ground Alt",
+        "canonical": "#F2F5FA",
+        "tonalRamp": [
+          "#152237",
+          "#253C61",
+          "#36568B",
+          "#4670B6",
+          "#6E90C7",
+          "#98B0D8",
+          "#C2D0E8",
+          "#EDF1F8"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#DCE3EF",
+        "tonalRamp": [
+          "#182234",
+          "#2A3D5C",
+          "#3D5784",
+          "#4F71AC",
+          "#7591C0",
+          "#9EB1D2",
+          "#C6D1E5",
+          "#EEF1F7"
+        ]
+      },
+      "good": {
+        "role": "tertiary",
+        "displayName": "Good",
+        "canonical": "#14875A",
+        "tonalRamp": [
+          "#0A432C",
+          "#11754E",
+          "#19A870",
+          "#20DB92",
+          "#50E5AB",
+          "#83EDC3",
+          "#B6F4DC",
+          "#E9FCF4"
+        ]
+      },
+      "warn": {
+        "role": "tertiary",
+        "displayName": "Warn",
+        "canonical": "#B26A00",
+        "tonalRamp": [
+          "#4C2E00",
+          "#875000",
+          "#C17300",
+          "#FB9600",
+          "#FFAE37",
+          "#FFC671",
+          "#FFDDAB",
+          "#FFF5E5"
+        ]
+      },
+      "crit": {
+        "role": "tertiary",
+        "displayName": "Crit",
+        "canonical": "#C0362C",
+        "tonalRamp": [
+          "#3E120E",
+          "#6E1F19",
+          "#9D2C24",
+          "#CC3A2F",
+          "#DA645C",
+          "#E5918B",
+          "#EFBEBB",
+          "#FAEBEA"
+        ]
+      },
+      "series-before": {
+        "role": "secondary",
+        "displayName": "Series Before",
+        "canonical": "#EB6834",
+        "tonalRamp": [
+          "#461907",
+          "#7B2C0C",
+          "#B03E11",
+          "#E55117",
+          "#ED7749",
+          "#F29F7E",
+          "#F7C6B3",
+          "#FDEEE8"
+        ]
+      },
+      "good-ink": {
+        "role": "tertiary",
+        "displayName": "Good Ink",
+        "canonical": "#0F6B47",
+        "tonalRamp": [
+          "#09432D",
+          "#11764E",
+          "#18A970",
+          "#1FDC92",
+          "#4FE6AB",
+          "#82EEC4",
+          "#B6F5DC",
+          "#E9FCF4"
+        ]
+      },
+      "warn-ink": {
+        "role": "tertiary",
+        "displayName": "Warn Ink",
+        "canonical": "#8F5500",
+        "tonalRamp": [
+          "#4C2D00",
+          "#875000",
+          "#C17300",
+          "#FB9500",
+          "#FFAE37",
+          "#FFC571",
+          "#FFDDAB",
+          "#FFF5E5"
+        ]
+      },
+      "on-navy": {
+        "role": "neutral",
+        "displayName": "On Navy",
+        "canonical": "#C9D8F5",
+        "tonalRamp": [
+          "#0C1E41",
+          "#153572",
+          "#1E4BA3",
+          "#2762D4",
+          "#5685E0",
+          "#87A8E9",
+          "#B8CCF2",
+          "#E9EFFB"
+        ]
+      },
+      "on-navy-accent": {
+        "role": "primary",
+        "displayName": "On Navy Accent",
+        "canonical": "#9FC0FF",
+        "tonalRamp": [
+          "#001A4C",
+          "#002E87",
+          "#0042C1",
+          "#0056FB",
+          "#377CFF",
+          "#71A2FF",
+          "#ABC8FF",
+          "#E5EEFF"
+        ]
+      },
+      "on-navy-dim": {
+        "role": "neutral",
+        "displayName": "On Navy Dim",
+        "canonical": "#9FB4DA",
+        "tonalRamp": [
+          "#152137",
+          "#253B61",
+          "#36548B",
+          "#466EB5",
+          "#6E8EC7",
+          "#98AFD7",
+          "#C3D0E8",
+          "#EDF1F8"
+        ]
+      },
+      "on-navy-faint": {
+        "role": "neutral",
+        "displayName": "On Navy Faint",
+        "canonical": "#7E9AD0",
+        "tonalRamp": [
+          "#142138",
+          "#243963",
+          "#34528E",
+          "#436BB8",
+          "#6C8CC9",
+          "#97ADD9",
+          "#C2CFE9",
+          "#ECF0F8"
+        ]
+      },
+      "signal-bright": {
+        "role": "primary",
+        "displayName": "Signal Bright",
+        "canonical": "#4E93FF",
+        "tonalRamp": [
+          "#001E4C",
+          "#003587",
+          "#004BC1",
+          "#0062FB",
+          "#3785FF",
+          "#71A8FF",
+          "#ABCCFF",
+          "#E5EFFF"
+        ]
+      },
+      "shot-ground": {
+        "role": "neutral",
+        "displayName": "Shot Ground",
+        "canonical": "#0D1120",
+        "tonalRamp": [
+          "#161D36",
+          "#273360",
+          "#384989",
+          "#495FB3",
+          "#7182C5",
+          "#9AA7D6",
+          "#C3CBE7",
+          "#EDEFF8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Opening and closing slide only. Ceiling 92px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The single claim each slide makes. Capped at 20ch."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-heads inside a column or callout."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Argument text. Max 62ch measure."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Annotation, caveats, source lines. Ink Dim."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Every figure. Mono, tabular, always larger than its label."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Stat keys and the one slide eyebrow. Mono, uppercase, 0.16em."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(.2,.7,.3,1)",
+        "purpose": "The system's only easing curve. Every transition and the slide entrance use it."
+      },
+      {
+        "name": "slide-rise",
+        "value": "340ms",
+        "purpose": "Slide entrance: 10px rise + fade. Gated behind prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "bar-grow",
+        "value": "500ms",
+        "purpose": "Comparison bar width transition."
+      },
+      {
+        "name": "chrome-state",
+        "value": "150ms",
+        "purpose": "Presenter chrome hover and rail state changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "collapse",
+        "value": "900px"
+      },
+      {
+        "name": "print",
+        "value": "print media"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Stat Tile",
+      "kind": "card",
+      "refersTo": "stat-tile",
+      "description": "The atomic unit. Mono key, large mono value, optional caption. Recedes so the number leads.",
+      "html": "<div class=\"ds-stat\"><span class=\"ds-stat-k\">Actually paid</span><span class=\"ds-stat-v\">$61</span><span class=\"ds-stat-n\">Same work at list: $574</span></div>",
+      "css": ".ds-stat{background:#F2F5FA;border:1px solid #DCE3EF;border-radius:3px;padding:16px;display:block}.ds-stat-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#55637F;font-weight:600;display:block;margin-bottom:6px}.ds-stat-v{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:36px;font-weight:700;color:#0A1633;line-height:1;letter-spacing:-.02em;display:block}.ds-stat-n{display:block;margin-top:7px;font-size:12px;color:#55637F;line-height:1.4;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}"
+    },
+    {
+      "name": "Callout",
+      "kind": "custom",
+      "refersTo": "callout",
+      "description": "A claim set apart from surrounding prose. Full 1px border plus wash fill.",
+      "html": "<div class=\"ds-callout\"><p><strong>The whole talk in one line:</strong> we did not get cheaper by finding cheaper tokens.</p></div>",
+      "css": ".ds-callout{background:#E8F0FE;border:1px solid #0C62FB;border-radius:3px;padding:16px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#253352;line-height:1.5}.ds-callout p{margin:0;max-width:62ch}.ds-callout strong{color:#0A1633;font-weight:700}"
+    },
+    {
+      "name": "Tier Lane",
+      "kind": "card",
+      "refersTo": "tier-lane",
+      "description": "Parallel comparison of routing tiers. The 3px colored TOP border is the sanctioned edge-key.",
+      "html": "<div class=\"ds-lane\"><span class=\"ds-lane-tier\">Local &middot; on this Mac</span><span class=\"ds-lane-who\">5,880 calls</span><p class=\"ds-lane-n\">Writes the code. Marginal cost is electricity.</p></div>",
+      "css": ".ds-lane{border:1px solid #DCE3EF;border-top:3px solid #14875A;border-radius:3px;background:#fff;padding:18px;display:flex;flex-direction:column;gap:6px}.ds-lane-tier{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#14875A}.ds-lane-who{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:15px;color:#0A1633;font-weight:700}.ds-lane-n{margin:0;font-size:13px;color:#55637F;line-height:1.5;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}"
+    },
+    {
+      "name": "Presenter Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Chrome control. Hover shifts border and text to Signal Blue; no fill, no lift.",
+      "html": "<button class=\"ds-btn\">Start clock</button>",
+      "css": ".ds-btn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:#253352;background:#fff;border:1px solid #DCE3EF;border-radius:3px;padding:6px 11px;cursor:pointer;transition:border-color .15s,color .15s}.ds-btn:hover{border-color:#0C62FB;color:#0C62FB}.ds-btn:focus-visible{outline:2px solid #0C62FB;outline-offset:2px}"
+    },
+    {
+      "name": "Presenter Button (active)",
+      "kind": "button",
+      "refersTo": "button-active",
+      "description": "Toggled state via aria-pressed. The only place Signal Blue becomes a fill.",
+      "html": "<button class=\"ds-btn-active\" aria-pressed=\"true\">Notes</button>",
+      "css": ".ds-btn-active{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;background:#0C62FB;border:1px solid #0C62FB;color:#fff;border-radius:3px;padding:6px 11px;cursor:pointer}.ds-btn-active:focus-visible{outline:2px solid #0A4FCC;outline-offset:2px}"
+    },
+    {
+      "name": "Cost Pill",
+      "kind": "chip",
+      "refersTo": "cost-pill",
+      "description": "Zero-cost marker on loop steps. Text darkened from #14875A to #0F6B47 to clear 4.5:1 at 13px bold.",
+      "html": "<span class=\"ds-cost\">$0</span> <span class=\"ds-cost ds-cost-paid\">$60.80</span>",
+      "css": ".ds-cost{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:13px;color:#0F6B47;background:#E4F4EC;border:1px solid #14875A;border-radius:2px;padding:2px 8px;white-space:nowrap}.ds-cost-paid{color:#A32D24;background:#FBE9E7;border-color:#C0362C}"
+    },
+    {
+      "name": "Bar Pair",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Before/after comparison. CVD-validated series pair; short bars flip their label outside the fill.",
+      "html": "<div class=\"ds-bars\"><div class=\"ds-bar\"><span class=\"ds-bar-l\">manual</span><span class=\"ds-bar-t\"><span class=\"ds-bar-f\" style=\"width:100%;background:#EB6834\"><span class=\"ds-bar-n\">$405</span></span></span></div><div class=\"ds-bar\"><span class=\"ds-bar-l\">loop</span><span class=\"ds-bar-t\"><span class=\"ds-bar-f ds-short\" style=\"width:15%;background:#0C62FB\"><span class=\"ds-bar-n\">$61</span></span></span></div></div>",
+      "css": ".ds-bars{display:flex;flex-direction:column;gap:10px}.ds-bar{display:grid;grid-template-columns:62px 1fr;align-items:center;gap:10px}.ds-bar-l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#55637F;text-align:right}.ds-bar-t{position:relative;height:32px}.ds-bar-f{position:relative;height:100%;border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;transition:width .5s cubic-bezier(.2,.7,.3,1)}.ds-bar-n{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:14px;font-weight:700;color:#fff;white-space:nowrap}.ds-short .ds-bar-n{color:#0A1633;position:absolute;left:calc(100% + 8px)}"
+    },
+    {
+      "name": "Loop Step",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature component. A numbered row inside the loop diagram, carrying a right-aligned cost pill.",
+      "html": "<div class=\"ds-step\"><span class=\"ds-step-n\">2</span><span class=\"ds-step-l\"><b>Local model writes the code</b><span>qwen3.6-27b &middot; on this Mac</span></span><span class=\"ds-cost2\">$0</span></div>",
+      "css": ".ds-step{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;border:1px solid #DCE3EF;border-radius:3px;padding:12px 14px;background:#F2F5FA}.ds-step-n{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;color:#fff;background:#0C62FB;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px}.ds-step-l b{display:block;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#0A1633;font-size:15px;line-height:1.2}.ds-step-l span{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#55637F;font-size:11px;margin-top:2px}.ds-cost2{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:13px;color:#0F6B47;background:#E4F4EC;border:1px solid #14875A;border-radius:2px;padding:2px 8px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument Panel",
+    "overview": "This is a readout, not a presentation. The governing fiction is a measurement device: a panel you walk up to and read, where the number is always larger than the thing labelling it, and nothing on the surface exists that isn't reporting a value. Slides are gauges. The audience is taking a reading, not being told a story.\n\nThat fiction resolves a lot of decisions at once. Numbers are set in monospace with tabular figures so digits align in columns and change without reflowing. Surfaces are flat — depth comes from hairline rules and three tonal grounds, never from shadow, because a projector crushes soft shadows into mud. Chrome recedes to near-invisibility so the figure it frames can be read from the back of a room. The palette is mostly absent: one blue, used rarely enough that it still means something when it appears.\n\nThe register is brand — design is the deliverable here — but the expression is deliberately instrument-like rather than expressive. Credibility is the aesthetic goal.",
+    "keyCharacteristics": [
+      "Monospace tabular numerals carry every figure; the sans family carries every argument",
+      "Zero shadows; three tonal grounds and 1px rules do all the layering",
+      "One accent blue, rationed; status colors reserved and never decorative",
+      "Type scales to the slide box via container queries, not to the viewport",
+      "A single −11° diagonal, used three times and no more",
+      "Every surface must survive a bad projector, the back row, and a PDF export"
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Signal Blue is the only non-status accent in the system. If a second accent feels necessary, the slide is carrying two ideas and should be two slides.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reserved Status Rule",
+        "body": "Green, amber, and red mean state and nothing else. A green figure is a zero-cost figure; it is never green because green looks positive.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bookend Rule",
+        "body": "Observatory Navy appears on the first and last slide only. It marks the entry and exit of the argument.",
+        "section": "colors"
+      },
+      {
+        "name": "The Container-Query Rule",
+        "body": "Every type step scales in cqw against the slide's own inline size, not vw. The slide is the container; the viewport is irrelevant.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Any figure a reader might compare against another figure is set in the mono family with font-variant-numeric: tabular-nums.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Eyebrow Rule",
+        "body": "Exactly one small-caps mono label per slide, above the headline. It is a wayfinding device, not section furniture.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ground Alternation Rule",
+        "body": "Consecutive slides alternate between Ground and Ground Alt. This is the only sectioning device in the system.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "A surface that needs to feel lifted gets a border or a different ground, never a shadow. If neither reads, the layout is wrong.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Rationed Diagonal Rule",
+        "body": "Three uses of the −11° skew, total: brandmark, eyebrow rule, list bullet. A fourth use has to displace one of the three.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do scale type in cqw against the slide container, never vw. The projector's aspect ratio is unknown.",
+      "Do set every comparable figure in the mono family with tabular-nums.",
+      "Do keep body text at Ink Body or darker. 12.5:1 is not excessive here; the back row is eight metres away.",
+      "Do alternate Ground and Ground Alt between consecutive slides for rhythm.",
+      "Do give caveats real space in the layout — in caption type at the foot of the slide that makes the claim, never a footnote or appendix-only mention.",
+      "Do pair every animation with a prefers-reduced-motion alternative, and gate reveals behind no-preference so content is visible by default.",
+      "Do keep the print stylesheet working: one slide per page, chrome suppressed."
+    ],
+    "donts": [
+      "Don't add a box-shadow. Anywhere. Use a border or a different ground.",
+      "Don't use a colored border-left / border-right above 1px as an accent. Use a full 1px border plus a wash fill. The tier lane's 3px top border is the only sanctioned edge-key.",
+      "Don't let Signal Blue exceed one role per slide, or introduce a second non-status accent.",
+      "Don't use a status color as a series or decorative color.",
+      "Don't put Observatory Navy on a middle slide.",
+      "Don't use Ink Faint for anything the audience reads; it fails AA at 2.98:1 and is confined to presenter chrome.",
+      "Don't set status text in an edge value. Good and Warn have ink variants precisely because #14875A and #B26A00 fail 4.5:1 as small type.",
+      "Don't add a fourth use of the −11° skew.",
+      "Don't animate layout properties (width, height, padding, margin) as a default. Two exceptions are live and documented: the comparison bar's width and the presenter rail's hover height, both one-shot and trivially small. Anything new uses transform and opacity.",
+      "Don't use numbered markers as wayfinding alongside the eyebrow. Numbering a real in-slide sequence is content and is fine; numbering slides or sections as furniture is not.",
+      "Don't nest containers. A stat tile inside a callout inside a lane is three frames fighting for the same number."
+    ]
+  }
+}

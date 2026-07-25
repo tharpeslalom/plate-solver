@@ -38,3 +38,12 @@ state.json
 # Polecat/bead bookkeeping — never product code (nux committed .beads/redirect into PR #29)
 .beads/
 lcov.info
+
+# scratch: playwright screenshot output
+.playwright-mcp/
+
+# accidental nested clone — do not commit (155MB)
+/plate-solver/
+
+# impeccable: external quality-bar reference images
+.impeccable/refs/
