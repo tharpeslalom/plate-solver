@@ -22,7 +22,27 @@ Open `tokenomics-deck.html` in a browser. Everything is inlined; it works offlin
 | `1`–`13` | Jump to slide (type both digits) |
 | `?` | All shortcuts |
 
-Print to PDF for a backup copy — each slide breaks onto its own page.
+## Printing
+
+```bash
+./print.sh            # → tokenomics-deck.pdf, 13 pages, one slide per page
+```
+
+`tokenomics-deck.pdf` is committed, so you only need this after editing the deck.
+
+**Printing it on paper.** The pages are 1600×900 px (16:9), so in the print dialog pick
+**landscape**, scale **Fit to page**, and turn **background graphics ON** — without it you
+lose the red/green, and in this deck those are accounting terms, not decoration. The stock
+prints white; only the ink is coloured, so it is not toner-hungry apart from the slide-3
+screenshot of the dark app UI.
+
+**Don't use Cmd-P on the HTML directly** unless you have to. Chrome resolves print media
+queries against the default paper width before `@page` applies, and the deck's own
+`@page { size: 1600px 900px }` is what keeps the layout identical to the screen. `print.sh`
+pins that; the browser dialog may not.
+
+**Handouts.** For a leave-behind, `talking-track.md` is the better document — it has the
+timing table, the full script, the cut rule, and the eight Q&A answers.
 
 ## The argument
 

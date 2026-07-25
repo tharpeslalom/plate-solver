@@ -341,10 +341,18 @@ in the deck. Everything else on the page is typeset square.
 - **Do** rule off totals with a double line, and only ever one total per page.
 - **Do** colour by accounting meaning: red charges, green credits, black everything else.
 - **Do** scale type in `cqw` against the page, and set every figure in tabular mono.
-- **Do** keep the print stylesheet working: the deck prints as flat black-on-white with
-  the sheet edge and ledger ruling suppressed, one slide per page. `#FFF`, `#000`, and
-  `#333` appear **only** inside the `@media print` block; the palette above governs
-  screen and is never mixed with them.
+- **Do** keep the print stylesheet working, and keep it in colour. Earlier worlds
+  flattened to black-on-white on paper because a dark deck cannot be printed; this one is
+  already ink on paper, so print keeps the full palette and only swaps the stock to white
+  (toner, and cream bands badly) and drops the ledger ruling. Red and green carry
+  accounting meaning — losing them makes the invoice unreadable as an invoice.
+- **Do** print at the design size. `@page { size: 1600px 900px }` is load-bearing: every
+  dimension is a `clamp()` between px bounds around a `cqw` middle, so a smaller page lets
+  the px minimums win, type grows proportionally, and slides overflow. Scale to paper at
+  print time, not at layout time.
+- **Do** keep width media queries qualified with `screen`. Chrome resolves print media
+  queries against the default paper width (~816px) before `@page` applies, so an
+  unqualified `max-width: 900px` fires during printing and collapses every column set.
 
 ### Don't:
 - **Don't** add glow, neon, gradient text, or blur. This is ink on paper.

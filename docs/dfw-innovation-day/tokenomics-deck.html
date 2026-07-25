@@ -327,7 +327,10 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 .help dt{ font-family:var(--font-data); font-size:10.5px; font-weight:700; color:var(--ink); border:1px solid var(--rule); padding:1px 6px; flex:none; }
 .help dd{ margin:0; font-size:12px; color:var(--ink-2); }
 
-@media (max-width:900px){
+/* screen-only: Chrome resolves print media queries against the default paper
+   width (~816px) before @page size applies, so an unqualified max-width query
+   fires during print and collapses every column set. */
+@media screen and (max-width:900px){
   .cols-2, .cols-2u, .statrow, .bars{ grid-template-columns:1fr !important; }
   .slide{ aspect-ratio:auto; min-height:0; }
   .row, .colhead{ grid-template-columns:1fr auto !important; }
@@ -341,17 +344,35 @@ table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94e
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{ transition:none !important; animation:none !important; }
 }
+/* ---------------------------------------------------------------- print ---
+   The Ledger prints as itself. Earlier worlds flattened to black-on-white here
+   because a dark deck cannot be printed; this one is already ink on paper, and
+   the red/green carry accounting meaning that must survive the printer. Only
+   the stock goes white (toner, and cream banding) and the ruling comes off. */
+/* The page is the DESIGN size in CSS px, not a paper size. Every dimension in
+   this deck is a clamp() between px bounds around a cqw middle — render the
+   page smaller than the design and the px minimums win, type gets
+   proportionally larger, and the layout overflows its own slide. A 1600x900
+   page keeps the printed slide pixel-identical to the screen; the viewer
+   scales it to fit A4 or Letter landscape at print time. */
+@page{ size: 1600px 900px; margin: 0; }
 @media print{
   .bar-top,.bar-bot,.grid-ov,.help,.notes{ display:none !important; }
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  html,body{ margin:0; padding:0; }
   .deck{ background:#fff; }
-  .frame{ border:0; padding:0; }
-  .frame::before{ display:none; }
-  .slide{ display:flex !important; flex-direction:column; page-break-after:always; break-after:page;
-          background:#fff; background-image:none; color:#000; aspect-ratio:16/9; }
-  .flap{ color:#000; }
-  .row .dest,.stat .v,.q,h3,strong{ color:#000; }
-  p,.row .sub,.stat .n,.stat .k,.colhead,table.src td{ color:#333; }
   .stage{ padding:0; max-width:none; }
+  .frame{ border:0; padding:0; background:none; }
+  .frame::before{ display:none; }
+  .slide{
+    display:flex !important; flex-direction:column;
+    width:1600px; height:900px; aspect-ratio:auto;
+    background:#fff; background-image:none;
+    break-after:page; page-break-after:always; break-inside:avoid;
+  }
+  .slide:last-child{ break-after:auto; page-break-after:auto; }
+  /* Paper-2 grounds would print as grey boxes; drop them to the sheet. */
+  .shot, .shot figcaption{ background:#fff; }
 }
 </style>
 </head>
