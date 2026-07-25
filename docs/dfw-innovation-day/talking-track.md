@@ -113,8 +113,12 @@ screenshot is real output and nobody will know.
 > "sonnet", get the local model. Ask for "haiku", get the local model. The one model I
 > chose to keep on the meter is the only thing that bills.
 >
-> That is a **config file**, not a rewrite. Same commands, same tool, same repo. Mid-run I
-> moved the orchestrator itself onto the local model and the loop did not notice.
+> That is a **config file**, not a rewrite. Same commands, same tool, same repo.
+>
+> *(point at the red row)* Which means the build itself was **free**. Claude Code was fired
+> on the sonnet alias, so it resolved to the local model — every row above the red one cost
+> nothing to run. The meter only ever ran when **I** opened a session to check on it. Sixty
+> dollars and eighty cents of me looking over its shoulder.
 
 **`[IF ASKED]`** Capital cost: zero. That is the point — there was nothing to procure.
 

@@ -130,6 +130,7 @@ h3{
 .row .val.green{ color:var(--green); }
 .row .val.red{ color:var(--red); }
 .row .val.dim{ color:var(--flap-dim); }
+.row .dest.red{ color:var(--red); }
 .row .val{
   font-family:var(--font-data); font-variant-numeric:tabular-nums; font-weight:700;
   font-size:clamp(14px,1.5cqw,26px); color:var(--flap-white);
@@ -432,12 +433,16 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
         <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Routes every call</span><span class="chip free">Open source</span>
       </div>
       <div class="row" style="grid-template-columns:1.35fr 1fr auto">
-        <span><span class="dest">Claude Code</span><span class="sub">one fresh process per task</span></span>
-        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Does the work</span><span class="chip delayed">Metered</span>
+        <span><span class="dest">Claude Code</span><span class="sub">fired on the sonnet alias &rarr; local</span></span>
+        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Does the work</span><span class="chip free">$0</span>
       </div>
       <div class="row" style="grid-template-columns:1.35fr 1fr auto">
         <span><span class="dest">ralph-grind.sh</span><span class="sub">a bash loop in a tmux session</span></span>
         <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Runs unattended</span><span class="chip free">40 lines</span>
+      </div>
+      <div class="row" style="grid-template-columns:1.35fr 1fr auto">
+        <span><span class="dest red">Me, watching it</span><span class="sub">a frontier model, on the meter</span></span>
+        <span class="val dim" style="font-size:clamp(10px,.8cqw,13px)">Supervises</span><span class="chip cancelled">$60.80</span>
       </div>
     </div>
     <div style="align-self:center">
@@ -449,8 +454,9 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
         <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;opus&rdquo;</b><span>the one I chose to keep on the meter</span></span><span class="chip cancelled">&rarr; real, paid</span></div>
       </div>
       <p style="margin-top:clamp(10px,1.2cqw,18px)"><strong>That is a config file, not a rewrite.</strong>
-        Nothing upstream changed &mdash; the same commands, the same tool, the same repo. Mid-run I
-        moved the orchestrator itself onto the local model and the loop did not notice.</p>
+        Nothing upstream changed &mdash; the same commands, the same tool, the same repo.</p>
+      <p><strong>So the build itself was free.</strong> Every row above the red one cost nothing to
+        run. The meter only ever ran when <em>I</em> opened a session to check on it.</p>
     </div>
   </div>
 </section>
@@ -742,7 +748,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
 `<p>Worth thirty seconds on what this actually ran on, because people assume there is a cluster behind it. There isn't.</p>
 <p><em>Walk the left column.</em> A MacBook Pro I already owned. A quantised open-weights model on the GPU. LiteLLM &mdash; open source &mdash; as the switchboard. Claude Code doing the work. And a <b>forty-line bash loop</b> keeping it going in a tmux session while I made dinner.</p>
 <p><em>Right side, this is the trick.</em> Claude Code asks for a model <b>by name</b>. The switchboard decides what actually answers, and the tool never finds out. Ask for "sonnet", get the local model. Ask for "haiku", get the local model. The one model I chose to keep on the meter is the only thing that bills.</p>
-<p>That is a <b>config file</b>, not a rewrite. Same commands, same tool, same repo. Mid-run I moved the orchestrator itself onto the local model and the loop did not notice.</p>
+<p>That is a <b>config file</b>, not a rewrite. Same commands, same tool, same repo.</p>
+<p><em>Point at the red row.</em> Which means the build itself was <b>free</b>. Claude Code was fired on the sonnet alias, so it resolved to the local model &mdash; every row above the red one cost nothing to run. The meter only ever ran when <b>I</b> opened a session to check on it. Sixty dollars and eighty cents of me looking over its shoulder.</p>
 <p><em>If asked about capital cost:</em> zero. That is the point &mdash; there was nothing to procure.</p>`,
 
 `<p>This is the slide that explains the number. Take your time here.</p>
