@@ -1,39 +1,38 @@
 ---
 name: Presentation Surfaces
-description: A matte arrivals board that reports what the build cost. Still — nothing animates.
+description: An itemised bill for one week of work. Cream stock, black ink, one red stamp. Nothing animates.
 colors:
-  flap-black: "#0D0D0F"
-  flap-face: "#141417"
-  flap-white: "#F2F2F2"
-  flap-dim: "#9A9CA1"
-  flap-faint: "#6E7076"
-  delay-amber: "#FFB400"
-  amber-dim: "#8A6410"
-  cancelled-red: "#D32F2F"
-  ontime-green: "#4CAF6D"
-  steel-dark: "#7D838C"
-  steel-deep: "#3A3D42"
-  signal-blue: "#2E8BFF"
-  rule: "#2A2A2E"
+  paper: "#F4F1E6"
+  paper-2: "#EBE7D8"
+  paper-edge: "#DCD7C4"
+  ink: "#16140F"
+  ink-2: "#4C483C"
+  ink-3: "#6E695B"
+  rule: "#C6C0AD"
+  rule-soft: "#D9D4C3"
+  charged-red: "#B3261E"
+  credited-green: "#1C6B3F"
+  amber: "#8A5A00"
+  signal-blue: "#14459B"
 typography:
   display:
     fontFamily: "Arial Narrow, Helvetica Neue Condensed, Roboto Condensed, sans-serif"
     fontSize: "clamp(30px, 4.8cqw, 78px)"
     fontWeight: 700
     lineHeight: 1.06
-    letterSpacing: "0.06em"
+    letterSpacing: "0.05em"
   headline:
     fontFamily: "Arial Narrow, Helvetica Neue Condensed, Roboto Condensed, sans-serif"
     fontSize: "clamp(22px, 3cqw, 48px)"
     fontWeight: 700
     lineHeight: 1.1
-    letterSpacing: "0.05em"
+    letterSpacing: "0.045em"
   row:
     fontFamily: "Arial Narrow, Helvetica Neue Condensed, Roboto Condensed, sans-serif"
     fontSize: "clamp(13px, 1.35cqw, 24px)"
     fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "0.08em"
+    letterSpacing: "0.07em"
   body:
     fontFamily: "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace"
     fontSize: "clamp(11px, 0.95cqw, 16px)"
@@ -55,51 +54,48 @@ typography:
     fontFeature: "tabular-nums"
 rounded:
   none: "0px"
-  hair: "1px"
-  cell: "2px"
-  chip: "2px"
-  housing: "3px"
 spacing:
   cell-gap: "2px"
   row-pad: "clamp(8px, 0.9cqw, 15px) clamp(10px, 1.1cqw, 18px)"
   board-inset: "clamp(16px, 2.2cqw, 38px)"
   frame: "1px"
+  stub: "clamp(14px, 1.5vw, 26px)"
 components:
   headline:
     backgroundColor: "transparent"
-    textColor: "{colors.flap-white}"
+    textColor: "{colors.ink}"
     typography: "{typography.display}"
     rounded: "{rounded.none}"
-  board-row:
-    backgroundColor: "{colors.flap-black}"
-    textColor: "{colors.flap-white}"
+  line-item:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
     typography: "{typography.row}"
     rounded: "{rounded.none}"
     padding: "clamp(8px, 0.9cqw, 15px) clamp(10px, 1.1cqw, 18px)"
-  chip-ontime:
+  stamp-neutral:
     backgroundColor: "transparent"
-    textColor: "{colors.flap-white}"
-    rounded: "{rounded.chip}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
     padding: "3px 10px"
-  chip-delayed:
+  stamp-credit:
     backgroundColor: "transparent"
-    textColor: "{colors.delay-amber}"
-    rounded: "{rounded.chip}"
+    textColor: "{colors.credited-green}"
+    rounded: "{rounded.none}"
     padding: "3px 10px"
-  chip-cancelled:
+  stamp-charge:
     backgroundColor: "transparent"
-    textColor: "{colors.cancelled-red}"
-    rounded: "{rounded.chip}"
+    textColor: "{colors.charged-red}"
+    rounded: "{rounded.none}"
     padding: "3px 10px"
   button:
-    backgroundColor: "{colors.flap-black}"
-    textColor: "{colors.flap-white}"
-    rounded: "{rounded.chip}"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
     padding: "7px 13px"
   button-active:
     backgroundColor: "transparent"
-    textColor: "{colors.delay-amber}"
-    rounded: "{rounded.chip}"
+    textColor: "{colors.charged-red}"
+    rounded: "{rounded.none}"
     padding: "7px 13px"
 ---
 
@@ -107,117 +103,121 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Departure Board"**
+**Creative North Star: "The Ledger"**
 
-The deck is an arrivals board: matte black, edge to edge, behind a hairline steel rule.
-Not a slide that resembles one — the actual object, with rows that report status in the
-board's own language and figures set in fixed columns that compare cleanly down a page.
+The deck is an itemised bill for one week of work. Cream stock, black typewriter ink,
+one red stamp. Every slide is a line item on the same document: faint ledger ruling,
+dotted leaders running description across to amount, double rules under totals, and a
+perforated stub down the left margin where you would tear it off.
 
-An earlier revision built the fiction out literally — split-flap cells with hinge lines,
-a brushed steel housing, visible bolt heads, and a flip cascade on every slide change.
-That was too much theatre for a ten-minute cost talk: the mechanism started reading as
-the subject. It was cut. What survives is the part that was doing the work — the matte
-ground, the status palette, the row grammar, and the discipline of fixed columns.
+The fiction was chosen for three reasons. It is **light**, which in a conference room
+where every other AI talk is a glowing dark keynote is the contrarian read — the deck
+is recognisable from the hallway. The talk already calls the product *"the receipt, not
+the subject,"* so the form is the argument rather than a costume over it. And an invoice
+settles the palette without debate: **red is a charge, green is a credit, black is
+neutral.** No decorative colour exists, because a bill does not have one.
 
-The fiction was chosen because its native context *is* the room the deck is shown in: a
-departure board is the one object designed to be read simultaneously by a hall full of
-people standing at different distances. Every constraint that matters here — legible from
-the back, high contrast under bad light, figures in fixed cells that compare cleanly down
-a column — is a constraint the board solved decades ago in hardware.
+It also makes the thesis arithmetic. The opening slide is not a claim about savings; it
+is four line items that sum to $61.13, and the room can check the subtraction. Every
+credit on that bill is an engineering decision, which is the whole talk.
 
-It also settles the status palette without argument. Amber means attention, red means
-this one costs you, white means nominal. The deck's spend figures are already that
-vocabulary; the board just makes it literal. And because the board is **matte, painted,
-mechanical**, the surface cannot drift into the glowing dark-keynote look that every
-AI-generated "dark deck" lands on. There is no glow in this world.
+**Prior worlds, and why they were cut.** An Instrument Panel (light, blue, flat) was
+replaced by a Departure Board (matte black, split-flap cells, brushed steel housing, a
+flip cascade per slide). The board's mechanism was well-built and wrong — in a
+ten-minute talk about cost, a headline that redraws itself every time you advance
+competes with the presenter. Stripping the mechanism left the board too anonymous to
+survive as a world. The Ledger replaces it outright; it was chosen over a brutalist type
+poster, an engineering blueprint, and a terminal.
 
 **Key Characteristics:**
-- Every slide is a board behind a hairline steel edge; the edge is structure, not decoration
-- Display type is condensed grotesk caps, tracked wide, set plainly on the ground
-- Comparisons are rows with fixed columns and a status chip, never cards
-- Amber / red / white is a status language, never a decorative palette
+- Every slide is a page of one document, not a card in a stack
+- Figures are line items: qty, description, dotted leader, amount, right-aligned
+- Totals rule off with a **double line** — the accounting convention for final
+- Red charges, green credits, black neutral. There is no fourth colour and no accent
+- Chips are rubber stamps: doubled rule, wide tracking, never filled
 - **Nothing animates.** Slides change; their contents do not move
-- Matte throughout — no glow, no gradient text, no glass
+- Flat throughout — no glow, no gradient, no shadow. Paper on a desk
 
 ## Colors
 
-Drenched. The surface **is** flap black; light exists only as painted type, amber lamps,
-and the hairline steel edge.
+Printed. The surface **is** the paper; everything else is ink laid on it. Two inks —
+black and red — plus a green reserved for credits, which is the one liberty taken with
+the metaphor and earned by how often this deck subtracts.
 
-### Primary
-- **Flap Black** (`#0D0D0F`): The board ground. Owns the whole surface.
-- **Flap Face** (`#141417`): The unlit cell in a bar meter — one step above the ground so
-  the segment grid is visible without a border.
-- **Flap White** (`#F2F2F2`): Painted type. Slightly off-white — paint on plastic, never
-  pure #FFF.
+### Ground
+- **Paper** (`#F4F1E6`): The stock. Owns every slide. A warm cream, never white, because
+  white on a projector reads as a blown-out gap rather than a surface.
+- **Paper 2** (`#EBE7D8`): Attachments and figure mounts — one step down, as if a second
+  sheet were laid under the first.
+- **Paper Edge** (`#DCD7C4`): The hairline cut edge of the sheet.
 
-### Status
-The board's native vocabulary. These are the only saturated colors, and they always mean
-state.
-- **Delay Amber** (`#FFB400`): Attention. Active controls, the retry path, the figure the
-  room should look at. 9.9:1 on flap black.
-- **Cancelled Red** (`#D32F2F`): This one costs money. Metered spend, failures. 4.9:1.
-- **On-Time Green** (`#4CAF6D`): Nominal, zero-cost, passing. 7.4:1.
+### Ink
+- **Ink** (`#16140F`): Body of the document. Near-black, warm. 16.3:1 on paper.
+- **Ink 2** (`#4C483C`): Secondary — prose, column heads. 8.1:1.
+- **Ink 3** (`#6E695B`): Tertiary annotation and line-item subtitles. 4.8:1, which clears
+  AA for small text; do not lighten it further.
+- **Rule** (`#C6C0AD`) / **Rule Soft** (`#D9D4C3`): Dotted leaders and hairline separators.
 
-### Steel
-The edge, never the content.
-- **Steel Deep** (`#3A3D42`): The 1px frame around every board, as a vertical three-stop
-  gradient against `#23262A` so the edge catches light without becoming a bezel.
-- **Steel Dark** (`#7D838C`): Presenter-chrome hover borders only. The brushed housing
-  and bolt heads the lighter steels were mixed for are gone, and so are those tokens.
-
-### Neutral
-- **Flap Dim** (`#9A9CA1`): Secondary row text and column headers. 7.0:1.
-- **Flap Faint** (`#6E7076`): Tertiary annotation only. 3.6:1 — large text or non-essential.
-- **Rule** (`#2A2A2E`): Hairline row separators.
+### Money
+The document's only saturated colours, and they are accounting terms, not decoration.
+- **Charged Red** (`#B3261E`): This line costs money. Charges, the metered tier, the
+  total due, the PAID stamp. 5.8:1.
+- **Credited Green** (`#1C6B3F`): This line is a credit. Savings, $0 tiers, work routed
+  off the meter. 5.8:1.
+- **Amber** (`#8A5A00`): Held in reserve for a caution that is neither a charge nor a
+  credit. 5.2:1. Currently unused in the deck; do not reach for it as a highlight.
 
 ### Signal
-- **Signal Blue** (`#2E8BFF`): The Slalom thread, and the only non-board color. Brandmark,
-  live rail segment, focus rings. Brightened from the incumbent `#0C62FB` because the
-  original is unreadable on flap black. Never a status, never a fill.
+- **Signal Blue** (`#14459B`): The Slalom thread, and the only non-document colour.
+  Brandmark and focus rings. 7.9:1. Darkened from `#2E8BFF` for the light ground. Never
+  a status, never a fill.
 
 ### Named Rules
 
-**The Status-Only Rule.** Amber, red, and green mean state. A figure is amber because the
-room should look at it, never because amber looks good.
+**The Accounting Rule.** Red is a charge, green is a credit, black is neutral. A figure
+is red because it took money, never because it is important. If a number is neither a
+charge nor a credit — a latency, a token count, a percentage of calls — it is black. This
+replaces the retired Status-Only Rule and is stricter: the previous world let amber mean
+"look here," and this one has no colour for that. Emphasis comes from size and position.
 
-**The No-Glow Rule.** No `box-shadow` spread as light, no neon, no `filter: blur` halo, no
-gradient text. The board is painted plastic under hall lighting. Depth comes from the
-hairline rules and one-step surface changes, nothing else.
+**The No-Glow Rule.** No `box-shadow`, no neon, no `filter: blur`, no gradient text. This
+is ink on paper under room light. Depth comes from hairline rules, dotted leaders, and
+one-step paper changes, nothing else.
 
-**The One Blue Rule.** Signal Blue appears on the brandmark, the live rail segment, and
-focus rings. Three places. It is the client's thread through the object, not a fourth
-status.
+**The One Blue Rule.** Signal Blue appears on the brandmark and focus rings. Two places.
+It is the client's thread through the document, not a third ink.
 
 ## Typography
 
 **Display / Row Font:** Arial Narrow → Helvetica Neue Condensed → Roboto Condensed
 **Data / Label Font:** ui-monospace → SF Mono → Menlo → Consolas
 
-**Character:** A condensed grotesk in caps, tracked wide, is what a flap can physically
-carry — narrow enough to fit a cell, heavy enough to read at distance. It is paired with
-monospace for anything numeric, because the board's whole promise is that a column of
-figures lines up. No third family, no italic, no lowercase in display.
+**Character:** A condensed grotesk in caps, tracked wide, is the printed heading on a
+form — narrow enough to fit a ruled column, heavy enough to read at distance. It is
+paired with monospace for anything numeric, because the document's whole promise is that
+a column of figures lines up and the subtraction can be checked. No third family, no
+italic, no lowercase in display.
 
 ### Hierarchy
-- **Display** (700, `clamp(30px, 4.6cqw, 74px)`, caps, ls 0.06em): The board's primary message.
-  Rendered in flap cells. Opening and closing slides.
-- **Headline** (700, `clamp(22px, 2.9cqw, 46px)`, caps, ls 0.05em): The claim per slide,
-  also in flap cells.
-- **Row** (700, `clamp(13px, 1.35cqw, 24px)`, caps, ls 0.08em): Destination-column text in
-  board rows.
+- **Display** (700, `clamp(30px, 4.8cqw, 78px)`, caps, ls 0.05em): The document's primary
+  claim. Opening and closing slides.
+- **Headline** (700, `clamp(22px, 3cqw, 48px)`, caps, ls 0.045em, max 26ch): The claim per
+  page.
+- **Row** (700, `clamp(13px, 1.35cqw, 24px)`, caps, ls 0.07em): Description-column text in
+  line items.
 - **Body** (mono, 400, `clamp(11px, 0.95cqw, 16px)`, lh 1.6, max 68ch): Argument text and
-  caveats. Mono at body size is legible here because the ground is dark and the measure
-  is short.
+  caveats. Mono at body size is legible here because the measure is short and the
+  contrast against paper is 8:1.
 - **Label** (mono, 700, `clamp(9px, 0.7cqw, 12px)`, ls 0.18em, caps): Column headers and
-  the slide's single kicker.
-- **Data** (mono, 700, `clamp(20px, 2.4cqw, 44px)`, tabular): Every figure.
+  the page's single kicker, which runs a dotted leader out to the margin like a form field.
+- **Data** (mono, 700, `clamp(20px, 2.4cqw, 44px)`, tabular): Every figure, always
+  right-aligned in its column.
 
 ### Named Rules
 
 **The Caps Rule.** Display and headline type is uppercase, tracked wide, set plainly on
-the board ground. It was formerly set in per-character flap cells; the cells were cut with
-the animation, the caps stayed. They are what makes a headline legible from the back.
+the paper. It reads as the printed heading on a form, and it is what makes a headline
+legible from the back of the room.
 
 **The Container-Query Rule.** Carried over and still binding: type scales in `cqw` against
 the board's own inline size, never `vw`. The projector's aspect ratio is unknown.
@@ -227,19 +227,19 @@ board, a column that does not line up is a broken board.
 
 ## Layout
 
-Every slide is a **board behind a hairline steel edge**. The frame is a 1px border
-carrying a three-stop vertical gradient — enough to separate the board from the page,
-not enough to read as a housing. Inside it, the board ground is inset by
-`clamp(16px, 2.2cqw, 38px)`.
+Every slide is a **page of one document**. The sheet has a 1px cut edge and a perforated
+stub down the left margin — a dotted vertical rule at `clamp(14px, 1.5vw, 26px)` — so the
+surface reads as paper you could tear rather than a slide that happens to be beige. The
+page is inset by `clamp(16px, 2.2cqw, 38px)`, and carries a ledger ruling at 2% ink every
+36px: visible as texture at reading distance, invisible as stripes from the back.
 
-The internal grammar is **rows before columns**. Any comparison of two or more things is a
-row set with shared columns and a right-aligned status column — the departure-table form —
-rather than side-by-side panels. Prose sits in a single column at ≤68ch against the board
-ground with no container around it; a box around body text is a card, and this world does
-not have cards.
+The internal grammar is **line items before columns**. Any comparison is a row set with
+shared columns and a right-aligned amount — the invoice form — rather than side-by-side
+panels. Prose sits in a single column at ≤68ch directly on the paper; a box around body
+text is a card, and this world does not have cards.
 
-Column headers are tracked mono caps in Flap Dim above a hairline rule. Rows separate with
-`1px` Rule, never with gaps or shadows.
+Column headers are tracked mono caps in Ink 2 above a **solid** rule. Line items separate
+with `1px dotted` Rule. Totals rule off with `3px double` Ink, above and below.
 
 Below 900px the fixed aspect ratio is released, column sets collapse to two columns
 (identity + value), and the status chip moves under the row label.
@@ -250,61 +250,74 @@ doesn't have.
 
 ## Elevation & Depth
 
-Flat and matte, and now for a reason the world supplies rather than one imposed on it:
-a split-flap board has no lit surfaces. Depth is physical, not luminous —
+Flat, for a reason the world supplies rather than one imposed on it: a printed bill has
+no lit surfaces and no floating panels. Depth is physical, not luminous —
 
-1. the **flap grid** (cells one step lighter than the ground),
-2. the **hinge line** (a 1px Flap Shadow rule across each cell's midpoint),
-3. the **steel frame** and its bolts.
+1. the **paper step** (attachments on Paper 2, one shade under the sheet),
+2. the **rules** (dotted for line items, solid for headers, double for totals),
+3. the **perforated stub** down the left margin.
 
-**The No-Shadow Rule.** Unchanged and now stronger: no `box-shadow` anywhere. The frame
-is the only depth cue the object has.
+**The No-Shadow Rule.** No `box-shadow` anywhere. Zero occurrences is the invariant, and
+it is easier to hold here than in the dark world — paper does not cast light.
 
 ## Shapes
 
-Square. `border-radius` is `0` on every structural element; flap cells and chips take
-`2px` only, which is the corner radius of a physical flap. Two other steps exist and are
-the complete set: `1px` on the small bar cells, and `3px` on the outer steel housing —
-the only rounded thing in the system, because the frame is milled metal, not a flap. The `50%` step markers from the
-previous world are gone — the board numbers rows, it does not draw circles.
+Square. `border-radius` is `0` on every element without exception, including chips and
+buttons. This is stricter than the previous world, which allowed `2px` on its cells and
+`3px` on the housing: a printed form has no rounded corners, so the whole rounded scale
+collapses to `none`.
 
-The −11° skew of the previous identity is **retired**. It belonged to the old world and has
-no counterpart on a mechanical board; the diagonal has been replaced by the hinge line as
-the system's recurring mark.
+The **one rotation** in the system is the PAID stamp at `-5.5deg`. It is permitted
+because a stamp is applied by hand after the document is printed — it is the only element
+that is not part of the typeset page. Do not rotate anything else.
+
+The −11° skew of the original identity remains **retired**.
 
 ## Components
 
-Character: **mechanical and reportorial.** Every element is something the physical object
-would actually have. Nothing is invented to hold content.
+Character: **printed and transactional.** Every element is something an invoice would
+actually have. Nothing is invented to hold content.
 
 ### Headline
-- Condensed grotesk caps, weight 700, `0.05em` tracking, `1.06` line height, on the board
-  ground with no container
+- Condensed grotesk caps, weight 700, `0.045em` tracking, `1.05` line height, on the paper
+  with no container
 - `h1` `clamp(30px, 4.8cqw, 78px)` · `h2` `clamp(22px, 3cqw, 48px)`, capped at `26ch`
 - Plain text in the DOM: selectable, searchable, printable, and not built by script
 
-### Board Row
-- Grid with fixed columns; `1px` Rule separator; `clamp(8px,0.9cqw,15px)` block padding
-- Left columns are Row type in Flap White, secondary columns Flap Dim, status right-aligned
-- No background fill at rest; the row is legible because the board is dark
+### Line Item (row)
+- Grid with fixed columns; `1px dotted` Rule separator; `clamp(8px,0.9cqw,15px)` padding
+- Qty left, description and its subtitle centre, amount right in tabular mono
+- Subtitles are Ink 3 and always sit under the description, never inline with it
+- No background fill; the row is legible because the paper is light
 
-### Status Chip
-- `1px` border in its status color, transparent fill, `2px` radius, tracked mono caps
-- `ON TIME` white · `DELAYED` amber · `CANCELLED` red
+### Total Line
+- A line item with `3px double` Ink above it and no rule below
+- Description reads `TOTAL DUE`; amount is Charged Red at `big` scale
+- Only one per page. A document with two totals has not decided what it is claiming
+
+### Stamp Chip
+- `1px` border plus a `1px` outline at `2px` offset — a doubled rule, the impression of a
+  rubber stamp — transparent fill, tracked mono caps, `0` radius
+- Green for credits and `$0`, red for charges, black for neutral facts
 - The chip is the only bordered element in the content area
 
+### PAID Stamp (signature)
+- Doubled `3px` red rule, `0.22em` tracking, rotated `-5.5deg`, transparent fill
+- Appears **once in the deck**, beside the total on the opening slide. It is the mark the
+  whole world is built around; using it twice spends it
+
 ### Button (presenter chrome)
-- Flap Black ground, `1px` Steel Deep border, tracked mono caps in Flap White, `2px` radius
-- **Hover:** border to Steel Dark
-- **Active** (`aria-pressed="true"`): border and text to Delay Amber, ground unchanged
+- Paper ground, `1px` Rule border, tracked mono caps in Ink, `0` radius
+- **Hover:** border to Ink 2
+- **Active** (`aria-pressed="true"`): border and text to Charged Red, ground unchanged
 - Focus-visible: `2px` Signal Blue outline, `2px` offset
 
-### Bar Row (signature)
-- The comparison chart, restated as board rows: label column, then a bar drawn as a run of
-  18 discrete cells rather than a solid fill, then the value in Data type
-- The "before" series is Flap Dim cells; the "after" series is Delay Amber cells
-- Cell-count encoding is the point — a bar you can *count* beats a bar you must measure.
-  This is the signature element now that the cascade is gone
+### Bar Row
+- The comparison chart as line items: label, then a bar drawn as a run of 18 discrete
+  cells rather than a solid fill, then the value in tabular mono
+- Unfilled cells are hairline Rule outlines; the "before" series fills Ink 2; the "after"
+  series fills Credited Green, because on this deck the after series is always the credit
+- Cell-count encoding is the point — a bar you can *count* beats a bar you must measure
 
 ### Named Rules
 
@@ -315,27 +328,33 @@ reduced-motion-safe, and wrong: in a ten-minute talk about cost, a mechanism tha
 the headline every time the presenter advances competes with the presenter. It was cut
 deliberately, not lost. **Do not reintroduce it**, and do not add a replacement — no
 fades, no counters ticking up, no reveals. The only motion in this deck is the person
-talking.
+talking. (The name predates the Ledger and is kept so the history stays traceable.)
+
+**The One Stamp Rule.** The PAID stamp and the `-5.5deg` rotation it carries appear once
+in the deck. Everything else on the page is typeset square.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** render display and headline copy in condensed caps, plainly on the ground.
-- **Do** express any comparison as rows with shared columns and a status chip.
-- **Do** keep the hairline steel edge on every slide; it is what frames the surface.
-- **Do** use amber to point the room at the figure that matters, once per slide.
-- **Do** scale type in `cqw` against the board, and set every figure in tabular mono.
-- **Do** keep the print stylesheet working: the board prints as flat black-on-white with
-  the frame suppressed, one slide per page. `#FFF`, `#000`, and `#333` appear **only**
-  inside the `@media print` block; the palette above governs screen and is never mixed
-  with them.
+- **Do** render display and headline copy in condensed caps, plainly on the paper.
+- **Do** express any comparison as line items with shared columns and a right-aligned amount.
+- **Do** rule off totals with a double line, and only ever one total per page.
+- **Do** colour by accounting meaning: red charges, green credits, black everything else.
+- **Do** scale type in `cqw` against the page, and set every figure in tabular mono.
+- **Do** keep the print stylesheet working: the deck prints as flat black-on-white with
+  the sheet edge and ledger ruling suppressed, one slide per page. `#FFF`, `#000`, and
+  `#333` appear **only** inside the `@media print` block; the palette above governs
+  screen and is never mixed with them.
 
 ### Don't:
-- **Don't** add glow, neon, gradient text, or blur. The object is matte.
-- **Don't** add a `box-shadow`. Hairline rules are the only depth.
-- **Don't** put body text in a bordered box. This world has rows, not cards.
-- **Don't** use a status color decoratively, or introduce a fourth.
+- **Don't** add glow, neon, gradient text, or blur. This is ink on paper.
+- **Don't** add a `box-shadow`. Rules are the only depth.
+- **Don't** put body text in a bordered box. This world has line items, not cards.
+- **Don't** colour a figure for emphasis. Red and green are accounting terms here; if a
+  number needs attention, make it bigger or move it, do not tint it.
 - **Don't** set display type in lowercase.
 - **Don't** animate anything. See The Still Board Rule — the cascade was cut on purpose.
-- **Don't** reintroduce the −11° skew; it belongs to the retired world.
-- **Don't** use Signal Blue for anything but the brandmark, live rail, and focus ring.
+- **Don't** rotate anything except the one PAID stamp, and don't reintroduce the −11° skew.
+- **Don't** use Signal Blue for anything but the brandmark and focus ring.
+- **Don't** let the paper go pure white; `#F4F1E6` is the ground and white reads as a hole
+  in the projection.

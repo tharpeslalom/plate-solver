@@ -1,202 +1,187 @@
 {
  "schemaVersion": 2,
- "generatedAt": "2026-07-25T21:00:00Z",
+ "generatedAt": "2026-07-25T21:30:00Z",
  "title": "Design System: Presentation Surfaces",
  "extensions": {
   "colorMeta": {
-   "flap-black": {
+   "paper": {
     "role": "neutral",
-    "displayName": "Flap Black",
-    "canonical": "#0D0D0F",
+    "displayName": "Paper",
+    "canonical": "#F4F1E6",
     "tonalRamp": [
-     "#131316",
-     "#303037",
-     "#4D4D59",
-     "#6A6A7B",
-     "#8A8A9A",
-     "#ABABB7",
-     "#CDCDD4",
-     "#EFEFF1"
+     "#1C190C",
+     "#483F20",
+     "#736633",
+     "#9F8C46",
+     "#BCAA67",
+     "#CFC293",
+     "#E3DBBE",
+     "#F6F3EA"
     ]
    },
-   "flap-face": {
+   "paper-2": {
     "role": "neutral",
-    "displayName": "Flap Face",
-    "canonical": "#141417",
+    "displayName": "Paper 2",
+    "canonical": "#EBE7D8",
     "tonalRamp": [
-     "#131316",
-     "#303037",
-     "#4D4D59",
-     "#6A6A7A",
-     "#8A8A99",
-     "#ACACB6",
-     "#CDCDD4",
-     "#EFEFF1"
+     "#1B180E",
+     "#443D23",
+     "#6E6338",
+     "#97884E",
+     "#B5A66F",
+     "#CAC098",
+     "#DFD9C1",
+     "#F5F3EB"
     ]
    },
-   "flap-white": {
+   "paper-edge": {
     "role": "neutral",
-    "displayName": "Flap White",
-    "canonical": "#F2F2F2",
+    "displayName": "Paper Edge",
+    "canonical": "#DCD7C4",
     "tonalRamp": [
-     "#141414",
-     "#343434",
-     "#535353",
-     "#727272",
-     "#929292",
-     "#B1B1B1",
-     "#D0D0D0",
-     "#F0F0F0"
+     "#1A170F",
+     "#413B27",
+     "#685F3E",
+     "#908355",
+     "#AEA276",
+     "#C5BD9D",
+     "#DCD7C4",
+     "#F4F2EC"
     ]
    },
-   "flap-dim": {
+   "ink": {
     "role": "neutral",
-    "displayName": "Flap Dim",
-    "canonical": "#9A9CA1",
+    "displayName": "Ink",
+    "canonical": "#16140F",
     "tonalRamp": [
-     "#141415",
-     "#323336",
-     "#505256",
-     "#6E7176",
-     "#8E9096",
-     "#AEB0B4",
-     "#CFD0D2",
-     "#EFEFF0"
+     "#181611",
+     "#3E382A",
+     "#635A43",
+     "#887C5D",
+     "#A69B7D",
+     "#C0B7A2",
+     "#D9D4C8",
+     "#F3F1ED"
     ]
    },
-   "flap-faint": {
+   "ink-2": {
     "role": "neutral",
-    "displayName": "Flap Faint",
-    "canonical": "#6E7076",
+    "displayName": "Ink 2",
+    "canonical": "#4C483C",
     "tonalRamp": [
-     "#141415",
-     "#323336",
-     "#505256",
-     "#6E7076",
-     "#8E9096",
-     "#AEB0B4",
-     "#CFD0D2",
-     "#EFEFF0"
+     "#171612",
+     "#3A372E",
+     "#5D5849",
+     "#807965",
+     "#9F9885",
+     "#BAB6A8",
+     "#D6D3CB",
+     "#F2F1EE"
     ]
    },
-   "delay-amber": {
-    "role": "primary",
-    "displayName": "Delay Amber",
-    "canonical": "#FFB400",
-    "tonalRamp": [
-     "#291D00",
-     "#674900",
-     "#A67500",
-     "#E5A100",
-     "#FFBF24",
-     "#FFD163",
-     "#FFE4A2",
-     "#FFF6E0"
-    ]
-   },
-   "amber-dim": {
-    "role": "primary",
-    "displayName": "Amber Dim",
-    "canonical": "#8A6410",
-    "tonalRamp": [
-     "#251A04",
-     "#5D430B",
-     "#956C11",
-     "#CD9518",
-     "#E8B23B",
-     "#EFC873",
-     "#F5DEAB",
-     "#FCF4E4"
-    ]
-   },
-   "cancelled-red": {
-    "role": "semantic",
-    "displayName": "Cancelled Red",
-    "canonical": "#D32F2F",
-    "tonalRamp": [
-     "#220707",
-     "#551212",
-     "#891D1D",
-     "#BD2828",
-     "#D94B4B",
-     "#E47E7E",
-     "#EFB2B2",
-     "#FAE6E6"
-    ]
-   },
-   "ontime-green": {
-    "role": "semantic",
-    "displayName": "On-Time Green",
-    "canonical": "#4CAF6D",
-    "tonalRamp": [
-     "#0C1C12",
-     "#1F482D",
-     "#327448",
-     "#45A063",
-     "#67BD83",
-     "#92D0A7",
-     "#BEE3CA",
-     "#EAF6EE"
-    ]
-   },
-   "steel-dark": {
+   "ink-3": {
     "role": "neutral",
-    "displayName": "Steel Dark",
-    "canonical": "#7D838C",
+    "displayName": "Ink 3",
+    "canonical": "#6E695B",
     "tonalRamp": [
-     "#131416",
-     "#313337",
-     "#4E5258",
-     "#6B7179",
-     "#8B9098",
-     "#ACB0B6",
-     "#CED0D3",
-     "#EFF0F1"
-    ]
-   },
-   "steel-deep": {
-    "role": "neutral",
-    "displayName": "Steel Deep",
-    "canonical": "#3A3D42",
-    "tonalRamp": [
-     "#131416",
-     "#303337",
-     "#4E5258",
-     "#6B717A",
-     "#8B9099",
-     "#ACB0B6",
-     "#CDD0D3",
-     "#EFEFF1"
-    ]
-   },
-   "signal-blue": {
-    "role": "primary",
-    "displayName": "Signal Blue",
-    "canonical": "#2E8BFF",
-    "tonalRamp": [
-     "#001229",
-     "#002E67",
-     "#004AA6",
-     "#0066E5",
-     "#2486FF",
-     "#63A8FF",
-     "#A2CBFF",
-     "#E0EEFF"
+     "#161512",
+     "#39362F",
+     "#5B574B",
+     "#7D7868",
+     "#9C9787",
+     "#B8B5AA",
+     "#D5D2CC",
+     "#F1F0EE"
     ]
    },
    "rule": {
     "role": "neutral",
     "displayName": "Rule",
-    "canonical": "#2A2A2E",
+    "canonical": "#C6C0AD",
     "tonalRamp": [
-     "#131315",
-     "#313136",
-     "#4F4F57",
-     "#6D6D78",
-     "#8D8D97",
-     "#ADADB5",
-     "#CECED2",
-     "#EFEFF0"
+     "#181611",
+     "#3D392A",
+     "#625B44",
+     "#877D5E",
+     "#A59C7E",
+     "#BFB8A3",
+     "#D9D5C8",
+     "#F2F1ED"
+    ]
+   },
+   "rule-soft": {
+    "role": "neutral",
+    "displayName": "Rule Soft",
+    "canonical": "#D9D4C3",
+    "tonalRamp": [
+     "#191710",
+     "#3F3A28",
+     "#665D40",
+     "#8C8059",
+     "#AA9F79",
+     "#C3BBA0",
+     "#DBD6C6",
+     "#F3F2EC"
+    ]
+   },
+   "charged-red": {
+    "role": "semantic",
+    "displayName": "Charged Red",
+    "canonical": "#B3261E",
+    "tonalRamp": [
+     "#230706",
+     "#59130F",
+     "#8E1E18",
+     "#C42A21",
+     "#E04C44",
+     "#E97F79",
+     "#F2B3AF",
+     "#FBE6E5"
+    ]
+   },
+   "credited-green": {
+    "role": "semantic",
+    "displayName": "Credited Green",
+    "canonical": "#1C6B3F",
+    "tonalRamp": [
+     "#082013",
+     "#155230",
+     "#22844E",
+     "#2FB56B",
+     "#52D28A",
+     "#83DFAC",
+     "#B5ECCD",
+     "#E7F9EF"
+    ]
+   },
+   "amber": {
+    "role": "semantic",
+    "displayName": "Amber",
+    "canonical": "#8A5A00",
+    "tonalRamp": [
+     "#291B00",
+     "#674300",
+     "#A66C00",
+     "#E59500",
+     "#FFB324",
+     "#FFC963",
+     "#FFDFA2",
+     "#FFF4E0"
+    ]
+   },
+   "signal-blue": {
+    "role": "primary",
+    "displayName": "Signal Blue",
+    "canonical": "#14459B",
+    "tonalRamp": [
+     "#051024",
+     "#0C295C",
+     "#134193",
+     "#1A5ACB",
+     "#3D7BE6",
+     "#75A1ED",
+     "#ACC7F4",
+     "#E4ECFC"
     ]
    }
   }
@@ -206,101 +191,115 @@
    "name": "Headline",
    "kind": "typography",
    "refersTo": "headline",
-   "description": "Condensed grotesk caps, tracked wide, set plainly on the board ground. No container, no cells, no motion. Plain text in the DOM.",
+   "description": "Condensed grotesk caps, tracked wide, set plainly on the paper. Reads as the printed heading on a form.",
    "html": "<h2 class=\"ds-h\">Most of what you pay for is re-reading.</h2>",
-   "css": ".ds-h{font-family:'Arial Narrow','Helvetica Neue Condensed','Roboto Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;line-height:1.06;font-size:48px;max-width:26ch;color:#F2F2F2;margin:0}"
+   "css": ".ds-h{font-family:'Arial Narrow','Helvetica Neue Condensed','Roboto Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.045em;line-height:1.05;font-size:48px;max-width:26ch;color:#16140F;margin:0}"
   },
   {
-   "name": "Board Row",
+   "name": "Line Item",
    "kind": "row",
-   "refersTo": "board-row",
-   "description": "The core comparison unit. Fixed grid columns, 1px rule separator, destination text left, figure right, status chip last. Never a card.",
-   "html": "<div class=\"ds-row\"><span><span class=\"ds-dest\">Frontier</span><span class=\"ds-sub\">human oversight &middot; 5.5% of calls</span></span><span class=\"ds-val\">381</span><span class=\"ds-chip ds-chip-red\">$60.80</span></div>",
-   "css": ".ds-row{display:grid;grid-template-columns:1.5fr auto auto;gap:18px;align-items:center;padding:15px 0;border-bottom:1px solid #2A2A2E;background:#0D0D0F}.ds-dest{font-family:'Arial Narrow','Helvetica Neue Condensed','Roboto Condensed',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.08em;font-size:24px;color:#F2F2F2}.ds-sub{display:block;margin-top:2px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#9A9CA1}.ds-val{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:26px;color:#D32F2F}"
+   "refersTo": "line-item",
+   "description": "The core unit. Qty left, description and subtitle centre, amount right in tabular mono, separated by a dotted rule. Never a card.",
+   "html": "<div class=\"ds-row\"><span class=\"ds-qty\">320 M</span><span><span class=\"ds-desc\">Tokens delivered</span><span class=\"ds-sub\">at frontier list, uncached</span></span><span class=\"ds-amt\">$1,695.80</span></div>",
+   "css": ".ds-row{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:15px 0;border-bottom:1px dotted #C6C0AD;background:#F4F1E6}.ds-qty{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:16px;color:#16140F}.ds-desc{font-family:'Arial Narrow','Helvetica Neue Condensed','Roboto Condensed',sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.07em;font-size:24px;color:#16140F}.ds-sub{display:block;margin-top:2px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#6E695B}.ds-amt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:26px;color:#16140F}"
   },
   {
-   "name": "Status Chip",
+   "name": "Total Line",
+   "kind": "row",
+   "refersTo": "total-line",
+   "description": "A line item ruled off with a 3px double line above and nothing below. Amount in Charged Red at display scale. Only one per page.",
+   "html": "<div class=\"ds-total\"><span class=\"ds-desc\">Total due</span><span class=\"ds-amt-big\">$61.13</span></div>",
+   "css": ".ds-total{display:grid;grid-template-columns:1fr auto;align-items:center;border-top:3px double #16140F;padding-top:18px;background:#F4F1E6}.ds-amt-big{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:44px;line-height:1;color:#B3261E}"
+  },
+  {
+   "name": "Stamp Chip",
    "kind": "badge",
-   "refersTo": "status-chip",
-   "description": "1px border in its status colour, transparent fill, tracked mono caps. The only bordered element in the content area. White nominal, amber attention, red costs money, green free.",
-   "html": "<span class=\"ds-chip ds-chip-green\">Electricity</span> <span class=\"ds-chip ds-chip-amber\">Metered</span> <span class=\"ds-chip ds-chip-red\">$60.80</span>",
-   "css": ".ds-chip{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor;border-radius:2px;padding:3px 10px;white-space:nowrap}.ds-chip-green{color:#4CAF6D}.ds-chip-amber{color:#FFB400}.ds-chip-red{color:#D32F2F}"
+   "refersTo": "stamp-chip",
+   "description": "A doubled rule (border plus offset outline) reading as a rubber stamp. Transparent fill, square corners. Green credits, red charges, black neutral facts.",
+   "html": "<span class=\"ds-chip ds-green\">Electricity</span> <span class=\"ds-chip ds-red\">$60.80</span> <span class=\"ds-chip ds-ink\">Sunk</span>",
+   "css": ".ds-chip{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border:1px solid currentColor;outline:1px solid currentColor;outline-offset:2px;border-radius:0;padding:3px 10px;margin:2px}.ds-green{color:#1C6B3F}.ds-red{color:#B3261E}.ds-ink{color:#16140F}"
   },
   {
-   "name": "Stat Cell",
-   "kind": "cell",
-   "refersTo": "stat-cell",
-   "description": "Mono key, oversized mono value, caption. Cells sit in a 1px-gapped grid over the Rule colour so the separators read as hairlines, not borders.",
-   "html": "<div class=\"ds-statrow\"><div class=\"ds-stat\"><span class=\"ds-k\">What we actually paid</span><span class=\"ds-v\">$61</span><span class=\"ds-n\">Same models available. No discount.</span></div></div>",
-   "css": ".ds-statrow{display:grid;gap:1px;background:#2A2A2E;border-block:1px solid #2A2A2E}.ds-stat{background:#0D0D0F;padding:20px 22px}.ds-k{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9A9CA1;margin-bottom:8px}.ds-v{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:44px;font-weight:700;line-height:1;color:#FFB400}.ds-n{display:block;margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#9A9CA1;line-height:1.45}"
+   "name": "PAID Stamp",
+   "kind": "signature",
+   "refersTo": "paid-stamp",
+   "description": "The signature mark. 3px double red rule, wide tracking, rotated -5.5deg. Appears exactly once in the deck, beside the total on the opening slide.",
+   "html": "<span class=\"ds-stamp\">Paid</span>",
+   "css": ".ds-stamp{display:inline-block;transform:rotate(-5.5deg);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:#B3261E;border:3px double #B3261E;padding:.34em .8em;font-size:46px;line-height:1}"
   },
   {
    "name": "Bar Row",
    "kind": "chart",
    "refersTo": "bar-row",
-   "description": "Signature element. A bar drawn as 18 discrete cells rather than a solid fill, so the reader can count it instead of measuring it. Before series dim, after series amber.",
+   "description": "Comparison chart as line items: 18 discrete cells rather than a solid fill. Unfilled cells are hairline outlines; before series fills Ink 2, after series fills Credited Green.",
    "html": "<div class=\"ds-bar\"><span class=\"ds-lab\">loop</span><span class=\"ds-cells\"><i class=\"on hot\"></i><i class=\"on hot\"></i><i class=\"on hot\"></i><i></i><i></i><i></i><i></i><i></i></span><span class=\"ds-num\">$61</span></div>",
-   "css": ".ds-bar{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:10px}.ds-lab{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#9A9CA1;text-align:right;letter-spacing:.06em}.ds-cells{display:flex;gap:2px}.ds-cells i{flex:1;max-width:14px;height:26px;border-radius:1px;background:#141417}.ds-cells i.on{background:#9A9CA1}.ds-cells i.on.hot{background:#FFB400}.ds-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:17px;color:#F2F2F2}"
+   "css": ".ds-bar{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:10px}.ds-lab{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#6E695B;text-align:right;letter-spacing:.06em}.ds-cells{display:flex;gap:2px}.ds-cells i{flex:1;max-width:14px;height:26px;border:1px solid #C6C0AD;background:transparent}.ds-cells i.on{background:#4C483C;border-color:#4C483C}.ds-cells i.on.hot{background:#1C6B3F;border-color:#1C6B3F}.ds-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:17px;color:#1C6B3F}"
   },
   {
    "name": "Button (presenter chrome)",
    "kind": "button",
    "refersTo": "button",
-   "description": "Flap Black ground, 1px Steel Deep border, tracked mono caps. Active state moves border and text to Delay Amber; the ground never fills.",
+   "description": "Paper ground, 1px Rule border, tracked mono caps, square corners. Active state moves border and text to Charged Red; the ground never fills.",
    "html": "<button class=\"ds-btn\">Notes</button> <button class=\"ds-btn ds-btn-on\" aria-pressed=\"true\">Overview</button>",
-   "css": ".ds-btn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#F2F2F2;background:#0D0D0F;border:1px solid #3A3D42;border-radius:2px;padding:7px 13px;cursor:pointer}.ds-btn:hover{border-color:#7D838C}.ds-btn-on{color:#FFB400;border-color:#FFB400}"
+   "css": ".ds-btn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#16140F;background:#F4F1E6;border:1px solid #C6C0AD;border-radius:0;padding:7px 13px;cursor:pointer}.ds-btn:hover{border-color:#4C483C}.ds-btn-on{color:#B3261E;border-color:#B3261E}"
   }
  ],
  "narrative": {
-  "northStar": "The Departure Board",
-  "overview": "The deck is an arrivals board: matte black, edge to edge, behind a hairline steel rule. Not a slide that resembles one \u2014 the actual object, with rows that report status in the board's own language and figures set in fixed columns that compare cleanly down a page.\n\nThe fiction was chosen because its native context *is* the room the deck is shown in: a departure board is the one object designed to be read simultaneously by a hall full of people standing at different distances. Legible from the back, high contrast under bad light, figures in fixed cells \u2014 constraints the board solved decades ago in hardware.\n\nIt also settles the status palette without argument. Amber means attention, red means this one costs you, green means nominal, white means unremarkable. And because the board is matte and painted, the surface cannot drift into the glowing dark-keynote look every AI-generated dark deck lands on. There is no glow in this world.\n\nAn earlier revision built the fiction out literally \u2014 split-flap cells with hinge lines, a brushed steel housing with bolt heads, and a flip cascade on every slide change. That was too much theatre for a ten-minute cost talk; the mechanism started reading as the subject. It was cut deliberately. What survives is the part doing the work: the matte ground, the status palette, the row grammar, and fixed columns.",
+  "northStar": "The Ledger",
+  "overview": "The deck is an itemised bill for one week of work. Cream stock, black typewriter ink, one red stamp. Every slide is a line item on the same document: faint ledger ruling, dotted leaders running description across to amount, double rules under totals, and a perforated stub down the left margin.\n\nThe fiction was chosen for three reasons. It is LIGHT, which in a conference room where every other AI talk is a glowing dark keynote is the contrarian read. The talk already calls the product 'the receipt, not the subject', so the form is the argument rather than a costume over it. And an invoice settles the palette without debate: red is a charge, green is a credit, black is neutral. No decorative colour exists, because a bill does not have one.\n\nIt also makes the thesis arithmetic. The opening slide is not a claim about savings; it is four line items that sum to $61.13, and the room can check the subtraction.\n\nPrior worlds: an Instrument Panel (light, blue, flat) was replaced by a Departure Board (matte black, split-flap cells, brushed steel, a flip cascade per slide). The board's mechanism was well-built and wrong \u2014 a headline that redraws itself on every advance competes with the presenter \u2014 and stripping it left the board too anonymous to survive. The Ledger replaces it outright, chosen over a brutalist type poster, an engineering blueprint, and a terminal.",
   "rules": [
    {
+    "name": "The Accounting Rule",
+    "body": "Red is a charge, green is a credit, black is neutral. A figure is red because it took money, never because it is important. If a number is neither a charge nor a credit, it is black. Emphasis comes from size and position, not tint."
+   },
+   {
     "name": "The Still Board Rule",
-    "body": "Nothing on a slide animates. Slides replace each other; their contents are simply there. The split-flap cascade was cut on purpose \u2014 do not reintroduce it, and do not add a replacement. No fades, no counting-up figures, no reveals. The only motion in this deck is the person talking."
+    "body": "Nothing on a slide animates. Slides replace each other; their contents are simply there. The split-flap cascade was cut on purpose \u2014 do not reintroduce it or add a replacement. No fades, no counters ticking up, no reveals."
    },
    {
-    "name": "The Status-Only Rule",
-    "body": "Amber, red, and green mean state. A figure is amber because the room should look at it, never because amber looks good."
-   },
-   {
-    "name": "The No-Glow Rule",
-    "body": "No box-shadow spread as light, no neon, no blur halo, no gradient text. Depth comes from hairline rules and one-step surface changes."
+    "name": "The One Stamp Rule",
+    "body": "The PAID stamp and its -5.5deg rotation appear once in the deck. Everything else on the page is typeset square."
    },
    {
     "name": "The No-Shadow Rule",
-    "body": "No box-shadow anywhere, at all. Zero occurrences is the invariant."
+    "body": "No box-shadow anywhere. Zero occurrences is the invariant. Paper does not cast light."
+   },
+   {
+    "name": "The No-Glow Rule",
+    "body": "No neon, no blur, no gradient text. Depth comes from hairline rules, dotted leaders, and one-step paper changes."
    },
    {
     "name": "The Rows-Not-Cards Rule",
-    "body": "If content is a comparison, it is a table of rows with shared columns and a status chip. Cards are for worlds that need containers; this one has a board."
+    "body": "Any comparison is a set of line items with shared columns and a right-aligned amount. A bordered box around body text is a card, and this world does not have cards."
    },
    {
     "name": "The Caps Rule",
-    "body": "Display and headline type is uppercase, tracked wide, set plainly on the board ground. Caps are what make a headline legible from the back."
+    "body": "Display and headline type is uppercase, tracked wide, set plainly on the paper."
    },
    {
     "name": "The Container-Query Rule",
-    "body": "Type scales in cqw against the board's own inline size, never vw. The projector's aspect ratio is unknown."
+    "body": "Type scales in cqw against the page's own inline size, never vw. The projector's aspect ratio is unknown."
    },
    {
     "name": "The Tabular Rule",
-    "body": "Comparable figures are mono with tabular-nums. On a board, a column that does not line up is a broken board."
+    "body": "Comparable figures are mono with tabular-nums, right-aligned in their column, so the subtraction can be checked from the back of the room."
    },
    {
     "name": "The One Blue Rule",
-    "body": "Signal Blue appears on the brandmark, the live rail segment, and focus rings. Three places. Never a status, never a fill."
+    "body": "Signal Blue appears on the brandmark and focus rings. Two places. Never a status, never a fill."
    }
   ],
   "antiPatterns": [
-   "Glow, neon, gradient text, or blur \u2014 the object is matte",
+   "Glow, neon, gradient text, or blur \u2014 this is ink on paper",
    "box-shadow of any kind",
    "Body text in a bordered box (that is a card)",
-   "A fourth status colour, or a status colour used decoratively",
+   "Colouring a figure for emphasis rather than for accounting meaning",
+   "A second total on the same page",
    "Lowercase display type",
-   "Any animation whatsoever \u2014 see The Still Board Rule",
-   "The retired \u221211\u00b0 skew from the previous world",
-   "Signal Blue outside the brandmark, live rail, and focus ring"
+   "Any animation whatsoever",
+   "Rotating anything other than the single PAID stamp; the retired -11 degree skew",
+   "Pure white paper \u2014 #F4F1E6 is the ground; white reads as a hole in the projection",
+   "Signal Blue outside the brandmark and focus ring"
   ]
  }
 }

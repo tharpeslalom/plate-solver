@@ -8,75 +8,91 @@
 <!--
   DIRECTION CONTRACT
   THESIS: AI cost is architectural. This deck refuses the corporate slide template and its
-    predictable opposite, the glowing dark keynote; it is an arrivals board that reports
-    what a build cost.
-  OWN-WORLD: Matte black under a hairline steel edge. Condensed grotesk caps for headlines;
-    monospace for every figure. Amber = attention, red = costs money, green = nominal.
-    Rows with fixed columns and a status chip. No glow, no shadow, no cards.
-  STORY: State the two levers up front, then spend the rest of the deck proving them with
-    one real build — $61 where $574 was expected — so the room leaves to go check their
-    own cache hit rate.
-  FIRST VIEWPORT: Full-bleed board. "WE BUILT IT FOR $61." at display scale, kicker above,
-    three stat cells beneath: what it should have cost, what we paid, the difference.
-  FORM: Arrivals board — challenger, fused; beat grounded #6 (utility meter) on audience
-    identification and product clarity. Seed key ef4b81ad.
-  MOTION: None. The split-flap cascade was built and cut — see DESIGN.md, The Still Board
+    predictable opposite, the glowing dark keynote; it is an itemised bill for one week of
+    work, and every credit on it is an engineering decision.
+  OWN-WORLD: Cream stock, black typewriter ink, one red stamp. Faint ledger ruling, dotted
+    leaders, double rules under totals, a torn-stub perforation down the left margin.
+    Condensed grotesk for headings; monospace for every figure. Red = charged, green =
+    credited, black = neutral. Line items, never cards.
+  STORY: Open on the bill and let the arithmetic do the argument. State the two levers,
+    then spend the rest of the deck proving them with one real build, so the room leaves
+    to go check their own cache hit rate.
+  FIRST VIEWPORT: The invoice itself. "WE BUILT IT FOR $61." over four line items that sum
+    to $61.13, with PAID stamped in red beside the total.
+  FORM: The Ledger — chosen over an arrivals board, a brutalist type poster, an
+    engineering blueprint, and a terminal. It is the only one of the five that is LIGHT,
+    which in a conference room full of dark AI keynotes is the contrarian read; and the
+    talk already calls the product "the receipt, not the subject". Seed key ef4b81ad.
+  MOTION: None. A split-flap cascade was built and cut — see DESIGN.md, The Still Board
     Rule. Slides change; nothing on them animates.
 -->
 
 <style>
 /* ============================================================================
-   THE DEPARTURE BOARD — see DESIGN.md. Palette sampled from the world's card.
-   Every colour lives in this block; nothing downstream hardcodes one.
+   THE LEDGER — see DESIGN.md. The deck is an itemised bill for one week of
+   work. Cream stock, black typewriter ink, one red stamp. Every colour lives
+   in this block; nothing downstream hardcodes one.
    ========================================================================= */
 :root{
-  --flap-black:  #0D0D0F;
-  --flap-face:   #141417;
-  --flap-white:  #F2F2F2;
-  --flap-dim:    #9A9CA1;
-  --flap-faint:  #6E7076;
+  --paper:       #F4F1E6;
+  --paper-2:     #EBE7D8;
+  --paper-edge:  #DCD7C4;
 
-  --amber:       #FFB400;
-  --amber-dim:   #8A6410;
-  --red:         #D32F2F;
-  --green:       #4CAF6D;
+  --ink:         #16140F;
+  --ink-2:       #4C483C;
+  --ink-3:       #6E695B;
 
-  --steel-dark:  #7D838C;
-  --steel-deep:  #3A3D42;
+  --rule:        #C6C0AD;
+  --rule-soft:   #D9D4C3;
 
-  --signal:      #2E8BFF;
-  --rule:        #2A2A2E;
+  --red:         #B3261E;
+  --red-soft:    #E5C8C4;
+  --green:       #1C6B3F;
+  --amber:       #8A5A00;
+
+  --signal:      #14459B;
 
   --font-display: "Arial Narrow", "Helvetica Neue Condensed", "Roboto Condensed", "Liberation Sans Narrow", sans-serif;
   --font-data: ui-monospace, SFMono-Regular, "SF Mono", Menlo, "Cascadia Mono", Consolas, monospace;
 
   --ease: cubic-bezier(.2,.7,.3,1);
 }
-:root, :root[data-theme="dark"], :root[data-theme="light"]{ color-scheme: dark; }
+:root, :root[data-theme="dark"], :root[data-theme="light"]{ color-scheme: light; }
 *, *::before, *::after{ box-sizing: border-box; }
 
 .deck{
   font-family: var(--font-data);
-  color: var(--flap-white);
-  background: #08080A;
+  color: var(--ink);
+  background: #E2DDCB;
   -webkit-font-smoothing: antialiased;
   font-size: 16px; line-height: 1.6; min-height: 100vh;
 }
 
-/* ------------------------------------------------------------- the housing --- */
+/* ---------------------------------------------------------------- the sheet --- */
 .stage{ position:relative; width:100%; max-width:1680px; margin:0 auto; padding:0 clamp(8px,2vw,26px); }
 
+/* The sheet sits on the desk with a hairline edge and a perforated left margin —
+   the stub you would tear off. No shadow; this is paper on paper. */
 .frame{
   position: relative;
-  padding: 1px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, var(--steel-deep) 0%, #23262A 50%, var(--steel-deep) 100%);
+  padding-left: clamp(14px,1.5vw,26px);
+  border: 1px solid var(--paper-edge);
+  background: var(--paper);
+}
+.frame::before{
+  content:""; position:absolute; top:0; bottom:0; left:clamp(14px,1.5vw,26px);
+  width:1px;
+  background: repeating-linear-gradient(180deg,
+    var(--rule) 0 4px, transparent 4px 9px);
 }
 
 .slide{
   display:none; position:relative; width:100%;
   aspect-ratio: 16 / 9; min-height: 440px;
-  background: var(--flap-black);
+  background: var(--paper);
+  /* faint ledger ruling — present, never legible as stripes from the back */
+  background-image: repeating-linear-gradient(180deg,
+    transparent 0 35px, rgba(22,20,15,.02) 35px 36px);
   padding: clamp(16px,2.2cqw,38px) clamp(18px,2.6cqw,46px);
   overflow:hidden; container-type: inline-size;
 }
@@ -86,94 +102,125 @@
 .flap{
   display:block;
   font-family: var(--font-display); font-weight:700; text-transform:uppercase;
-  letter-spacing:.05em; line-height:1.06; margin:0 0 .5em; color:var(--flap-white);
+  letter-spacing:.045em; line-height:1.05; margin:0 0 .5em; color:var(--ink);
 }
-h1.flap{ font-size: clamp(30px,4.8cqw,78px); letter-spacing:.055em; }
+h1.flap{ font-size: clamp(30px,4.8cqw,78px); letter-spacing:.05em; }
 h2.flap{ font-size: clamp(22px,3cqw,48px); max-width:26ch; }
 
 /* ------------------------------------------------------------- typography --- */
+/* The kicker is a form field label with a dot leader running to the margin. */
 .kicker{
   font-family:var(--font-data); font-size:clamp(9px,.7cqw,12px); font-weight:700;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--amber);
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2);
   margin:0 0 clamp(10px,1.2cqw,18px); display:flex; align-items:center; gap:12px;
+  white-space:nowrap;
 }
-.kicker::after{ content:""; flex:0 0 clamp(20px,2cqw,40px); height:1px; background:var(--amber-dim); }
-p{ margin:0 0 .8em; max-width:68ch; color:var(--flap-dim); font-size:clamp(11px,.95cqw,16px); }
-.lede{ font-size:clamp(12px,1.1cqw,19px); color:var(--flap-white); max-width:60ch; }
-strong{ color:var(--flap-white); font-weight:700; }
-.dim{ color:var(--flap-dim); } .faint{ color:var(--flap-faint); }
+.kicker > span{ flex:none; }
+.kicker::after{
+  content:""; flex:1; height:1px;
+  background: repeating-linear-gradient(90deg, var(--rule) 0 2px, transparent 2px 6px);
+}
+p{ margin:0 0 .8em; max-width:68ch; color:var(--ink-2); font-size:clamp(11px,.95cqw,16px); }
+.lede{ font-size:clamp(12px,1.1cqw,19px); color:var(--ink); max-width:60ch; }
+strong{ color:var(--ink); font-weight:700; }
+.dim{ color:var(--ink-2); } .faint{ color:var(--ink-3); }
 .amber{ color:var(--amber); } .red{ color:var(--red); } .green{ color:var(--green); }
 h3{
-  font-family:var(--font-display); text-transform:uppercase; letter-spacing:.07em;
-  font-size:clamp(13px,1.15cqw,19px); font-weight:700; color:var(--flap-white); margin:0 0 .4em;
+  font-family:var(--font-display); text-transform:uppercase; letter-spacing:.06em;
+  font-size:clamp(13px,1.15cqw,19px); font-weight:700; color:var(--ink); margin:0 0 .4em;
 }
 .body-flex{ flex:1; min-height:0; display:flex; flex-direction:column; }
 
-/* ------------------------------------------------------------- board rows --- */
+/* ------------------------------------------------------------ line items --- */
 .rows{ width:100%; border-collapse:collapse; }
 .colhead{
   display:grid; gap:clamp(8px,1cqw,18px); align-items:end;
   font-family:var(--font-data); font-size:clamp(8.5px,.65cqw,11px); font-weight:700;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--flap-dim);
-  padding:0 0 8px; border-bottom:1px solid var(--rule);
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2);
+  padding:0 0 8px; border-bottom:1px solid var(--ink);
 }
+/* Dotted leaders, the way a bill runs description across to amount. */
 .row{
   display:grid; gap:clamp(8px,1cqw,18px); align-items:center;
-  padding:clamp(8px,.9cqw,15px) 0; border-bottom:1px solid var(--rule);
+  padding:clamp(8px,.9cqw,15px) 0;
+  border-bottom:1px dotted var(--rule);
 }
 .row .dest{
   font-family:var(--font-display); text-transform:uppercase; font-weight:700;
-  letter-spacing:.08em; font-size:clamp(13px,1.35cqw,24px); color:var(--flap-white);
+  letter-spacing:.07em; font-size:clamp(13px,1.35cqw,24px); color:var(--ink);
 }
-.row .sub{ display:block; font-size:clamp(10px,.8cqw,13px); color:var(--flap-dim); letter-spacing:.02em; margin-top:2px; }
+.row .dest.red{ color:var(--red); }
+.row .sub{ display:block; font-size:clamp(10px,.8cqw,13px); color:var(--ink-3); letter-spacing:.02em; margin-top:2px; }
 .row .val.amber{ color:var(--amber); }
 .row .val.green{ color:var(--green); }
 .row .val.red{ color:var(--red); }
-.row .val.dim{ color:var(--flap-dim); }
-.row .dest.red{ color:var(--red); }
+.row .val.dim{ color:var(--ink-3); }
 .row .val{
   font-family:var(--font-data); font-variant-numeric:tabular-nums; font-weight:700;
-  font-size:clamp(14px,1.5cqw,26px); color:var(--flap-white);
+  font-size:clamp(14px,1.5cqw,26px); color:var(--ink);
 }
 .row .val.big{ font-size:clamp(20px,2.4cqw,44px); line-height:1; }
 
+/* Chips are rubber stamps: doubled rule, wide tracking, never filled. */
 .chip{
   justify-self:start; font-family:var(--font-data); font-size:clamp(8.5px,.66cqw,11.5px);
-  font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-  border:1px solid currentColor; border-radius:2px; padding:3px 10px; white-space:nowrap;
+  font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  border:1px solid currentColor; outline:1px solid currentColor; outline-offset:2px;
+  border-radius:0; padding:3px 10px; margin:2px; white-space:nowrap;
 }
-.chip.ontime{ color:var(--flap-white); }
+.chip.ontime{ color:var(--ink); }
 .chip.free{ color:var(--green); }
 .chip.delayed{ color:var(--amber); }
 .chip.cancelled{ color:var(--red); }
 
-/* ------------------------------------------------------------ stat rows --- */
-.statrow{ display:grid; gap:1px; background:var(--rule); border-block:1px solid var(--rule); }
-.stat{ background:var(--flap-black); padding:clamp(10px,1.2cqw,20px) clamp(12px,1.3cqw,22px); }
+/* The PAID stamp — the one rotated element in the system. */
+.stamp{
+  display:inline-block; transform:rotate(-5.5deg);
+  font-family:var(--font-data); font-weight:700; text-transform:uppercase;
+  letter-spacing:.22em; color:var(--red);
+  border:3px double var(--red); padding:.34em .8em;
+  font-size:clamp(18px,2.6cqw,46px); line-height:1;
+}
+
+/* --------------------------------------------------------- totals block --- */
+/* Totals rule off with a double line, the accounting convention for "final". */
+.statrow{
+  display:grid; gap:0;
+  border-top:3px double var(--ink); border-bottom:3px double var(--ink);
+}
+.stat{
+  background:transparent; padding:clamp(10px,1.2cqw,20px) clamp(12px,1.3cqw,22px);
+  border-right:1px dotted var(--rule);
+}
+.stat:last-child{ border-right:0; }
+.statrow[data-stack] .stat{ border-right:0; border-bottom:1px dotted var(--rule); }
+.statrow[data-stack] .stat:last-child{ border-bottom:0; }
 .stat .k{
   display:block; font-size:clamp(8.5px,.66cqw,11px); font-weight:700; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--flap-dim); margin-bottom:8px;
+  text-transform:uppercase; color:var(--ink-2); margin-bottom:8px;
 }
 .stat .v{
   display:block; font-family:var(--font-data); font-variant-numeric:tabular-nums;
-  font-size:clamp(20px,2.4cqw,44px); font-weight:700; line-height:1; color:var(--flap-white);
+  font-size:clamp(20px,2.4cqw,44px); font-weight:700; line-height:1; color:var(--ink);
 }
 .stat .v.amber{ color:var(--amber); } .stat .v.red{ color:var(--red); } .stat .v.green{ color:var(--green); }
-.stat .n{ display:block; margin-top:8px; font-size:clamp(9.5px,.76cqw,12.5px); color:var(--flap-dim); line-height:1.45; }
+.stat .n{ display:block; margin-top:8px; font-size:clamp(9.5px,.76cqw,12.5px); color:var(--ink-3); line-height:1.45; }
 
 /* ---------------------------------------------------------------- bars --- */
 .bars{ display:grid; gap:clamp(12px,1.6cqw,30px); }
 .bargroup h4{
   font-family:var(--font-data); font-size:clamp(8.5px,.66cqw,11px); font-weight:700;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--flap-dim); margin:0 0 10px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); margin:0 0 10px;
+  padding-bottom:5px; border-bottom:1px solid var(--ink);
 }
 .bar{ display:grid; grid-template-columns:58px 1fr auto; align-items:center; gap:10px; margin-bottom:7px; }
-.bar .lab{ font-family:var(--font-data); font-size:clamp(9px,.7cqw,12px); color:var(--flap-dim); text-align:right; letter-spacing:.06em; }
+.bar .lab{ font-family:var(--font-data); font-size:clamp(9px,.7cqw,12px); color:var(--ink-3); text-align:right; letter-spacing:.06em; }
 .cells{ display:flex; gap:2px; }
-.cells i{ flex:1; max-width:14px; height:clamp(14px,1.5cqw,26px); border-radius:1px; background:var(--flap-face); }
-.cells i.on{ background:var(--flap-dim); }
-.cells i.on.hot{ background:var(--amber); }
-.bar .num{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-weight:700; font-size:clamp(11px,1cqw,17px); color:var(--flap-white); white-space:nowrap; }
+.cells i{ flex:1; max-width:14px; height:clamp(14px,1.5cqw,26px); border:1px solid var(--rule); background:transparent; }
+.cells i.on{ background:var(--ink-2); border-color:var(--ink-2); }
+.cells i.on.hot{ background:var(--green); border-color:var(--green); }
+.bar .num{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-weight:700; font-size:clamp(11px,1cqw,17px); color:var(--ink); white-space:nowrap; }
+.bar .num.amber{ color:var(--green); }
 .delta{ font-family:var(--font-data); font-size:clamp(9.5px,.74cqw,12.5px); font-weight:700; color:var(--green); letter-spacing:.04em; }
 
 /* --------------------------------------------------------------- layout --- */
@@ -182,102 +229,103 @@ h3{
 .cols-2{ grid-template-columns:1fr 1fr; }
 .cols-2u{ grid-template-columns:1.12fr .88fr; }
 .cols > *{ min-width:0; }
-.note{ border-top:1px solid var(--rule); padding-top:clamp(9px,1cqw,15px); margin-top:auto; }
+.note{ border-top:1px solid var(--ink); padding-top:clamp(9px,1cqw,15px); margin-top:auto; }
 
-.shot{ border:1px solid var(--rule); overflow:hidden; background:#08080A; line-height:0; align-self:start; }
+.shot{ border:1px solid var(--rule); overflow:hidden; background:var(--paper-2); line-height:0; align-self:start; }
 .shot img{ width:100%; height:auto; display:block; }
 .shot figcaption{
-  font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); color:var(--flap-dim);
-  padding:8px 11px; line-height:1.45; border-top:1px solid var(--rule); background:var(--flap-black);
+  font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); color:var(--ink-2);
+  padding:8px 11px; line-height:1.45; border-top:1px solid var(--rule); background:var(--paper-2);
 }
 
-/* the loop diagram — the board's own row grammar, boxed by a service rail */
-.loop{ border:1px solid var(--amber-dim); padding:clamp(10px,1.2cqw,20px); position:relative; }
+/* A boxed schedule attached to the bill — "see attached". */
+.loop{ border:1px solid var(--ink); padding:clamp(10px,1.2cqw,20px); position:relative; background:var(--paper); }
 .loop::before{
-  content:"THE LOOP · REPEATS PER TASK"; position:absolute; top:0; left:clamp(10px,1.2cqw,20px);
-  transform:translateY(-50%); background:var(--flap-black); padding:0 9px;
+  content:"SCHEDULE A · REPEATS PER TASK"; position:absolute; top:0; left:clamp(10px,1.2cqw,20px);
+  transform:translateY(-50%); background:var(--paper); padding:0 9px;
   font-family:var(--font-data); font-size:clamp(8px,.62cqw,10.5px); font-weight:700;
-  letter-spacing:.18em; color:var(--amber);
+  letter-spacing:.18em; color:var(--ink);
 }
 .loop[data-label]::before{ content: attr(data-label); }
-.lstep{ display:grid; grid-template-columns:auto 1fr auto; gap:clamp(9px,1cqw,16px); align-items:center; padding:clamp(7px,.8cqw,13px) 0; border-bottom:1px solid var(--rule); }
+.lstep{ display:grid; grid-template-columns:auto 1fr auto; gap:clamp(9px,1cqw,16px); align-items:center; padding:clamp(7px,.8cqw,13px) 0; border-bottom:1px dotted var(--rule); }
 .lstep:last-of-type{ border-bottom:0; }
-.lstep .n{ font-family:var(--font-data); font-size:clamp(9px,.72cqw,12px); font-weight:700; color:var(--amber); letter-spacing:.1em; }
-.lstep b{ display:block; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.07em; font-size:clamp(12px,1.15cqw,19px); color:var(--flap-white); }
-.lstep span{ display:block; font-size:clamp(9px,.72cqw,12px); color:var(--flap-dim); margin-top:2px; }
-.retry{ font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); font-weight:700; color:var(--amber); letter-spacing:.08em; padding:8px 0 0 clamp(18px,2cqw,34px); }
-.loopback{ font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); font-weight:700; color:var(--flap-dim); letter-spacing:.08em; border-top:1px dashed var(--rule); margin-top:9px; padding-top:9px; }
+.lstep .n{ font-family:var(--font-data); font-size:clamp(9px,.72cqw,12px); font-weight:700; color:var(--ink-3); letter-spacing:.1em; }
+.lstep b{ display:block; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.06em; font-size:clamp(12px,1.15cqw,19px); color:var(--ink); }
+.lstep span{ display:block; font-size:clamp(9px,.72cqw,12px); color:var(--ink-3); margin-top:2px; }
+.retry{ font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); font-weight:700; color:var(--red); letter-spacing:.08em; padding:8px 0 0 clamp(18px,2cqw,34px); }
+.loopback{ font-family:var(--font-data); font-size:clamp(8.5px,.68cqw,11.5px); font-weight:700; color:var(--ink-2); letter-spacing:.08em; border-top:1px dashed var(--rule); margin-top:9px; padding-top:9px; }
 
-.metered{ border:1px solid var(--red); padding:clamp(10px,1.2cqw,20px); }
+/* The one charge on the bill. Red rule, red figure, nothing else. */
+.metered{ border:1px solid var(--red); border-left:4px solid var(--red); padding:clamp(10px,1.2cqw,20px); background:var(--paper); }
 .metered .k{ font-family:var(--font-data); font-size:clamp(8.5px,.66cqw,11px); font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--red); }
 .metered .v{ display:block; font-family:var(--font-data); font-variant-numeric:tabular-nums; font-weight:700; font-size:clamp(20px,2.3cqw,40px); color:var(--red); line-height:1.1; margin:6px 0 4px; }
 
 .moves{ display:flex; flex-direction:column; gap:clamp(10px,1.3cqw,22px); flex:1; justify-content:center; }
 .move{ display:grid; grid-template-columns:auto 1fr; gap:clamp(12px,1.5cqw,26px); align-items:start; }
-.move .mk{ font-family:var(--font-data); font-size:clamp(15px,1.7cqw,30px); font-weight:700; color:var(--amber); line-height:1; letter-spacing:.02em; }
+.move .mk{ font-family:var(--font-data); font-size:clamp(15px,1.7cqw,30px); font-weight:700; color:var(--red); line-height:1; letter-spacing:.02em; }
 
 .qs{ display:flex; flex-direction:column; gap:clamp(12px,1.6cqw,28px); flex:1; justify-content:center; }
-.q{ font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.05em; color:var(--flap-white); font-size:clamp(14px,1.6cqw,29px); line-height:1.25; max-width:48ch; padding-left:clamp(16px,1.7cqw,30px); position:relative; }
-.q::before{ content:""; position:absolute; left:0; top:.45em; width:clamp(8px,.9cqw,15px); height:2px; background:var(--amber); }
+.q{ font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.04em; color:var(--ink); font-size:clamp(14px,1.6cqw,29px); line-height:1.25; max-width:48ch; padding-left:clamp(16px,1.7cqw,30px); position:relative; }
+.q::before{ content:""; position:absolute; left:0; top:.45em; width:clamp(8px,.9cqw,15px); height:2px; background:var(--red); }
 
 table.src{ width:100%; border-collapse:collapse; font-size:clamp(9px,.68cqw,12px); }
-table.src th, table.src td{ text-align:left; padding:5px 12px 5px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
-table.src th{ font-family:var(--font-data); font-size:clamp(8px,.6cqw,10.5px); color:var(--flap-dim); text-transform:uppercase; letter-spacing:.18em; font-weight:700; }
-table.src td{ color:var(--flap-dim); }
-table.src td.m{ font-family:var(--font-data); color:var(--flap-white); font-variant-numeric:tabular-nums; white-space:nowrap; }
-table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size:.94em; }
+table.src th, table.src td{ text-align:left; padding:5px 12px 5px 0; border-bottom:1px dotted var(--rule); vertical-align:top; }
+table.src th{ font-family:var(--font-data); font-size:clamp(8px,.6cqw,10.5px); color:var(--ink-2); text-transform:uppercase; letter-spacing:.18em; font-weight:700; border-bottom:1px solid var(--ink); }
+table.src td{ color:var(--ink-2); }
+table.src td.m{ font-family:var(--font-data); color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap; }
+table.src td.p{ font-family:var(--font-data); color:var(--ink-3); font-size:.94em; }
 .scroll{ overflow:auto; flex:1; min-height:0; }
 
 /* ============================================================== chrome === */
 .bar-top{ max-width:1680px; margin:0 auto; padding:12px clamp(8px,2vw,26px) 10px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .brandmark{ display:flex; align-items:center; gap:10px; margin-right:auto; }
 .brandmark .sl{ width:20px; height:20px; flex:none; background:var(--signal); }
-.brandmark .tx{ font-family:var(--font-data); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--flap-dim); font-weight:700; }
-.clock{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-size:14px; font-weight:700; color:var(--flap-white); background:var(--flap-black); border:1px solid var(--steel-deep); padding:5px 11px; letter-spacing:.06em; }
-.clock[data-state="idle"]{ color:var(--flap-dim); }
+.brandmark .tx{ font-family:var(--font-data); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); font-weight:700; }
+.clock{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-size:14px; font-weight:700; color:var(--ink); background:var(--paper); border:1px solid var(--rule); padding:5px 11px; letter-spacing:.06em; }
+.clock[data-state="idle"]{ color:var(--ink-3); }
 .clock[data-state="near"]{ color:var(--amber); border-color:var(--amber); }
 .clock[data-state="over"]{ color:var(--red); border-color:var(--red); }
-.btn{ font-family:var(--font-data); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--flap-white); background:var(--flap-black); border:1px solid var(--steel-deep); border-radius:2px; padding:7px 13px; cursor:pointer; }
-.btn:hover{ border-color:var(--steel-dark); }
+.btn{ font-family:var(--font-data); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--ink); background:var(--paper); border:1px solid var(--rule); border-radius:0; padding:7px 13px; cursor:pointer; }
+.btn:hover{ border-color:var(--ink-2); }
 .btn:focus-visible{ outline:2px solid var(--signal); outline-offset:2px; }
-.btn[aria-pressed="true"]{ color:var(--amber); border-color:var(--amber); }
+.btn[aria-pressed="true"]{ color:var(--red); border-color:var(--red); }
 
 .bar-bot{ max-width:1680px; margin:0 auto; padding:12px clamp(8px,2vw,26px) 26px; display:flex; align-items:center; gap:14px; }
 .rail{ flex:1; display:flex; gap:2px; height:18px; align-items:center; }
 .rail button{ flex:1; height:4px; border:0; padding:0; cursor:pointer; background:var(--rule); transition:background .15s; }
-.rail button:hover{ background:var(--flap-faint); }
-.rail button[aria-current="true"]{ background:var(--signal); height:9px; }
-.rail button[data-apx="1"][aria-current="true"]{ background:var(--flap-dim); }
+.rail button:hover{ background:var(--ink-3); }
+.rail button[aria-current="true"]{ background:var(--red); height:9px; }
+.rail button[data-apx="1"][aria-current="true"]{ background:var(--ink-2); }
 .rail button:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; }
-.counter{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-size:11.5px; color:var(--flap-dim); letter-spacing:.08em; white-space:nowrap; }
+.counter{ font-family:var(--font-data); font-variant-numeric:tabular-nums; font-size:11.5px; color:var(--ink-2); letter-spacing:.08em; white-space:nowrap; }
 
 .notes{ max-width:1680px; margin:0 auto; padding:0 clamp(8px,2vw,26px) 36px; display:none; }
 .notes.is-open{ display:block; }
-.notes .inner{ background:var(--flap-black); border:1px solid var(--rule); border-top:2px solid var(--amber); padding:clamp(15px,2vw,24px); }
-.notes h4{ font-family:var(--font-data); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin:0 0 12px; font-weight:700; display:flex; gap:12px; }
-.notes h4 .t{ color:var(--flap-dim); }
-.notes .script p{ font-size:15px; line-height:1.65; color:var(--flap-dim); max-width:80ch; margin:0 0 .8em; }
-.notes .script b{ color:var(--flap-white); }
-.notes .script em{ font-style:normal; color:var(--amber); font-weight:700; }
-.cue{ display:inline-block; font-family:var(--font-data); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); padding:1px 6px; margin-right:8px; }
-.cue.live{ color:var(--red); border-color:var(--red); }
+.notes .inner{ background:var(--paper); border:1px solid var(--rule); border-top:2px solid var(--red); padding:clamp(15px,2vw,24px); }
+.notes h4{ font-family:var(--font-data); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin:0 0 12px; font-weight:700; display:flex; gap:12px; }
+.notes h4 .t{ color:var(--ink-2); }
+.notes .script p{ font-size:15px; line-height:1.65; color:var(--ink-2); max-width:80ch; margin:0 0 .8em; }
+.notes .script b{ color:var(--ink); }
+.notes .script em{ font-style:normal; color:var(--red); font-weight:700; }
+.cue{ display:inline-block; font-family:var(--font-data); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red); border:1px solid var(--red); padding:1px 6px; margin-right:8px; }
+.cue.live{ color:#fff; background:var(--red); border-color:var(--red); }
 
 .grid-ov{ display:none; max-width:1680px; margin:0 auto; padding:0 clamp(8px,2vw,26px) 36px; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1px; background:var(--rule); }
 .grid-ov.is-open{ display:grid; }
-.ov{ text-align:left; cursor:pointer; background:var(--flap-black); border:0; padding:13px; display:flex; flex-direction:column; gap:6px; min-height:96px; }
-.ov:hover{ background:var(--flap-face); }
+.ov{ text-align:left; cursor:pointer; background:var(--paper); border:0; padding:13px; display:flex; flex-direction:column; gap:6px; min-height:96px; }
+.ov:hover{ background:var(--paper-2); }
 .ov:focus-visible{ outline:2px solid var(--signal); outline-offset:-2px; }
-.ov .n{ font-family:var(--font-data); font-size:9.5px; letter-spacing:.16em; color:var(--amber); font-weight:700; }
-.ov[data-apx="1"] .n{ color:var(--flap-faint); }
-.ov .t{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.05em; font-size:13px; font-weight:700; color:var(--flap-white); line-height:1.25; }
-.ov .c{ font-family:var(--font-data); font-size:10px; color:var(--flap-dim); margin-top:auto; }
+.ov .n{ font-family:var(--font-data); font-size:9.5px; letter-spacing:.16em; color:var(--red); font-weight:700; }
+.ov[data-apx="1"] .n{ color:var(--ink-3); }
+.ov .t{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.04em; font-size:13px; font-weight:700; color:var(--ink); line-height:1.25; }
+.ov .c{ font-family:var(--font-data); font-size:10px; color:var(--ink-2); margin-top:auto; }
 
 .help{ max-width:1680px; margin:0 auto; padding:0 clamp(8px,2vw,26px) 28px; display:none; }
 .help.is-open{ display:block; }
-.help dl{ display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:9px 22px; margin:0; background:var(--flap-black); border:1px solid var(--rule); padding:17px 19px; }
+.help dl{ display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:9px 22px; margin:0; background:var(--paper); border:1px solid var(--rule); padding:17px 19px; }
 .help div{ display:flex; gap:9px; align-items:baseline; }
-.help dt{ font-family:var(--font-data); font-size:10.5px; font-weight:700; color:var(--flap-white); border:1px solid var(--steel-deep); padding:1px 6px; flex:none; }
-.help dd{ margin:0; font-size:12px; color:var(--flap-dim); }
+.help dt{ font-family:var(--font-data); font-size:10.5px; font-weight:700; color:var(--ink); border:1px solid var(--rule); padding:1px 6px; flex:none; }
+.help dd{ margin:0; font-size:12px; color:var(--ink-2); }
 
 @media (max-width:900px){
   .cols-2, .cols-2u, .statrow, .bars{ grid-template-columns:1fr !important; }
@@ -286,6 +334,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
   .lstep{ grid-template-columns:auto 1fr; row-gap:6px; }
   .lstep .chip{ grid-column:2; }
   .retry{ padding-left:0; }
+  .stat{ border-right:0; border-bottom:1px dotted var(--rule); }
 }
 /* Nothing in the content area animates (DESIGN.md — The Still Board Rule); this only
    covers the presenter chrome's hover transition. */
@@ -295,9 +344,10 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
 @media print{
   .bar-top,.bar-bot,.grid-ov,.help,.notes{ display:none !important; }
   .deck{ background:#fff; }
-  .frame{ background:none; padding:0; }
+  .frame{ border:0; padding:0; }
+  .frame::before{ display:none; }
   .slide{ display:flex !important; flex-direction:column; page-break-after:always; break-after:page;
-          background:#fff; color:#000; aspect-ratio:16/9; }
+          background:#fff; background-image:none; color:#000; aspect-ratio:16/9; }
   .flap{ color:#000; }
   .row .dest,.stat .v,.q,h3,strong{ color:#000; }
   p,.row .sub,.stat .n,.stat .k,.colhead,table.src td{ color:#333; }
@@ -323,17 +373,44 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
 <!-- 1 -->
 <section class="slide" data-title="We built it for $61" data-mark="0:00" data-budget="25">
   <div class="body-flex" style="justify-content:center">
-    <p class="kicker">DFW Innovation Day · 10 minutes</p>
+    <p class="kicker">Invoice 001 · plate-solver v1 · 25 Jun – 01 Jul 2026</p>
     <h1 class="flap">We built it for $61.</h1>
-    <p class="lede" style="margin-bottom:clamp(14px,2cqw,32px)">One week. One real, working piece of software. Tokenomics is not the price
-      of tokens &mdash; it is <strong>which model does which job</strong>, and <strong>how many times you pay to
-      re-read the same context</strong>.</p>
-    <div class="statrow" style="grid-template-columns:repeat(3,1fr)">
-      <div class="stat"><span class="k">What it should have cost</span><span class="v">$574</span><span class="n">The same work, dispatched the obvious way</span></div>
-      <div class="stat"><span class="k">What we actually paid</span><span class="v amber">$61</span><span class="n">Same models available. No discount, no negotiation.</span></div>
-      <div class="stat"><span class="k">The difference</span><span class="v green">89%</span><span class="n">Bought with architecture, not procurement</span></div>
+    <p class="lede" style="margin-bottom:clamp(12px,1.6cqw,26px)">Tokenomics is not the price of tokens. It is
+      <strong>which model does which job</strong>, and <strong>how many times you pay to re-read the same
+      context</strong>. Here is one week of it, itemised.</p>
+    <div class="cols cols-2u" style="gap:clamp(14px,2.4cqw,48px); align-content:center">
+      <div class="rows">
+        <div class="colhead" style="grid-template-columns:auto 1fr auto">
+          <span>Qty</span><span>Description</span><span>Amount</span>
+        </div>
+        <div class="row" style="grid-template-columns:auto 1fr auto">
+          <span class="val" style="font-size:clamp(11px,.95cqw,16px)">320 M</span>
+          <span><span class="dest">Tokens delivered</span><span class="sub">at frontier list, uncached</span></span>
+          <span class="val">$1,695.80</span>
+        </div>
+        <div class="row" style="grid-template-columns:auto 1fr auto">
+          <span></span>
+          <span><span class="dest">Less: prompt cache reuse</span><span class="sub">the same context, not bought twice</span></span>
+          <span class="val green">&minus;$1,121.97</span>
+        </div>
+        <div class="row" style="grid-template-columns:auto 1fr auto">
+          <span class="val dim" style="font-size:clamp(11px,.95cqw,16px)">6,541</span>
+          <span><span class="dest">Less: work routed off the meter</span><span class="sub">local model and flat-fee tiers</span></span>
+          <span class="val green">&minus;$512.70</span>
+        </div>
+        <div class="row" style="grid-template-columns:auto 1fr auto; border-top:3px double var(--ink); border-bottom:0; padding-top:clamp(10px,1.1cqw,18px)">
+          <span></span>
+          <span class="dest">Total due</span>
+          <span class="val big red">$61.13</span>
+        </div>
+      </div>
+      <div style="align-self:center; text-align:center">
+        <span class="stamp">Paid</span>
+        <p class="faint" style="margin:clamp(14px,1.8cqw,28px) auto 0; max-width:24ch; font-size:clamp(9.5px,.74cqw,12.5px); line-height:1.6">Nobody gave us a discount. Every credit on this bill is an
+          architecture decision.</p>
+      </div>
     </div>
-    <p class="faint" style="margin:clamp(14px,1.8cqw,26px) 0 0; font-size:clamp(9.5px,.74cqw,12.5px); letter-spacing:.06em">Bryan Tharpe &amp; Kiran</p>
+    <p class="faint" style="margin:clamp(12px,1.5cqw,22px) 0 0; font-size:clamp(9.5px,.74cqw,12.5px); letter-spacing:.06em">Bryan Tharpe &amp; Kiran · DFW Innovation Day · 10 minutes</p>
   </div>
 </section>
 
@@ -372,7 +449,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
         <div class="rows" style="margin-top:clamp(8px,1cqw,14px)">
           <div class="row" style="grid-template-columns:1fr auto; border-top:1px solid var(--rule)">
             <span><span class="dest">Saved by caching</span><span class="sub">on one week of this build</span></span>
-            <span class="val big amber">$1,122</span>
+            <span class="val big green">$1,122</span>
           </div>
         </div>
       </div>
@@ -398,7 +475,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
     <div style="display:flex;flex-direction:column;gap:clamp(10px,1.2cqw,18px)">
       <div class="rows">
         <div class="colhead" style="grid-template-columns:1fr auto"><span>Readout</span><span>Value</span></div>
-        <div class="row" style="grid-template-columns:1fr auto"><span class="dest">Solve time</span><span class="val amber">1.8 ms</span></div>
+        <div class="row" style="grid-template-columns:1fr auto"><span class="dest">Solve time</span><span class="val">1.8 ms</span></div>
         <div class="row" style="grid-template-columns:1fr auto"><span class="dest">Stars matched</span><span class="val">47</span></div>
         <div class="row" style="grid-template-columns:1fr auto"><span class="dest">Pattern database</span><span class="val">1.01 M</span></div>
       </div>
@@ -448,7 +525,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
     <div style="align-self:center">
       <p class="lede">The trick is the switchboard. <strong>Claude Code asks for a model by name and
         never learns what answered.</strong></p>
-      <div class="loop" data-label="THE SWITCHBOARD · WHAT ACTUALLY ANSWERS" style="margin-top:clamp(10px,1.2cqw,18px)">
+      <div class="loop" data-label="SCHEDULE B · WHAT ACTUALLY ANSWERS" style="margin-top:clamp(10px,1.2cqw,18px)">
         <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;sonnet&rdquo;</b><span>the tool's default workhorse</span></span><span class="chip free">&rarr; local qwen</span></div>
         <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;haiku&rdquo;</b><span>background and summarisation traffic</span></span><span class="chip free">&rarr; local qwen</span></div>
         <div class="lstep" style="grid-template-columns:1fr auto"><span><b>&ldquo;opus&rdquo;</b><span>the one I chose to keep on the meter</span></span><span class="chip cancelled">&rarr; real, paid</span></div>
@@ -501,8 +578,8 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
       authoring and architecture &mdash; different work, not just slower coding. The unit-cost
       trend is the claim; a task-for-task comparison would be tighter.</p>
     <p style="margin:0"><strong>Against the counterfactual:</strong> those same 320 million tokens
-      run entirely on the frontier model would have cost <strong class="amber">$574</strong>.
-      Without caching on top of that, <strong class="amber">$1,696</strong>.</p>
+      run entirely on the frontier model would have cost <strong class="red">$574</strong>.
+      Without caching on top of that, <strong class="red">$1,696</strong>.</p>
   </div>
 </section>
 
@@ -536,7 +613,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
         <span class="val red">381</span><span class="chip cancelled">$60.80</span>
       </div>
       <p class="faint" style="margin-top:12px">At frontier rates the judge alone would have been
-        <strong class="amber">$160</strong> &mdash; taking the build from $61 to $221.</p>
+        <strong class="red">$160</strong> &mdash; taking the build from $61 to $221.</p>
     </div>
   </div>
 </section>
@@ -550,16 +627,16 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
       <p class="lede">Lever two, and the largest number in this deck &mdash; larger than every
         routing decision combined.</p>
       <p>Read the three rows as one sentence. Run the obvious way, this build was
-        <strong>$1,696</strong>. Turning on caching alone took <strong class="amber">$1,122</strong> off it.
+        <strong>$1,696</strong>. Turning on caching alone took <strong class="green">$1,122</strong> off it.
         Routing then took most of the rest.</p>
       <p>Which is the uncomfortable part: <strong>the biggest lever required no model change at
         all.</strong> It is a header, a stable prompt prefix, and someone bothering to check the hit
         rate. Pure engineering, and nobody gets promoted for it.</p>
     </div>
-    <div class="statrow" style="grid-template-columns:1fr; align-self:center">
-      <div class="stat"><span class="k">Run the obvious way</span><span class="v">$1,696</span><span class="n">No caching, no routing</span></div>
-      <div class="stat"><span class="k">Saved by caching alone</span><span class="v amber">&minus;$1,122</span><span class="n">One config change. No model change.</span></div>
-      <div class="stat"><span class="k">Then routing did the rest</span><span class="v green">$61</span><span class="n">What we actually paid</span></div>
+    <div class="statrow" data-stack style="grid-template-columns:1fr; align-self:center">
+      <div class="stat"><span class="k">Run the obvious way</span><span class="v red">$1,696</span><span class="n">No caching, no routing</span></div>
+      <div class="stat"><span class="k">Saved by caching alone</span><span class="v green">&minus;$1,122</span><span class="n">One config change. No model change.</span></div>
+      <div class="stat"><span class="k">Then routing did the rest</span><span class="v red">$61</span><span class="n">What we actually paid</span></div>
     </div>
   </div>
 </section>
@@ -637,7 +714,7 @@ table.src td.p{ font-family:var(--font-data); color:var(--flap-faint); font-size
           <span><span class="dest">Jun 25 &ndash; Jul 1 · loop</span><span class="sub">85% local</span></span>
           <span class="val">320 M</span><span class="chip free">$61</span></div>
       </div>
-      <p style="margin-top:14px"><strong class="amber">June 10 alone was $313</strong> &mdash; one day,
+      <p style="margin-top:14px"><strong class="red">June 10 alone was $313</strong> &mdash; one day,
         1,744 calls, five times the entire loop week. That day is what paid for the
         architecture on slide three.</p>
     </div>
